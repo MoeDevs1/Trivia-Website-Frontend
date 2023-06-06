@@ -90,7 +90,7 @@ const LoginSignup = () => {
     sessionStorage.removeItem("token"); // Remove the token
     setIsLoggedIn(false);
   };
-  
+
   const setSessionTimeout = () => {
     const sessionDuration = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
     const sessionExpiration = new Date().getTime() + sessionDuration;
@@ -101,52 +101,52 @@ const LoginSignup = () => {
 
   const signUp = async (event) => {
     event.preventDefault();
-  
+
     const userName = event.target[0].value;
     const email = event.target[1].value;
     const password = event.target[2].value;
     const confirmPassword = event.target[3].value;
-  
+
     if (password !== confirmPassword) {
       setPasswordError("Passwords do not match");
       setEmailError("");
       setUsernameError("");
       return;
     }
-  
+
     if (userName.length < 4 || !containsTwoLetters(userName)) {
       setUsernameError("Username must be at least 4 characters long and contain at least 2 letters");
       setEmailError("");
       setPasswordError("");
       return;
     }
-  
+
     if (password.length < 5 || !containsTwoLetters(password)) {
       setPasswordError("Password must be at least 5 characters long and contain at least 2 letters");
       setEmailError("");
       setUsernameError("");
       return;
     }
-  
+
     try {
       setIsLoading(true); // Show loading effect
-  
+
       const response = await axios.post('http://localhost:8080/api/v1/auth/register', {
         userName,
         email,
         password,
       });
-  
+
       // Handle success
       const { token } = response.data;
       sessionStorage.setItem("token", token);
-  
+
       setSessionTimeout(); // Set the session expiration
       setIsLoggedIn(true); // Set the login state
       router.push('/'); // Redirect to the home page
     } catch (error) {
       console.error(error);
-  
+
       if (error.response && error.response.data && error.response.data.message) {
         const errorMessage = error.response.data.message;
         if (errorMessage.includes("email")) {
@@ -189,7 +189,9 @@ const LoginSignup = () => {
               <input className={styles.inputField} type="password" placeholder="Password" />
               <input className={styles.inputField} type="password" placeholder="Confirm Password" />
               {passwordError && <span className={styles.errorMessage}>{passwordError}</span>}
-              <button className={styles.Signupbtn} type="submit">Sign Up</button>
+              <button className={styles.Signupbtn} type="submit" disabled={isLoading}>
+                {isLoading ? "Loading..." : "Sign Up"}
+              </button>
 
               <button className={styles.GoogleButton}>
                 <Image src="/img/google-logo-9808.png" alt="" width="14" height="14" />Signup with Google
@@ -226,7 +228,9 @@ const LoginSignup = () => {
                   <a href="/forgot-password">Forgot password?</a>
                 </div>
               </div>
-              <button className={styles.btnLogin} type="submit">Sign In</button>
+              <button className={styles.btnLogin} type="submit" disabled={isLoading}>
+                {isLoading ? "Loading..." : "Sign In"}
+              </button>
               <div className={styles.line}></div>
               <button className={styles.GoogleButton2}>
                 <Image src="/img/google-logo-9808.png" alt="" width="14" height="14" />Continue with Google
