@@ -28,24 +28,29 @@
 
 .title2 {
     font-weight: bold;
-    margin: 0;
+    margin-bottom: -30px;
+
+    margin-top: 50px;
     font-family: "Arial", sans-serif;
     font-size: 28px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #8B4513; /* Brown color */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #7a4700;
+    color: -webkit-linear-gradient(to right, #b56832, #48150f);
+    color: linear-gradient(to right, #b56832, #48150f);    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .title {
+    margin-top: 50px;
     font-weight: bold;
-    margin-top: -30px;
     margin-bottom: 30;
     font-family: "Arial", sans-serif;
     font-size: 28px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #8B4513; /* Brown color */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #7a4700;
+    color: -webkit-linear-gradient(to right, #b56832, #48150f);
+    color: linear-gradient(to right, #b56832, #48150f);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .link2{
@@ -92,6 +97,152 @@
     transition: transform 80ms ease-in;
 }
 
+.Signupbtn{
+
+    background: #b56832;
+    background: -webkit-linear-gradient(to right, #b56832, #48150f);
+    background: linear-gradient(to right, #b56832, #48150f);
+    
+    width: 100%;
+/* increase the width to 50% */
+padding: 1em 2em;
+/* increase the padding */
+color: #fff;
+font-size: 16px;
+text-align: center;
+text-transform: uppercase;
+border: none;
+border-radius: 30px;
+cursor: pointer;
+transition: all 0.3s ease;
+text-decoration: none;
+margin-left: auto;
+/* add margin-left: auto to align the buttons to the right */
+margin-right: 0;
+/* remove the margin-right */
+box-sizing: border-box;
+margin-top: 10px;
+
+
+}
+
+.btnLogin{
+
+
+    background: #b56832;
+    background: -webkit-linear-gradient(to right, #b56832, #48150f);
+    background: linear-gradient(to right, #b56832, #48150f);
+    
+    width: 100%;
+/* increase the width to 50% */
+padding: 1em 2em;
+/* increase the padding */
+color: #fff;
+font-size: 16px;
+text-align: center;
+text-transform: uppercase;
+border: none;
+border-radius: 30px;
+cursor: pointer;
+transition: all 0.3s ease;
+text-decoration: none;
+margin-left: auto;
+/* add margin-left: auto to align the buttons to the right */
+margin-right: 0;
+/* remove the margin-right */
+box-sizing: border-box;
+margin-top: 20px;
+
+    
+}
+
+
+.GoogleButton{
+    display: flex;
+align-items: center;
+text-transform: uppercase;
+font-weight: bold;
+
+background: -webkit-linear-gradient(to right, #888817, #cccccc);
+background: linear-gradient(to right, #f5f5f5, #cccccc);
+color: #959494;
+
+
+padding: 1em 2em;
+
+justify-content: center;
+background-color: white;
+/* reduce padding */
+border: 2px solid #eaeaea;
+border-radius: 30px;
+margin-top: 20px;
+cursor: pointer;
+text-decoration: none;
+box-sizing: border-box;
+width: 100%;
+margin-bottom: 70px;
+font-size: 15px;
+
+}
+
+.GoogleButton2{
+    display: flex;
+align-items: center;
+text-transform: uppercase;
+font-weight: bold;
+
+color: #959494;
+background: -webkit-linear-gradient(to right, #f5f5f5, #cccccc);
+background: linear-gradient(to right, #f5f5f5, #cccccc);
+
+
+padding: 1em 2em;
+
+justify-content: center;
+background-color: white;
+/* reduce padding */
+border: 2px solid #eaeaea;
+border-radius: 30px;
+margin-top: 20px;
+cursor: pointer;
+text-decoration: none;
+box-sizing: border-box;
+width: 100%;
+margin-bottom: 80px;
+font-size: 15px;
+
+}
+.btn:hover,
+.Signupbtn:hover,
+.btnLogin:hover,
+.GoogleButton:hover,
+.GoogleButton2:hover,
+.buttonTransation:hover {
+    cursor: pointer;
+
+  transform: scale(1.05); /* Increase the scale on hover */
+}
+
+
+.logoContainer{
+    margin-right: 290px;
+    margin-top: -220px;
+    margin-bottom: 100PX;
+
+}
+.logoContainer2{
+    margin-left: 290px;
+    margin-top: -220px;
+    margin-bottom: 100PX;
+
+}
+
+
+.GoogleButton2 img ,.GoogleButton img{
+        margin-right: 10px;
+    }
+
+
 .btn:active {
     transform: scale(0.95);
 }
@@ -117,12 +268,97 @@
 }
 
 .inputField {
-    background-color: #eee;
     border: none;
     padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
+
+padding: 10px;
+border-radius: 6px;
+margin-bottom: 10px;
+border: 2px solid #EAEAEA;
+box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+font-size: 14px;
+color: #444444;
 }  
+
+.MiscContainer{
+    display: flex;
+justify-content: space-between;
+font-size: 10px;
+font-family: Arial, Helvetica, sans-serif;
+margin-top: 10px;
+}
+
+.rememberPasswordLabel {
+    display: flex;
+    align-items: center;
+    color: #555;
+    cursor: pointer;
+    font-size: 12px;
+    color: #7a4700;
+    color: -webkit-linear-gradient(to right, #7a4700, #48150f);
+    color: linear-gradient(to right, #7a4700, #48150f);     
+     font-weight: bold;
+    margin-top: -4px;
+    margin-right: 80px;
+    }
+
+
+
+    .rememberPasswordCheckbox {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border: 2px solid #ccc;
+        border-radius: 3px;
+        position: relative;
+        margin-right: 4px;
+        vertical-align: middle;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.3s ease-in-out;
+        }
+        
+        .rememberPasswordCheckbox:checked::before {
+        content: '\2714';
+        position: absolute;
+        top: -3px;
+        left: 0px;
+        font-size: 16px;
+        color: white;
+        }
+        
+        .forgotPasswordLink a {
+
+            font-size: 12px;
+          
+            color: #7a4700;
+            color: -webkit-linear-gradient(to right, #7a4700, #48150f);
+            color: linear-gradient(to right, #7a4700, #48150f);            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            transition: color 0.3s ease;
+            margin-top: 15px;
+            margin-right: 5px;
+          
+          
+          }
+          
+        
+        .rememberPasswordCheckbox:checked {
+            background: #7a4700;
+            background: -webkit-linear-gradient(to right, #7a4700, #48150f);
+            background: linear-gradient(to right, #7a4700, #48150f);
+        }
+        
+        .rememberPasswordCheckbox {
+        color: red;
+        }
+            
 
 
 .buttonTransation {
