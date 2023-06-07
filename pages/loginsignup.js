@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import styles from "../styles/loginsignup.module.css";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faGooglePlusG, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import styles from "../styles/loginsignup.module.css";
 import Image from "next/image";
 import axios from 'axios';
 import { useRouter } from 'next/router';
@@ -246,20 +247,33 @@ const LoginSignup = () => {
               <div className={styles.socialContainer}>
                 {/* <a href="#" className={`${styles.social} ${styles.links}`}><FontAwesomeIcon icon={faGooglePlusG} /></a> */}
               </div>
+              <div className={styles.inputContainer}>
+
               <input
                 className={styles.inputField2}
                 type="email"
                 placeholder="Email"
                 value={signInEmail}
                 onChange={handleSignInEmailChange}
+                
               />
+                <span className={styles.icon}><MdEmail /></span>
+
+              </div>  
+              <div className={styles.inputContainer}>
+
               <input
                 className={styles.inputField2}
                 type="password"
                 placeholder="Password"
                 value={signInPassword}
                 onChange={handleSignInPasswordChange}
+                
               />
+                <span className={styles.icon}><AiFillLock /></span>
+
+                            </div>  
+
               {signInError && <span className={`${styles.errorMessage} ${styles.error}`}>{signInError}</span>}
               <div className={styles.MiscContainer}>
                 <label className={styles.rememberPasswordLabel}>
