@@ -11,6 +11,11 @@
     
 }
 
+.errorMessage{
+
+    color: red;
+}
+
 
 
 .slidingTitle {
@@ -82,6 +87,19 @@
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
+}
+
+.btn2 {
+    border-radius: 20px;
+    border: 1px solid #ff8d0a;
+    background-color: #ff8d0a;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
 }
 
 .btn {
@@ -213,6 +231,7 @@ font-size: 15px;
 
 }
 .btn:hover,
+.btn2:hover,
 .Signupbtn:hover,
 .btnLogin:hover,
 .GoogleButton:hover,
@@ -246,8 +265,14 @@ font-size: 15px;
 .btn:active {
     transform: scale(0.95);
 }
+.btn2:active {
+    transform: scale(0.95);
+}
 
 .btn:focus {
+    outline: none;
+}
+.btn2:focus {
     outline: none;
 }
 
@@ -443,6 +468,16 @@ margin-top: 10px;
     transition: transform 0.6s ease-in-out;
     z-index: 100;
 }
+.overlayContainer2 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
 
 .container.rightPanelActive .overlayContainer {
     transform: translateX(-100%);
@@ -519,3 +554,117 @@ margin-top: 10px;
 }
 
 
+
+
+
+@media (max-width: 498px) {
+
+    .container{
+
+        height: 85%;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Monsterrat', sans-serif;
+        height: 100vh;
+        margin-top: -30px;
+    
+        
+    }
+    
+
+
+  
+    .signInContainer{
+      height: 100%;
+      width: 100%;
+      margin-top: 50px;
+    }
+
+    .signUpContainer{
+
+        display: flex;
+        align-items: center;
+        margin-left: -100%;
+width: 100%;
+
+margin-top: 40px;
+    }
+
+ 
+
+.btn2Container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+flex-direction: column;
+margin-top: 50px;
+
+
+}
+
+.btn2 {
+    border-radius: 20px;
+    border: 1px solid #ff8d0a;
+    background-color: #ff8d0a;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin-left: 20px;
+    
+}
+
+
+
+
+
+
+    .overlayContainer2{
+        
+        width: 498px;
+        height: 18%;
+        margin-top: 0px;
+        margin-left: -250px;
+        transition-property: none !important;
+    transform: none !important;
+
+    }
+   
+    
+  
+   .overlayContainer{
+    display: none;
+   }
+  
+    .overlayContainer {
+        transition-property: transform; /* Remove the '0.6s ease-in-out' value */
+      }
+    
+      .container.rightPanelActive .overlayContainer {
+        transform: translateY(-100%); /* Change 'translateX' to 'translateY' and use '-100%' */
+      }
+    
+      .overlay {
+        background-position: 0 100%; /* Change the background-position to '0 100%' */
+      }
+    
+  
+
+  
+ 
+    
+  }
+  
+ 
+  

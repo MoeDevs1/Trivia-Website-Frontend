@@ -6,7 +6,9 @@ import Image from "next/image";
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import jwtDecode from 'jwt-decode';
-
+import { BsFillPersonFill } from "react-icons/bs";
+import { MdEmail } from "react-icons/md";
+import { AiFillLock } from "react-icons/ai";
 const LoginSignup = () => {
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,11 +19,24 @@ const LoginSignup = () => {
   const [emailError, setEmailError] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     const sessionExpiration = sessionStorage.getItem("sessionExpiration");
     const currentTime = new Date().getTime();
+
+    // Check if the "Remember Me" checkbox should be checked
+    const storedEmail = localStorage.getItem("email");
+    const storedPassword = localStorage.getItem("password");
+    const shouldRemember = storedEmail && storedPassword;
+    setRememberMe(shouldRemember);
+
+    if (shouldRemember) {
+      // Populate the input fields with the stored email and password
+      setSignInEmail(storedEmail);
+      setSignInPassword(storedPassword);
+    }
 
     if (sessionExpiration && currentTime < sessionExpiration) {
       // Session has not expired, user is logged in
@@ -69,6 +84,17 @@ const LoginSignup = () => {
 
       setSessionTimeout(); // Set the session expiration
       setIsLoggedIn(true); // Set the login state
+
+      if (rememberMe) {
+        // Store email and password in localStorage
+        localStorage.setItem("email", signInEmail);
+        localStorage.setItem("password", signInPassword);
+      } else {
+        // Clear email and password from localStorage
+        localStorage.removeItem("email");
+        localStorage.removeItem("password");
+      }
+
       router.push('/'); // Redirect to the home page
     } catch (error) {
       console.error(error);
@@ -175,28 +201,44 @@ const LoginSignup = () => {
     return letterCount >= 2;
   };
 
+  const isScreenLessThan500 = typeof window !== 'undefined' && window.innerWidth < 500;
+
   return (
     <div className={styles.body}>
       {!isLoggedIn ? (
         <div className={`${styles.container} ${isRightPanelActive ? styles.rightPanelActive : ''} ${styles.bodyStyle}`}>
           <div className={styles.signUpContainer}>
-            <form action="#" className={styles.flexForm} onSubmit={signUp}>
-              <h1 className={styles.title}>Create Account</h1>
-              <input className={styles.inputField} type="text" placeholder="UserName" />
-              {usernameError && <span className={styles.errorMessage}>{usernameError}</span>}
-              <input className={styles.inputField} type="email" placeholder="Email" />
-              {emailError && <span className={styles.errorMessage}>{emailError}</span>}
-              <input className={styles.inputField} type="password" placeholder="Password" />
-              <input className={styles.inputField} type="password" placeholder="Confirm Password" />
-              {passwordError && <span className={styles.errorMessage}>{passwordError}</span>}
-              <button className={styles.Signupbtn} type="submit" disabled={isLoading}>
-                {isLoading ? "Loading..." : "Sign Up"}
-              </button>
+              <form action="#" className={styles.flexForm} onSubmit={signUp}>
+                <h1 className={styles.title}>Create Account</h1>
+               
+                <div className={styles.inputContainer}>
+  <input className={styles.inputField} type="text" placeholder="UserName" />
+  <span className={styles.icon}><BsFillPersonFill /></span>
+</div>            
+               
+                {usernameError && <span className={`${styles.errorMessage} ${styles.error}`}>{usernameError}</span>}
+                <div className={styles.inputContainer}>
+  <input className={styles.inputField} type="email" placeholder="Email" />
+  <span className={styles.icon}><MdEmail /></span>
+</div>  
+                {emailError && <span className={`${styles.errorMessage} ${styles.error}`}>{emailError}</span>}
+                <div className={styles.inputContainer}>
+  <input className={styles.inputField} type="password" placeholder="Password" />
+  <span className={styles.icon}><AiFillLock /></span>
+</div>  
+                <div className={styles.inputContainer}>
+  <input className={styles.inputField} type="password" placeholder="Confirm Password" />
+  <span className={styles.icon}><AiFillLock /></span>
+</div>  
+                {passwordError && <span className={`${styles.errorMessage} ${styles.error}`}>{passwordError}</span>}
+                <button className={styles.Signupbtn} type="submit" disabled={isLoading}>
+                  {isLoading ? "Loading..." : "Sign Up"}
+                </button>
 
-              <button className={styles.GoogleButton}>
-                <Image src="/img/google-logo-9808.png" alt="" width="14" height="14" />Signup with Google
-              </button>
-            </form>
+                <button className={styles.GoogleButton}>
+                  <Image src="/img/google-logo-9808.png" alt="" width="14" height="14" />Signup with Google
+                </button>
+              </form>
           </div>
           <div className={styles.signInContainer}>
             <form action="#" className={styles.flexForm} onSubmit={login}>
@@ -205,23 +247,28 @@ const LoginSignup = () => {
                 {/* <a href="#" className={`${styles.social} ${styles.links}`}><FontAwesomeIcon icon={faGooglePlusG} /></a> */}
               </div>
               <input
-                className={styles.inputField}
+                className={styles.inputField2}
                 type="email"
                 placeholder="Email"
                 value={signInEmail}
                 onChange={handleSignInEmailChange}
               />
               <input
-                className={styles.inputField}
+                className={styles.inputField2}
                 type="password"
                 placeholder="Password"
                 value={signInPassword}
                 onChange={handleSignInPasswordChange}
               />
-              {signInError && <span className={styles.errorMessage}>{signInError}</span>}
+              {signInError && <span className={`${styles.errorMessage} ${styles.error}`}>{signInError}</span>}
               <div className={styles.MiscContainer}>
                 <label className={styles.rememberPasswordLabel}>
-                  <input type="checkbox" className={styles.rememberPasswordCheckbox} />
+                  <input
+                    type="checkbox"
+                    className={styles.rememberPasswordCheckbox}
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                  />
                   Remember Password
                 </label>
                 <div className={styles.forgotPasswordLink}>
@@ -238,25 +285,54 @@ const LoginSignup = () => {
             </form>
           </div>
           <div className={styles.overlayContainer}>
-            <div className={`${styles.overlay}`}>
-              <div className={`${styles.overlayPanel} ${styles.overlayLeft}`}>
-                <div className={styles.logoContainer} >
-                  <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
+              <div className={`${styles.overlay}`}>
+                <div className={`${styles.overlayPanel} ${styles.overlayLeft}`}>
+                  <div className={styles.logoContainer} >
+                    <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
+                  </div>
+                  <h1 className={styles.slidingTitle}>Welcome Back</h1>
+                  <p className={styles.normalText}>Use your personal info to login</p>
+                  <button className={`${styles.btnGhost} ${styles.btn}`} onClick={handleSignInClick}>Sign In</button>
                 </div>
-                <h1 className={styles.slidingTitle}>Welcome Back</h1>
-                <p className={styles.normalText}>Use your personal info to login</p>
-                <button className={`${styles.btnGhost} ${styles.btn}`} onClick={handleSignInClick}>Sign In</button>
-              </div>
-              <div className={`${styles.overlayPanel} ${styles.overlayRight}`}>
-                <div className={styles.logoContainer2}>
-                  <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
+                <div className={`${styles.overlayPanel} ${styles.overlayRight}`}>
+                  <div className={styles.logoContainer2}>
+                    <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
+                  </div>
+                  <h1 className={styles.slidingTitle}>Join Today</h1>
+                  <p className={styles.normalText}>Click The Signup Button Below To Climb The Ranks</p>
+                  <button className={`${styles.btnGhost} ${styles.btn}`} onClick={handleSignUpClick}>Sign Up</button>
                 </div>
-                <h1 className={styles.slidingTitle}>Join Today</h1>
-                <p className={styles.normalText}>Click The Signup Button Below To Climb The Ranks</p>
-                <button className={`${styles.btnGhost} ${styles.btn}`} onClick={handleSignUpClick}>Sign Up</button>
               </div>
             </div>
-          </div>
+          {isScreenLessThan500 && (
+            <div className={styles.overlayContainer2}>
+              <div className={`${styles.overlay}`}>
+                <div className={`${styles.overlayPanel} ${styles.overlayLeft}`}>
+                  <div className={styles.logoContainer} >
+                    <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
+                  
+                  </div>
+                  <div className={styles.btn2Container}>
+
+                  <p className={styles.normalText2}>Already Member? Welcoome Back !</p>
+                  <button className={`${styles.btnGhost} ${styles.btn2}`} onClick={handleSignInClick}>Sign In</button>
+                </div>
+                </div>
+                <div className={`${styles.overlayPanel} ${styles.overlayRight}`}>
+                  <div className={styles.logoContainer2}>
+                    <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
+                  </div>
+                  
+                  <div className={styles.btn2Container}>
+
+                  <p className={styles.normalText2}>Not A memeber? Join today</p>
+
+                  <button className={`${styles.btnGhost} ${styles.btn2}`} onClick={handleSignUpClick}>Sign Up</button>
+                </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       ) : (
         <div>

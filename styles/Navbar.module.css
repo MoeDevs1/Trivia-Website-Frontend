@@ -18,7 +18,7 @@
   height: 15px;
   /* Add your desired positioning styles here */
   position: relative;
-  top: 2px; /* Adjust this value to move the dropdown up or down */
+  top: px; /* Adjust this value to move the dropdown up or down */
 }
 
 
@@ -146,31 +146,4 @@ padding: 10px;
 
 .logo:hover img {
   filter: brightness(1.2); /* Increase brightness on hover */
-}
-
-@media screen and (max-width: 500px) {
-
-
-  .logo img {
-    margin-left: -10px;
-    width: 75px;
-    height: 70px;
-    margin-right: -25px;
-  }
-
-  .navLinks {
-    display: none;
-  }
-
-  .menuIcon {
-    display: block;
-  }
-
-  .mobileMenu {
-    display: block;
-  }
-
-  .authLinks {
-    margin-right: 40px;
-  }
 }
