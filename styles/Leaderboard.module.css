@@ -1,0 +1,236 @@
+.container {
+  height: 85vh;
+  overflow: hidden;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  background-color: #f2f2f2;
+  background-image: linear-gradient(to bottom right, #cfd9df, #e2ebf0);
+  width: 60%;
+  
+}
+
+.container2{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  
+.header {
+  font-size: 2.5em;
+  color: #68370f;
+  margin-bottom: 1em;
+  position: relative;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-image: linear-gradient(45deg, #602d0f, #ab6a38);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+  
+  .firework {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(to bottom, #e11600, #4919f5);
+    border-radius: 50%;
+    animation: fireworks 2s infinite;
+    z-index: 1;
+  }
+  
+  .leaderboard {
+    height: 75vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+  }
+  
+  .leaderboardFixed {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    
+  }
+  
+  .user {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+    border-left: 10px solid #e33314;
+
+  }
+  
+  .user:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user .rank,
+  .user .name,
+  .user .points {
+    flex-basis: 30%;
+    color: #333;
+    font-size: 1.2em;
+  }
+  .top1  {
+    color: #ffd700;
+    text-shadow: 0px 0px 10px #ffd700;
+    animation: shine 4s linear infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  
+  
+  @keyframes shine {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  .logo {
+  height: 50px;
+    /* Add any other styles you want */
+  }
+  
+  
+  .top2 {
+    border-left: 10px solid #c0c0c0;
+    background: linear-gradient(to right, purple, pink);
+    color: white;
+  }
+  
+  .top3 {
+    border-left: 10px solid #cd7f32;
+    background: linear-gradient(to right, lightblue, green);
+    color: white;
+  }
+  
+
+  .top8 {
+    border-left: 10px solid #8c564b;
+  }
+  
+  .top4,
+.top5,
+.top6,
+.top7,
+.top8,
+.top9,
+.top10,
+.top11,
+.top12,
+.top13,
+.top14,
+.top15,
+.top16,
+.top17,
+.top18,
+.top19,
+.top20 {
+  border-left: 10px solid #c97667;
+
+}
+
+
+  
+ 
+  
+  /* Continue the pattern for the rest... */
+  
+
+  /* Continue adding classes for the remaining users... */
+  
+  
+  /* Continue adding classes for the remaining users... */
+  
+  .name {
+    display: flex;
+    align-items: center;
+  }
+  
+  .currentUser {
+    border-left: 10px solid #00ff00;
+  }
+  
+  /* Animation for the shining effect */
+
+
+.top1 {
+    border-left: 10px solid #ffdf00;
+    background: linear-gradient(120deg, #ff006e, #ff7600, #ffc700, #ff006e);
+    background-size: 200%;
+    animation: shine 2s linear infinite;
+    color: white;
+}
+
+.top2 {
+    border-left: 10px solid #c0c0c0;
+    background: linear-gradient(120deg, #8e2de2, #4a00e0, #8e2de2);
+    background-size: 200%;
+    animation: shine 2s linear infinite;
+    color: white;
+}
+
+.top3 {
+    border-left: 10px solid #cd7f32;
+    background: linear-gradient(120deg, #0ba360, #3cba92, #0ba360);
+    background-size: 200%;
+    animation: shine 2s linear infinite;
+    color: white;
+}
+
+.rank {
+    flex-basis: 30%;
+    color: #333;
+    font-size: 1.2em;
+}
+
+/* Making the rank appear special */
+.top1 .rank, .top2 .rank, .top3 .rank {
+    color: #ffd700;
+    text-shadow: 0px 0px 10px #ffd700;
+}
+
+.titleWrapper{
+
+  display: flex;
+  align-items: row;
+}
+
+.logoContainer{
+
+  margin-top: -15px;
+  margin-left: 690px;
+  background-color: transparent;
+}

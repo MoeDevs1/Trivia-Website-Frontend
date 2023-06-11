@@ -4,29 +4,43 @@ import { useRouter } from 'next/router';
 import { FaBars } from 'react-icons/fa';
 import Image from 'next/image';
 import axios from 'axios';
-import { FaCaretDown } from 'react-icons/fa';
+import { FaCaretDown } from 'react-icons/fa'  
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [userEmail, setUserEmail] = useState(null); // State to store the user's email
   const router = useRouter();
-
+  const [userEmail, setUserEmail] = useState(null);
+  const [username, setUsername] = useState(null); // New State for username
   const [showDropdown, setShowDropdown] = useState(false);
-
   useEffect(() => {
-    const fetchUserEmail = async () => {
+    const fetchUserData = async () => {
       try {
-        const token = sessionStorage.getItem('token'); // Retrieve the token from session storage
-        const response = await axios.post('http://localhost:3000/api/checkToken', { token }); // Make a POST request to the API endpoint
-        const { email } = response.data;
+        const token = `Bearer ${sessionStorage.getItem('token')}`; 
+        const config = {
+          headers: { Authorization: token }
+        };
+        const response = await axios.get('http://localhost:8080/api/v1/auth/user', config);
+        const { email, username } = response.data;
         setUserEmail(email);
+        setUsername(username);
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchUserEmail();
+    fetchUserData();
+
+    // Setting a listener to sessionStorage
+    const storageListener = () => {
+      fetchUserData();
+    };
+
+    window.addEventListener('storage', storageListener);
+
+    // Make sure to remove the listener when the component is unmounted
+    return () => window.removeEventListener('storage', storageListener);
   }, []);
+
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -35,12 +49,17 @@ const Navbar = () => {
   const handleLoginClick = () => {
     router.push('/loginsignup?#');
   };
+  const handleSetting = () => {
+    router.push('/setting?#');
+  };
 
   const handleLogout = () => {
     sessionStorage.removeItem("sessionExpiration");
     sessionStorage.removeItem("token");
     setUserEmail(null);
+    window.location.reload(); // Refresh the page
   };
+
   return (
     <nav className={styles.navBar}>
       <div className={styles.logo} onClick={() => router.push('/')}>
@@ -59,22 +78,23 @@ const Navbar = () => {
         <li className={styles.navLink} onClick={() => router.push('/contact')}>Contact</li>
       </ul>
       <ul className={styles.authLinks}>
-        {userEmail ? (
-          <li className={styles.navLink} onClick={() => setShowDropdown(!showDropdown)}>
-            {userEmail}
-            <FaCaretDown className={`${styles.dropDown} ${styles.dropdownPosition}`} />
-            {showDropdown && (
-              <ul className={styles.dropdownMenu}>
-                <li onClick={handleLogout}>Logout</li>
-              </ul>
-            )}
-          </li>
-        ) : (
-          <li className={styles.navLink} onClick={handleLoginClick}>
-            Login <FaCaretDown className={`${styles.dropDown} ${styles.dropdownPosition}`} />
-          </li>
-        )}
-      </ul>
+  {username ? (
+    <li className={styles.navLink} onClick={() => setShowDropdown(!showDropdown)}>
+      {username}
+      <FaCaretDown className={`${styles.dropDown} ${styles.dropdownPosition}`} />
+      {showDropdown && (
+        <ul className={styles.dropdownMenu}>
+          <li onClick={handleLogout}>Logout</li>
+          <li onClick={handleSetting}>Setting</li>
+        </ul>
+      )}
+    </li>
+  ) : (
+    <li className={styles.navLink} onClick={handleLoginClick}>
+      Login <FaCaretDown className={`${styles.dropDown} ${styles.dropdownPosition}`} />
+    </li>
+  )}
+</ul>
 
 
 

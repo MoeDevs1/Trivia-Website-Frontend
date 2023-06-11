@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/loginsignup.module.css";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faGooglePlusG, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import Image from "next/image";
@@ -10,6 +9,129 @@ import jwtDecode from 'jwt-decode';
 import { BsFillPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { AiFillLock } from "react-icons/ai";
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+
+const setSessionExpiration = () => {
+  const expirationDuration = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
+  const expirationTime = new Date().getTime() + expirationDuration;
+
+  sessionStorage.setItem("sessionExpiration", expirationTime);
+  setTimeout(logout, expirationDuration); // Set the timeout to log the user out after the session expires
+};
+
+const registerUser = async (token, router) => {
+  // Register the user using the token
+  await axios.post('http://localhost:8080/api/v1/auth/register/google', { token })
+    .then(response => {
+      const { data } = response;
+      const { token } = data;
+
+      // Store the token in sessionStorage
+      sessionStorage.setItem("token", token);
+
+      setSessionExpiration(); // Set the session expiration token after successful registration\
+
+      router.push('/'); // Redirect to the home page
+    })
+    .catch(error => {
+      console.error(error);
+    });
+};
+
+const loginUser = async (token, router) => {
+  // Login the user using the token
+  await axios.post('http://localhost:8080/api/v1/auth/login/google', { token })
+    .then(response => {
+      const { data } = response;
+      const { token } = data;
+
+      // Store the token in sessionStorage
+      sessionStorage.setItem("token", token);
+
+      setSessionExpiration(); // Set the session expiration token after successful login
+
+      router.push('/'); // Redirect to the home page
+    })
+    .catch(error => {
+      console.error(error);
+    });
+};
+
+const logout = () => {
+  // Clear the session data and log the user out
+  sessionStorage.removeItem("sessionExpiration");
+  sessionStorage.removeItem("token"); // Remove the token
+  setIsLoggedIn(false);
+};
+
+const GoogleSignupPage = () => {
+  const router = useRouter();
+
+  const onGoogleSuccess = async (response) => {
+    const tokenId = response.credential;
+
+    if (!tokenId) {
+      console.log('TokenId not available');
+      return;
+    }
+
+    // Register the user using the tokenId
+    await registerUser(tokenId, router); // Pass the router as an argument
+  }
+
+  return (
+    <div>
+      <GoogleOAuthProvider clientId="955085585863-ot8g3rsrvc09ekpiifs07roalvaq5p5j.apps.googleusercontent.com">
+        <GoogleLogin
+        
+          text="continue_with"
+          onSuccess={onGoogleSuccess}
+          onError={() => {
+            console.log('Login Failed');
+          }}
+          
+          height="400px"
+          width="300" // S
+          
+        />
+      </GoogleOAuthProvider>
+    </div>
+  );
+};
+
+const GoogleLoginPage = () => {
+  const router = useRouter();
+
+  const onGoogleSuccess = async (response) => {
+    const tokenId = response.credential;
+
+    if (!tokenId) {
+      console.log('TokenId not available');
+      return;
+    }
+
+    // Login the user using the tokenId
+    await loginUser(tokenId, router); // Pass the router as an argument
+  }
+
+  return (
+    <div>
+      <GoogleOAuthProvider clientId="955085585863-ot8g3rsrvc09ekpiifs07roalvaq5p5j.apps.googleusercontent.com">
+        <GoogleLogin
+          text="sign_in"
+          onSuccess={onGoogleSuccess}
+          onError={() => {
+            console.log('Login Failed');
+          }}
+
+          width="300" // S
+
+        />
+      </GoogleOAuthProvider>
+    </div>
+  );
+};
+
 const LoginSignup = () => {
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -170,6 +292,7 @@ const LoginSignup = () => {
 
       setSessionTimeout(); // Set the session expiration
       setIsLoggedIn(true); // Set the login state
+
       router.push('/'); // Redirect to the home page
     } catch (error) {
       console.error(error);
@@ -209,37 +332,41 @@ const LoginSignup = () => {
       {!isLoggedIn ? (
         <div className={`${styles.container} ${isRightPanelActive ? styles.rightPanelActive : ''} ${styles.bodyStyle}`}>
           <div className={styles.signUpContainer}>
-              <form action="#" className={styles.flexForm} onSubmit={signUp}>
-                <h1 className={styles.title}>Create Account</h1>
-               
-                <div className={styles.inputContainer}>
-  <input className={styles.inputField} type="text" placeholder="UserName" />
-  <span className={styles.icon}><BsFillPersonFill /></span>
-</div>            
-               
-                {usernameError && <span className={`${styles.errorMessage} ${styles.error}`}>{usernameError}</span>}
-                <div className={styles.inputContainer}>
-  <input className={styles.inputField} type="email" placeholder="Email" />
-  <span className={styles.icon}><MdEmail /></span>
-</div>  
-                {emailError && <span className={`${styles.errorMessage} ${styles.error}`}>{emailError}</span>}
-                <div className={styles.inputContainer}>
-  <input className={styles.inputField} type="password" placeholder="Password" />
-  <span className={styles.icon}><AiFillLock /></span>
-</div>  
-                <div className={styles.inputContainer}>
-  <input className={styles.inputField} type="password" placeholder="Confirm Password" />
-  <span className={styles.icon}><AiFillLock /></span>
-</div>  
-                {passwordError && <span className={`${styles.errorMessage} ${styles.error}`}>{passwordError}</span>}
-                <button className={styles.Signupbtn} type="submit" disabled={isLoading}>
-                  {isLoading ? "Loading..." : "Sign Up"}
-                </button>
+            <form action="#" className={styles.flexForm} onSubmit={signUp}>
+              <h1 className={styles.title}>Create Account</h1>
 
-                <button className={styles.GoogleButton}>
-                  <Image src="/img/google-logo-9808.png" alt="" width="14" height="14" />Signup with Google
-                </button>
-              </form>
+              <div className={styles.inputContainer}>
+                <input className={styles.inputField} type="text" placeholder="UserName" />
+                <span className={styles.icon}><BsFillPersonFill /></span>
+              </div>
+
+              {usernameError && <span className={`${styles.errorMessage} ${styles.error}`}>{usernameError}</span>}
+
+              <div className={styles.inputContainer}>
+                <input className={styles.inputField} type="email" placeholder="Email" />
+                <span className={styles.icon}><MdEmail /></span>
+              </div>
+
+              {emailError && <span className={`${styles.errorMessage} ${styles.error}`}>{emailError}</span>}
+
+              <div className={styles.inputContainer}>
+                <input className={styles.inputField} type="password" placeholder="Password" />
+                <span className={styles.icon}><AiFillLock /></span>
+              </div>
+
+              <div className={styles.inputContainer}>
+                <input className={styles.inputField} type="password" placeholder="Confirm Password" />
+                <span className={styles.icon}><AiFillLock /></span>
+              </div>
+
+              {passwordError && <span className={`${styles.errorMessage} ${styles.error}`}>{passwordError}</span>}
+
+              <button className={styles.Signupbtn} type="submit" disabled={isLoading}>
+                {isLoading ? "Loading..." : "Sign Up"}
+              </button>
+
+              <GoogleSignupPage /> {/* Google Signup component */}
+            </form>
           </div>
           <div className={styles.signInContainer}>
             <form action="#" className={styles.flexForm} onSubmit={login}>
@@ -248,33 +375,29 @@ const LoginSignup = () => {
                 {/* <a href="#" className={`${styles.social} ${styles.links}`}><FontAwesomeIcon icon={faGooglePlusG} /></a> */}
               </div>
               <div className={styles.inputContainer}>
-
-              <input
-                className={styles.inputField2}
-                type="email"
-                placeholder="Email"
-                value={signInEmail}
-                onChange={handleSignInEmailChange}
-                
-              />
+                <input
+                  className={styles.inputField2}
+                  type="email"
+                  placeholder="Email"
+                  value={signInEmail}
+                  onChange={handleSignInEmailChange}
+                />
                 <span className={styles.icon}><MdEmail /></span>
+              </div>
 
-              </div>  
               <div className={styles.inputContainer}>
-
-              <input
-                className={styles.inputField2}
-                type="password"
-                placeholder="Password"
-                value={signInPassword}
-                onChange={handleSignInPasswordChange}
-                
-              />
+                <input
+                  className={styles.inputField2}
+                  type="password"
+                  placeholder="Password"
+                  value={signInPassword}
+                  onChange={handleSignInPasswordChange}
+                />
                 <span className={styles.icon}><AiFillLock /></span>
-
-                            </div>  
+              </div>
 
               {signInError && <span className={`${styles.errorMessage} ${styles.error}`}>{signInError}</span>}
+
               <div className={styles.MiscContainer}>
                 <label className={styles.rememberPasswordLabel}>
                   <input
@@ -289,63 +412,60 @@ const LoginSignup = () => {
                   <a href="/forgot-password">Forgot password?</a>
                 </div>
               </div>
+
               <button className={styles.btnLogin} type="submit" disabled={isLoading}>
                 {isLoading ? "Loading..." : "Sign In"}
               </button>
+
               <div className={styles.line}></div>
-              <button className={styles.GoogleButton2}>
-                <Image src="/img/google-logo-9808.png" alt="" width="14" height="14" />Continue with Google
-              </button>
+
+              <GoogleLoginPage /> {/* Google Login component for login */}
             </form>
           </div>
+
           <div className={styles.overlayContainer}>
-              <div className={`${styles.overlay}`}>
-                <div className={`${styles.overlayPanel} ${styles.overlayLeft}`}>
-                  <div className={styles.logoContainer} >
-                    <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
-                  </div>
-                  <h1 className={styles.slidingTitle}>Welcome Back</h1>
-                  <p className={styles.normalText}>Use your personal info to login</p>
-                  <button className={`${styles.btnGhost} ${styles.btn}`} onClick={handleSignInClick}>Sign In</button>
+            <div className={`${styles.overlay}`}>
+              <div className={`${styles.overlayPanel} ${styles.overlayLeft}`}>
+                <div className={styles.logoContainer} >
+                  <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
                 </div>
-                <div className={`${styles.overlayPanel} ${styles.overlayRight}`}>
-                  <div className={styles.logoContainer2}>
-                    <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
-                  </div>
-                  <h1 className={styles.slidingTitle}>Join Today</h1>
-                  <p className={styles.normalText}>Click The Signup Button Below To Climb The Ranks</p>
-                  <button className={`${styles.btnGhost} ${styles.btn}`} onClick={handleSignUpClick}>Sign Up</button>
+                <h1 className={styles.slidingTitle}>Welcome Back</h1>
+                <p className={styles.normalText}>Use your personal info to login</p>
+                <button className={`${styles.btnGhost} ${styles.btn}`} onClick={handleSignInClick}>Sign In</button>
+              </div>
+              <div className={`${styles.overlayPanel} ${styles.overlayRight}`}>
+                <div className={styles.logoContainer2}>
+                  <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
                 </div>
+                <h1 className={styles.slidingTitle}>Join Today</h1>
+                <p className={styles.normalText}>Click The Signup Button Below To Climb The Ranks</p>
+                <button className={`${styles.btnGhost} ${styles.btn}`} onClick={handleSignUpClick}>Sign Up</button>
               </div>
             </div>
+          </div>
+
           {isScreenLessThan500 && (
             <div className={styles.overlayContainer2}>
               <div className={`${styles.overlay}`}>
                 <div className={`${styles.overlayPanel} ${styles.overlayLeft}`}>
                   <div className={styles.logoContainer} >
-                    <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
-                  
                   </div>
                   <div className={styles.btn2Container}>
-
-                  <p className={styles.normalText2}>Already Member? Welcoome Back !</p>
-                  <button className={`${styles.btnGhost} ${styles.btn2}`} onClick={handleSignInClick}>Sign In</button>
-                </div>
+                    <p className={styles.normalText2}>Already Member? Welcome Back!</p>
+                    <button className={`${styles.btnGhost} ${styles.btn2}`} onClick={handleSignInClick}>Sign In</button>
+                  </div>
                 </div>
                 <div className={`${styles.overlayPanel} ${styles.overlayRight}`}>
                   <div className={styles.logoContainer2}>
                     <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
                   </div>
-                  
                   <div className={styles.btn2Container}>
-
-                  <p className={styles.normalText2}>Not A memeber? Join today</p>
-
-                  <button className={`${styles.btnGhost} ${styles.btn2}`} onClick={handleSignUpClick}>Sign Up</button>
-                </div>
+                    <p className={styles.normalText2}>Not A Member? Join today</p>
+                    <button className={`${styles.btnGhost} ${styles.btn2}`} onClick={handleSignUpClick}>Sign Up</button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </div> 
           )}
         </div>
       ) : (
