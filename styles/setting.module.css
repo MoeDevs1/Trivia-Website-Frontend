@@ -242,23 +242,7 @@ margin-bottom: 20px;
   
   
   
-  
-  
-  .button {
-    display: flex;
-    background-color: white;
-    border-color: white;
-    color: #7a4700;
-    color: -webkit-linear-gradient(to right, #7a4700, #48150f);
-    color: linear-gradient(to right, #7a4700, #48150f);   
-        cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1px;
-    justify-content: center;
-    border-radius: 1px;
-    padding: 1.8em;
-    width: 500px;
-  }
+
   
   
   .button:focus,
@@ -525,7 +509,7 @@ margin-bottom: 20px;
     margin-bottom: 1px;
     justify-content: center;
     border-radius: 1px;
-    padding: 1.8em;
+    padding: 2.8em;
     width: 500px;
   }
   
@@ -880,6 +864,7 @@ margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 40px;
 }
 
 
@@ -1251,7 +1236,7 @@ margin-bottom: 20px;
     justify-content: center;
     align-items: row;
   
-    margin-top: -38px;
+    margin-top: 38px;
     margin-bottom: 30px;
   }
   

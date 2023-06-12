@@ -22,6 +22,7 @@
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "chart.js": "^4.3.0",
+    "cors": "^2.8.5",
     "countries-list": "^2.6.1",
     "country-flag-icons": "^1.5.7",
     "gapi-script": "^1.2.0",
