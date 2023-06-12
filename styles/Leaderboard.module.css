@@ -1,7 +1,6 @@
 .container {
   height: 85vh;
   overflow: hidden;
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,20 +8,24 @@
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
     0 10px 10px rgba(0, 0, 0, 0.22);
-  background-color: #f2f2f2;
-  background-image: linear-gradient(to bottom right, #cfd9df, #e2ebf0);
-  width: 60%;
+    background-color: #f2f2f2;
+    background-image: linear-gradient(rgba(210, 180, 140, 0.2), rgba(139, 69, 19, 0.2));
+    
+  width: 100%;
   
 }
 
-.container2{
-
+.mainContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-size: cover;
+  background-position: center;
 }
 
-  
+
+ 
 .header {
   font-size: 2.5em;
   color: #68370f;
@@ -124,17 +127,7 @@
   }
   
   
-  .top2 {
-    border-left: 10px solid #c0c0c0;
-    background: linear-gradient(to right, purple, pink);
-    color: white;
-  }
-  
-  .top3 {
-    border-left: 10px solid #cd7f32;
-    background: linear-gradient(to right, lightblue, green);
-    color: white;
-  }
+
   
 
   .top8 {
@@ -194,21 +187,8 @@
     color: white;
 }
 
-.top2 {
-    border-left: 10px solid #c0c0c0;
-    background: linear-gradient(120deg, #8e2de2, #4a00e0, #8e2de2);
-    background-size: 200%;
-    animation: shine 2s linear infinite;
-    color: white;
-}
 
-.top3 {
-    border-left: 10px solid #cd7f32;
-    background: linear-gradient(120deg, #0ba360, #3cba92, #0ba360);
-    background-size: 200%;
-    animation: shine 2s linear infinite;
-    color: white;
-}
+
 
 .rank {
     flex-basis: 30%;
@@ -230,7 +210,33 @@
 
 .logoContainer{
 
-  margin-top: -15px;
-  margin-left: 690px;
+  margin-top: 20px;
+  margin-left: 15;
   background-color: transparent;
+}
+.top2 {
+  border-left: 10px solid #bdbdbd;
+  background: linear-gradient(120deg, #d6d6d6, #b8b8b8, #999999, #7a7a7a, #5c5c5c, #7a7a7a, #999999, #b8b8b8, #d6d6d6);
+  background-size: 1000%;
+  color: white;
+  animation: shine 15s linear infinite;
+
+}
+
+.top3 {
+  border-left: 10px solid #cd7f32;
+  background: linear-gradient(120deg, #d98435, #bf752f, #a56629, #8c5823, #73491d, #8c5823, #a56629, #bf752f, #d98435);
+  background-size: 1000%;
+  color: white;
+  animation: shine 15s linear infinite;
+
+}
+
+
+.flagContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -80px;
+  margin-right: 80px;
 }

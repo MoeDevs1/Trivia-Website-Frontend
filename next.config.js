@@ -1,8 +1,8 @@
 module.exports = {
-    images:{
-      domains:["res.cloudinary.com"]
-    }
-  }
-  
+  images: {
+    domains: ['flagsapi.com'],
+  },
+}
+
   
   

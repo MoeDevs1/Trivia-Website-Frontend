@@ -22,7 +22,7 @@
     overflow: hidden;
     width: 868px;
     max-width: 100%;
-    min-height: 580px;
+    min-height: 600px;
 }
 
 .errorMessage{
@@ -144,21 +144,21 @@
 
     width: 300px;
 /* increase the width to 50% */
-padding: 1em 2em;
+padding: .7em 1em;
 /* increase the padding */
 color: #fff;
 text-align: center;
 text-transform: uppercase;
 border: none;
-border-radius: 10px;
+border-radius: 0px;
 cursor: pointer;
 transition: all 0.3s ease;
 text-decoration: none;
 /* add margin-left: auto to align the buttons to the right */
 /* remove the margin-right */
 box-sizing: border-box;
-margin-top: 10px;
-margin-bottom: 20px;
+margin-top: 30px;
+margin-bottom: 10px;
 
 
 }
@@ -173,14 +173,13 @@ margin-bottom: 20px;
     
     width: 100%;
 /* increase the width to 50% */
-padding: 1em 2em;
+padding: .7em 1em;
 /* increase the padding */
 color: #fff;
 font-size: 16px;
 text-align: center;
 text-transform: uppercase;
 border: none;
-border-radius: 10px;
 cursor: pointer;
 transition: all 0.3s ease;
 text-decoration: none;
@@ -481,6 +480,7 @@ margin-top: 10px;
     left: 0;
     width: 50%;
     z-index: 2;
+    margin-top: -50px;
 }
 
 .container.rightPanelActive .signInContainer {
@@ -492,6 +492,7 @@ margin-top: 10px;
     width: 50%;
     opacity: 0;
     z-index: 1;
+    margin-top: -30px;
 }
 
 .container.rightPanelActive .signUpContainer {
@@ -635,7 +636,7 @@ margin-top: 10px;
 
         display: flex;
         align-items: center;
-        margin-left: -93%;
+        margin-left: -103%;
 width: 100%;
 
 margin-top: 40px;
@@ -715,5 +716,14 @@ margin-top: 50px;
     
   }
   
+
+  .select{
+
+
+    width: 100%;
+    overflow:visible;
+    border-radius: 50px;
+  }
  
+
   

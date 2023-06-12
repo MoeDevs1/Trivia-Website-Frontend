@@ -10,6 +10,8 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { AiFillLock } from "react-icons/ai";
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import Select from 'react-select';
+
 
 const setSessionExpiration = () => {
   const expirationDuration = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
@@ -18,6 +20,27 @@ const setSessionExpiration = () => {
   sessionStorage.setItem("sessionExpiration", expirationTime);
   setTimeout(logout, expirationDuration); // Set the timeout to log the user out after the session expires
 };
+
+const countries = [
+  { value: 'US', label: '🇺🇸 United States' },
+  { value: 'GB', label: '🇬🇧 United Kingdom' },
+  { value: 'CA', label: '🇨🇦 Canada' },
+  { value: 'AU', label: '🇦🇺 Australia' },
+  { value: 'FR', label: '🇫🇷 France' },
+  { value: 'DE', label: '🇩🇪 Germany' },
+  { value: 'JP', label: '🇯🇵 Japan' },
+  { value: 'IN', label: '🇮🇳 India' },
+  { value: 'CN', label: '🇨🇳 China' },
+  { value: 'BR', label: '🇧🇷 Brazil' },
+  { value: 'SD', label: '🇸🇩 Sudan' },
+  { value: 'SA', label: '🇸🇦 Saudi Arabia' },
+  { value: 'MA', label: '🇲🇦 Morocco' },
+  { value: 'EG', label: '🇪🇬 Egypt' },
+  { value: 'TR', label: '🇹🇷 Turkey' },
+  { value: 'ID', label: '🇮🇩 Indonesia' },
+  { value: 'PK', label: '🇵🇰 Pakistan' },
+  { value: 'BD', label: '🇧🇩 Bangladesh' },
+];
 
 const registerUser = async (token, router) => {
   // Register the user using the token
@@ -83,16 +106,13 @@ const GoogleSignupPage = () => {
     <div>
       <GoogleOAuthProvider clientId="955085585863-ot8g3rsrvc09ekpiifs07roalvaq5p5j.apps.googleusercontent.com">
         <GoogleLogin
-        
           text="continue_with"
           onSuccess={onGoogleSuccess}
           onError={() => {
             console.log('Login Failed');
           }}
-          
           height="400px"
-          width="300" // S
-          
+          width="300"
         />
       </GoogleOAuthProvider>
     </div>
@@ -123,9 +143,7 @@ const GoogleLoginPage = () => {
           onError={() => {
             console.log('Login Failed');
           }}
-
-          width="300" // S
-
+          width="300"
         />
       </GoogleOAuthProvider>
     </div>
@@ -143,6 +161,8 @@ const LoginSignup = () => {
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [selectedFlag, setSelectedFlag] = useState(null); // Track the selected flag
+  const [flagError, setFlagError] = useState(""); // Error state for flag selection
   const router = useRouter();
 
   useEffect(() => {
@@ -250,53 +270,61 @@ const LoginSignup = () => {
 
   const signUp = async (event) => {
     event.preventDefault();
-
+  
     const userName = event.target[0].value;
     const email = event.target[1].value;
     const password = event.target[2].value;
     const confirmPassword = event.target[3].value;
-
+  
+    if (!selectedFlag) {
+      setFlagError("You must choose a flag"); // Set the flag error if no flag is selected
+      return;
+    } else {
+      setFlagError(""); // Clear the flag error if a flag is selected
+    }
+  
     if (password !== confirmPassword) {
       setPasswordError("Passwords do not match");
       setEmailError("");
       setUsernameError("");
       return;
     }
-
+  
     if (userName.length < 4 || !containsTwoLetters(userName)) {
       setUsernameError("Username must be at least 4 characters long and contain at least 2 letters");
       setEmailError("");
       setPasswordError("");
       return;
     }
-
+  
     if (password.length < 5 || !containsTwoLetters(password)) {
       setPasswordError("Password must be at least 5 characters long and contain at least 2 letters");
       setEmailError("");
       setUsernameError("");
       return;
     }
-
+  
     try {
       setIsLoading(true); // Show loading effect
-
+  
       const response = await axios.post('http://localhost:8080/api/v1/auth/register', {
         userName,
         email,
         password,
+        flag: selectedFlag.value// Pass the selected flag value to the flag field in the request payload
       });
-
+  
       // Handle success
       const { token } = response.data;
       sessionStorage.setItem("token", token);
-
+  
       setSessionTimeout(); // Set the session expiration
       setIsLoggedIn(true); // Set the login state
-
+  
       router.push('/'); // Redirect to the home page
     } catch (error) {
       console.error(error);
-
+  
       if (error.response && error.response.data && error.response.data.message) {
         const errorMessage = error.response.data.message;
         if (errorMessage.includes("email")) {
@@ -319,13 +347,29 @@ const LoginSignup = () => {
       setIsLoading(false); // Hide loading effect
     }
   };
-
+  
   const containsTwoLetters = (str) => {
     const letterCount = str.replace(/[^a-zA-Z]/g, "").length;
     return letterCount >= 2;
   };
 
   const isScreenLessThan500 = typeof window !== 'undefined' && window.innerWidth < 500;
+
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      minHeight: '10px', // Adjust the height as needed
+    }),
+    menu: (provided, state) => ({
+      ...provided,
+      marginTop: '5px', // Remove the default margin
+    }),
+    menuList: (provided, state) => ({
+      ...provided,
+      marginTop: '10px',
+      maxHeight: '170px', // Adjust the height as needed
+    }),
+  };
 
   return (
     <div className={styles.body}>
@@ -360,6 +404,16 @@ const LoginSignup = () => {
               </div>
 
               {passwordError && <span className={`${styles.errorMessage} ${styles.error}`}>{passwordError}</span>}
+
+              <Select
+                options={countries}
+                className={styles.select}
+                placeholder="Select your country..."
+                onChange={(option) => setSelectedFlag(option)} // Update the selected flag state
+                styles={customStyles} // Add the custom styles object
+              />
+
+              {flagError && <span className={`${styles.errorMessage} ${styles.error}`}>{flagError}</span>}
 
               <button className={styles.Signupbtn} type="submit" disabled={isLoading}>
                 {isLoading ? "Loading..." : "Sign Up"}
@@ -437,41 +491,18 @@ const LoginSignup = () => {
                 <div className={styles.logoContainer2}>
                   <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
                 </div>
-                <h1 className={styles.slidingTitle}>Join Today</h1>
-                <p className={styles.normalText}>Click The Signup Button Below To Climb The Ranks</p>
+                <h1 className={styles.slidingTitle2}>Hello, Friend!</h1>
+                <p className={styles.normalText}>Enter your personal details and start journey with us</p>
                 <button className={`${styles.btnGhost} ${styles.btn}`} onClick={handleSignUpClick}>Sign Up</button>
               </div>
             </div>
           </div>
-
-          {isScreenLessThan500 && (
-            <div className={styles.overlayContainer2}>
-              <div className={`${styles.overlay}`}>
-                <div className={`${styles.overlayPanel} ${styles.overlayLeft}`}>
-                  <div className={styles.logoContainer} >
-                  </div>
-                  <div className={styles.btn2Container}>
-                    <p className={styles.normalText2}>Already Member? Welcome Back!</p>
-                    <button className={`${styles.btnGhost} ${styles.btn2}`} onClick={handleSignInClick}>Sign In</button>
-                  </div>
-                </div>
-                <div className={`${styles.overlayPanel} ${styles.overlayRight}`}>
-                  <div className={styles.logoContainer2}>
-                    <Image src="/img/imageedit_20_6995547124.png" alt="" width={100} height={50} className={styles.logo} />
-                  </div>
-                  <div className={styles.btn2Container}>
-                    <p className={styles.normalText2}>Not A Member? Join today</p>
-                    <button className={`${styles.btnGhost} ${styles.btn2}`} onClick={handleSignUpClick}>Sign Up</button>
-                  </div>
-                </div>
-              </div>
-            </div> 
-          )}
         </div>
       ) : (
-        <div>
-          <p>You are logged in!</p>
-          <button onClick={logout}>Logout</button>
+        <div className={`${styles.loggedInContainer} ${styles.bodyStyle}`}>
+          <h1 className={styles.loggedInTitle}>Welcome back!</h1>
+          <p className={styles.loggedInText}>You are logged in.</p>
+          <button className={styles.loggedInButton} onClick={logout}>Logout</button>
         </div>
       )}
     </div>

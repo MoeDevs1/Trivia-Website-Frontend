@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/Leaderboard.module.css';
 import Image from 'next/image';
 
 const Leaderboard = () => {
-  const leaderboardData = [...Array(21)].map((_, i) => ({name: `User ${i + 1}`, points: Math.floor(Math.random() * 1000)}));
+  const leaderboardData = [...Array(21)].map((_, i) => ({name: `User ${i + 1}`, points: Math.floor(Math.random() * 1000), countryCode: `US` }));
   leaderboardData.sort((a, b) => b.points - a.points);
+
+  const flagApiUrl = (countryCode) => `https://flagsapi.com/${countryCode}/flat/64.png`;
 
   const getImage = (index) => {
     switch (index) {
@@ -20,46 +22,63 @@ const Leaderboard = () => {
   }
 
   return (
-    <div className={styles.container2}>
-    <div className={styles.container}>
-      <div className={styles.titleWrapper}>
-        <h1 className={styles.header}>Leaderboard</h1>
-  
+    <div className={styles.mainContainer}>
+      <div className={styles.container}>
+        <div className={styles.titleWrapper}>
+          <h1 className={styles.header}>Leaderboard</h1>
+        </div>
+        <div className={styles.leaderboard}>
+          {leaderboardData.slice(0, 20).map((user, i) => (
+            <div
+              key={user.name}
+              className={`${styles.user} ${i < 3 ? styles['top' + (i + 1)] : styles['top' + (i + 4)]}`}
+            >
+              <span className={styles.rank}>{i + 1}</span>
+              <div className={styles.flagContainer}>
+                <Image
+                  src={flagApiUrl(user.countryCode)}
+                  alt=""
+                  width={50}
+                  height={50}
+                  className={styles.flag}
+                />
+              </div>
+              <span className={styles.name}>{user.name}</span>
+              <span className={styles.points}>{user.points}</span>
+              {getImage(i) &&
+                <Image
+                  src={getImage(i)}
+                  alt=""
+                  width={50}
+                  height={50}
+                  className={styles.logo}
+                />
+              }
+            </div>
+          ))}
+        </div>
+        <div className={styles.leaderboardFixed}>
+          {leaderboardData.slice(20).map((user, i) => (
+            <div
+              key={user.name}
+              className={`${styles.user} ${styles.currentUser}`}
+            >
+              <span className={styles.rank}>{i + 21}</span>
+              <div className={styles.flagContainer}>
+                <Image
+                  src={flagApiUrl(user.countryCode)}
+                  alt=""
+                  width={50}
+                  height={50}
+                  className={styles.flag}
+                />
+              </div>
+              <span className={styles.name}>{user.name}</span>
+              <span className={styles.points}>{user.points}</span>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className={styles.leaderboard}>
-        {leaderboardData.slice(0, 20).map((user, i) => (
-          <div
-            key={user.name}
-            className={`${styles.user} ${i < 3 ? styles['top' + (i + 1)] : styles['top' + (i + 4)]}`}
-          >
-            <span className={styles.rank}>{i + 1}</span>
-            <span className={styles.name}>{user.name}</span>
-            <span className={styles.points}>{user.points}</span>
-            {getImage(i) &&
-              <Image
-                src={getImage(i)}
-                alt=""
-                width={50}
-                height={50}
-                className={styles.logo}
-              />
-            }
-          </div>
-        ))}
-      </div>
-      <div className={styles.leaderboardFixed}>
-        {leaderboardData.slice(20).map((user, i) => (
-          <div
-            key={user.name}
-            className={`${styles.user} ${styles.currentUser}`}
-          >
-            <span className={styles.rank}>{i + 21}</span>
-            <span className={styles.name}>{user.name}</span>
-            <span className={styles.points}>{user.points}</span>
-          </div>
-        ))}
-      </div>
-    </div>
     </div>
   );
 }
