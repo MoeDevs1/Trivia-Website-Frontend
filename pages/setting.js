@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { AiFillSound } from "react-icons/ai";
+import { AiFillSound } from 'react-icons/ai';
 import { RiKey2Line } from 'react-icons/ri';
 import { AiFillLock } from 'react-icons/ai';
 import axios from 'axios';
@@ -8,16 +8,12 @@ import { BsFillPersonFill, BsXLg } from 'react-icons/bs';
 import styles from '../styles/setting.module.css';
 import Image from 'next/image';
 import { BsCheck2Circle } from 'react-icons/bs';
-import 'react-circular-progressbar/dist/styles.css';
 
 import Select from 'react-select';
 
 const Setting = () => {
   const [selectedFlag, setSelectedFlag] = useState(null);
   const [teleport, setTeleport] = useState(false);
-  const [teleport1, setTeleport1] = useState(false);
-  const [teleport2, setTeleport2] = useState(false);
-
   const router = useRouter();
   const [oldEmail, setOldEmail] = useState('');
   const [newEmail, setNewEmail] = useState('');
@@ -34,26 +30,37 @@ const Setting = () => {
   const [firstNameError, setFirstNameError] = useState(false);
   const [activeButton, setActiveButton] = useState('User profile');
   const [flag, setFlag] = useState('');
-  const flagApiUrl = (countryCode) => `https://flagsapi.com/${countryCode}/flat/64.png`;
-
+  const flagApiUrl = (countryCode) => `https://flagcdn.com/64x48/${countryCode}.png`;
+  const [oldPasswordError, setOldPasswordError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [emailExistsError, setEmailExistsError] = useState(false);
   const [newFlag, setNewFlag] = useState('');
   const [newUsername, setNewUsername] = useState('');
-  const [newUserName, setNewUserName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [changeType, setChangeType] = useState('');
-
+  const [showPopup, setShowPopup] = useState(false);
+  const [requestSuccess, setRequestSuccess] = useState(false);
   const [flagUrl, setFlagUrl] = useState('');
 
-  useEffect(() => {
-    setFlagUrl(flagApiUrl(flag));
-  }, [flag]);
-
   const countries = [
-    { value: 'us', label: '🇺🇸 United States', fullName: 'United States of America' },
-    { value: 'TR', label: '🇹🇷 Turkey' },
-    { value: 'ID', label: '🇮🇩 Indonesia' },
-    { value: 'PK', label: '🇵🇰 Pakistan' },
-    { value: 'BD', label: '🇧🇩 Bangladesh' },
+    { value: 'us', label: '🇺🇸 United States' },
+    { value: 'gb', label: '🇬🇧 United Kingdom' },
+    { value: 'ca', label: '🇨🇦 Canada' },
+    { value: 'au', label: '🇦🇺 Australia' },
+    { value: 'fr', label: '🇫🇷 France' },
+    { value: 'de', label: '🇩🇪 Germany' },
+    { value: 'jp', label: '🇯🇵 Japan' },
+    { value: 'in', label: '🇮🇳 India' },
+    { value: 'cn', label: '🇨🇳 China' },
+    { value: 'br', label: '🇧🇷 Brazil' },
+    { value: 'sd', label: '🇸🇩 Sudan' },
+    { value: 'sa', label: '🇸🇦 Saudi Arabia' },
+    { value: 'ma', label: '🇲🇦 Morocco' },
+    { value: 'eg', label: '🇪🇬 Egypt' },
+    { value: 'tr', label: '🇹🇷 Turkey' },
+    { value: 'id', label: '🇮🇩 Indonesia' },
+    { value: 'pk', label: '🇵🇰 Pakistan' },
+    { value: 'bd', label: '🇧🇩 Bangladesh' },
   ];
 
   const customStyles = {
@@ -73,7 +80,7 @@ const Setting = () => {
   };
 
   const handleLogin = async () => {
-    router.push('/Login');
+    router.push('/');
   };
 
   const handleTextClick = () => {
@@ -81,62 +88,175 @@ const Setting = () => {
     setActiveButton('Sign in & Security');
   };
 
-  const handleChange = (event) => {
-    setNewUsername(event.target.value);
+  const handleProfileClick = () => {
+    if (activeButton === 'User profile') {
+      return;
+    } else {
+      setTeleport(false);
+      setActiveButton('User profile');
+    }
+  };
+
+  const handleChange = (option) => {
+    setSelectedFlag(option);
+    setNewFlag(option.value);
+    setChangeType('flag');
+  };
+
+  const handleUsernameChange = (e) => {
+    setNewUsername(e.target.value);
     setErrorMessage('');
     setChangeType('username');
+    setUserExistError(false);
   };
- 
+
   const handleSubmit = async () => {
+    setEmailExistsError(false);
+    setPasswordError(false);
+    setOldPasswordError(false);
     try {
-      const token = sessionStorage.getItem("token");
+      const token = sessionStorage.getItem('token');
       let response;
 
-      if (changeType === 'username') {
+      if (newUsername && changeType === 'username') {
         response = await axios.put(
           'http://localhost:8080/api/v1/auth/changeUsername',
           {
-            newUserName: newUsername
+            newUserName: newUsername,
           },
           {
             headers: {
-              'Authorization': `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
 
         if (response.status === 200) {
           sessionStorage.setItem('token', response.data.token);
+          window.location.reload();
           alert('Username changed successfully!');
         } else {
           alert('Error changing username');
         }
-      } else if (changeType === 'flag') {
+      }
+
+      if (newFlag && changeType === 'flag') {
         response = await axios.put(
           'http://localhost:8080/api/v1/auth/changeFlag',
           {
-            newFlag: newFlag
+            newFlag: newFlag,
           },
           {
             headers: {
-              'Authorization': `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
 
         if (response.status === 200) {
           sessionStorage.setItem('token', response.data.token);
           alert('Flag changed successfully!');
+          window.location.reload();
         } else {
           alert('Error changing flag');
         }
       }
+
+      if (newPassword !== confirmPassword) {
+        setPasswordError(true);
+        return;
+      }
+
+      if (newPassword === confirmPassword && newPassword !== '') {
+        response = await axios.put(
+          'http://localhost:8080/api/v1/auth/changePassword',
+          {
+            oldPassword: oldPassword,
+            newPassword: newPassword,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          sessionStorage.setItem('token', response.data.token);
+          setRequestSuccess(true);
+          setShowPopup(true);
+        } else {
+          setRequestSuccess(false);
+        }
+      }
+
+      if (oldEmail !== '' || newEmail !== '') {
+        if (oldEmail !== oldEmail) {
+          setEmailError(true);
+          return;
+        }
+
+        response = await axios.put(
+          'http://localhost:8080/api/v1/auth/changeEmail',
+          {
+            oldEmail: oldEmail,
+            newEmail: newEmail,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          sessionStorage.setItem('token', response.data.token);
+          setRequestSuccess(true);
+          setShowPopup(true);
+        } else {
+          setRequestSuccess(false);
+        }
+      }
     } catch (error) {
       console.error(error);
-      if (error.response && error.response.data && error.response.data.error) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.error
+      ) {
         setErrorMessage(error.response.data.error);
-      } else {
-        setErrorMessage('Error changing username');
+      }
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.error ===
+          'Failed to update password: Old password is incorrect'
+      ) {
+        setOldPasswordError(true);
+      }
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.error ===
+          'Failed to update email: Old email does not match the current email'
+      ) {
+        setEmailError(true);
+      }
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.error ===
+          'Failed to update email: Email is already registered. Please choose a different email.'
+      ) {
+        setEmailExistsError(true);
+      }
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.error ===
+          'Failed to update username: Username is already taken. Please choose a different username.'
+      ) {
+        setUserExistError(true);
       }
     }
   };
@@ -148,14 +268,19 @@ const Setting = () => {
         const config = {
           headers: { Authorization: token },
         };
-        const response = await axios.get('http://localhost:8080/api/v1/auth/user', config);
+        const response = await axios.get(
+          'http://localhost:8080/api/v1/auth/user',
+          config
+        );
         const { email, username, flag } = response.data;
         setOldEmail(email);
         setNewEmail(email);
         setUserName(username);
         setNewUsername(username);
         setFlag(flag);
-        setSelectedFlag(countries.find((country) => country.value === flag));
+        setSelectedFlag(
+          countries.find((country) => country.value === flag) || null
+        );
       } catch (error) {
         console.error(error);
       }
@@ -164,9 +289,20 @@ const Setting = () => {
     fetchUserData();
   }, []);
 
+  useEffect(() => {
+    if (showPopup && requestSuccess) {
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('sessionExpiration');
+    }
+  }, [showPopup, requestSuccess]);
+
+  useEffect(() => {
+    setFlagUrl(flagApiUrl(flag));
+  }, [flag]);
+
   return (
     <div className={styles.parentContainer}>
-      {success && (
+      {showPopup && requestSuccess && (
         <div className={styles.popup}>
           <div className={styles.popupContent}>
             <BsCheck2Circle className={styles.check} />
@@ -199,7 +335,10 @@ const Setting = () => {
 
         <div className={styles.buttonWrapper}>
           <button
-            className={`${styles.button} ${activeButton === 'User profile' ? styles.active : ''}`}
+            className={`${styles.button} ${
+              activeButton === 'User profile' ? styles.active : ''
+            }`}
+            onClick={handleProfileClick}
           >
             <BsFillPersonFill className={styles.Icon} />
             User profile
@@ -208,7 +347,9 @@ const Setting = () => {
 
         <div className={styles.buttonWrapper}>
           <button
-            className={`${styles.button} ${activeButton === 'Sign in & Security' ? styles.active : ''}`}
+            className={`${styles.button} ${
+              activeButton === 'Sign in & Security' ? styles.active : ''
+            }`}
             onClick={handleTextClick}
           >
             <AiFillLock className={styles.Icon} />
@@ -218,7 +359,9 @@ const Setting = () => {
 
         <div className={styles.buttonWrapper}>
           <button
-            className={`${styles.button} ${activeButton === 'Banking Info' ? styles.active : ''}`}
+            className={`${styles.button1} ${
+              activeButton === 'Banking Info' ? styles.active : ''
+            }`}
           >
             <AiFillSound className={styles.Icon} />
             Audio
@@ -236,22 +379,25 @@ const Setting = () => {
             <div className={styles.inputContainer}>
               <div
                 className={`${styles.oldPasswordContainer} ${
-                  !userError && error && oldPassword && styles.errorInput
+                  oldPasswordError && styles.errorInput
                 }`}
               >
                 <input
                   type="password"
                   name="oldPassword"
                   placeholder="Old Password"
-                  className={styles.inputFieldOldPassword}
+                  className={styles.inputFieldPassword1}
                   value={oldPassword}
                   onChange={(e) => {
                     setOldPassword(e.target.value);
-                    setError('');
-                    setUserError(false);
-                    setSubmitted(false);
+                    if (oldPasswordError) setOldPasswordError(false);
                   }}
                 />
+                {oldPasswordError && (
+                  <div className={styles.errorMessage3}>
+                    Old password is incorrect!
+                  </div>
+                )}
               </div>
               {!userError && error && oldPassword && (
                 <div className={styles.errorMessage1}>{error}</div>
@@ -259,28 +405,30 @@ const Setting = () => {
 
               <div className={styles.passwordContainer}>
                 <div
-                  className={`${styles.access} ${
-                    submitted && newPassword !== confirmPassword && styles.errorInput
+                  className={`${styles.inputField1} ${
+                    passwordError && styles.errorInput
                   }`}
                 >
                   <input
                     type="password"
                     name="newPassword"
                     placeholder="New Password"
-                    className={styles.inputFieldPassword1}
+                    className={styles.inputFieldPassword}
                     value={newPassword}
                     onChange={(e) => {
                       setNewPassword(e.target.value);
                       if (passwordError) setPasswordError(false);
                     }}
                   />
-                  {submitted && newPassword !== confirmPassword && (
-                    <div className={styles.errorMessage1}>Passwords don't match!</div>
+                  {passwordError && (
+                    <div className={styles.errorMessage1}>
+                      Passwords don't match!
+                    </div>
                   )}
                 </div>
                 <div
                   className={`${styles.inputField1} ${
-                    submitted && newPassword !== confirmPassword && styles.errorInput
+                    passwordError && styles.errorInput
                   }`}
                 >
                   <input
@@ -294,8 +442,10 @@ const Setting = () => {
                       if (passwordError) setPasswordError(false);
                     }}
                   />
-                  {submitted && newPassword !== confirmPassword && (
-                    <div className={styles.errorMessage1}>Passwords don't match!</div>
+                  {passwordError && (
+                    <div className={styles.errorMessage1}>
+                      Passwords don't match!
+                    </div>
                   )}
                 </div>
               </div>
@@ -304,8 +454,7 @@ const Setting = () => {
 
               <div className={styles.emailContainer}>
                 <div
-                  className={`${styles.inputField1} ${
-                    userError && error && styles.errorInput
+                  className={`${styles.inputField1} ${   emailError && oldEmail && styles.errorInput
                   }`}
                 >
                   <input
@@ -318,15 +467,25 @@ const Setting = () => {
                     }`}
                     onChange={(e) => {
                       setOldEmail(e.target.value);
+                      setEmailError(false);
                       setError('');
                       setUserError(false);
                       setSubmitted(false);
                     }}
                   />
-                  {userError && error && <div className={styles.errorMessage}>{error}</div>}
+                {emailError && oldEmail && (
+  <div className={styles.errorMessage}>
+    Old email is incorrect!
+  </div>
+)}
+
                 </div>
 
-                <div className={`${styles.inputField1} ${userExistError && styles.errorInput}`}>
+                <div
+                  className={`${styles.inputField1} ${
+                    emailExistsError && styles.errorInput
+                  }`}
+                >
                   <input
                     type="email"
                     name="newEmail"
@@ -334,31 +493,33 @@ const Setting = () => {
                     value={newEmail}
                     onChange={(e) => {
                       setNewEmail(e.target.value);
+                      setEmailExistsError(false);
                       setUserExistError('');
                       setSubmitted(false);
                       setUserError(false);
                     }}
                     className={styles.inputOldFieldEmail}
                   />
-                  {userExistError && <div className={styles.errorMessage}>{userExistError}</div>}
+                  {emailExistsError && newEmail !== '' && (
+                    <div className={styles.errorMessage}>
+                      Email is already registered. Please choose a different
+                      email.
+                    </div>
+                  )}
                 </div>
               </div>
 
               <div className={styles.topButtonContainer}>
                 <div>
-                  <button
-                    className={styles.cancelButton2}
-                 
+                    <button
+                    className={styles.cancelButton}
                   >
-                    Update
+                    Cancel
                   </button>
                 </div>
                 <div>
-                  <button
-                    className={styles.updateButton2}
-                 
-                  >
-                    Cancel
+                  <button className={styles.updateButton} onClick={handleSubmit}>
+                    Update
                   </button>
                 </div>
               </div>
@@ -373,7 +534,9 @@ const Setting = () => {
 
               <div className={styles.inputText}>User Name:</div>
               <div
-                className={`${styles.inputField1} ${firstNameError && styles.errorInput}`}
+                className={`${styles.inputField1} ${
+                  emailExistsError && styles.errorInput
+                }`}
               >
                 <input
                   type="text"
@@ -381,46 +544,35 @@ const Setting = () => {
                   placeholder="*User Name"
                   className={styles.input}
                   value={newUsername}
-                  onChange={handleChange}
+                  onChange={handleUsernameChange}
                 />
               </div>
-              {firstNameError && (
-                <div className={styles.errorMessage2}> 
-                  Last name must be between 2 and 10 characters.
+              {userExistError && (
+                <div className={styles.errorMessage2}>
+                  Username is already taken.
                 </div>
               )}
-<Select
-    options={countries}
-    className={styles.select}
-    placeholder="Select your country..."
-    onChange={(option) => {
-        setNewFlag(option.value);
-        setChangeType('flag'); // update changeType here
-    }}
-    value={selectedFlag}
-    styles={customStyles}
-/>
 
-
+              <Select
+                options={countries}
+                className={styles.select}
+                placeholder="Select your country..."
+                onChange={handleChange}
+                value={selectedFlag}
+                styles={customStyles}
+              />
 
               <div className={styles.profileButtonContainer}>
                 <div>
                   <button
                     className={styles.cancelButton}
-                    onClick={handleSubmit}
                   >
-                    Update
+                    Cancel
                   </button>
                 </div>
                 <div>
-                  <button
-                    className={styles.updateButton}
-                    onClick={() => {
-                      setNewFlag('');
-                      setNewUsername('');
-                    }}
-                  >
-                    Cancel
+                  <button className={styles.updateButton} onClick={handleSubmit}>
+                    Update
                   </button>
                 </div>
               </div>

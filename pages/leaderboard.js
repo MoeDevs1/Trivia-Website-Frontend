@@ -6,7 +6,9 @@ const Leaderboard = () => {
   const leaderboardData = [...Array(21)].map((_, i) => ({name: `User ${i + 1}`, points: Math.floor(Math.random() * 1000), countryCode: `US` }));
   leaderboardData.sort((a, b) => b.points - a.points);
 
-  const flagApiUrl = (countryCode) => `https://flagsapi.com/${countryCode}/flat/64.png`;
+  const flagApiUrl = (countryCode) => `https://flagcdn.com/64x48/us.png`;
+
+  
 
   const getImage = (index) => {
     switch (index) {
