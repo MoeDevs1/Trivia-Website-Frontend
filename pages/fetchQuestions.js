@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Card, Form, ProgressBar } from 'react-bootstrap';
 import styles from '../styles/QuestionFetch.module.css';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const QuestionFetch = () => {
   const [questions, setQuestions] = useState([]);
@@ -11,6 +13,7 @@ const QuestionFetch = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(180); // 3 minutes in seconds
+  const router = useRouter();
 
   const [email, setEmail] = useState(null);
   const [username, setUser] = useState(null);
@@ -109,6 +112,11 @@ const QuestionFetch = () => {
       }
     }
   };
+
+
+     const [selectedOption, setSelectedOption] = useState(null);
+    const [isCorrect, setIsCorrect] = useState(null);
+ 
   const renderResult = () => {
     const correctAnswers = questions.filter(
       question => userAnswers[question.id] === question.correctAnswer
@@ -120,48 +128,84 @@ const QuestionFetch = () => {
     const totalQuestions = 10;
   
     return (
-        <div className={styles.Container}>
+      <div className={styles.Container}>
+                <div className={styles.bottomContainer}>
+                <div className={styles.logo} onClick={() => router.push('/')}>
+        <Image
+          src="/img/muslim-trivia-high-resolution-logo-color-on-transparent-background.png"
+          alt=""
+          width={140}
+          height={60}
+          className={styles.logo}
+        />
+      </div>    <button className={styles.buttonPlay}>Play Again</button>
+    </div>
+           <div className={styles.imageContainer}>
+         
+           <div className={styles.scoreContainer}>
+
+<strong className={styles.resultScore}>
+  {totalCorrect}/{totalQuestions}
+</strong>
+</div>
+         <div className={styles.resultContainer}>
           <Card className={`${styles.resultCard} mt-3`}>
             <Card.Body>
-              <Card.Title className={styles.resultCardTitle}>Game Results</Card.Title>
+            <div className={styles.titleContainer}>
+ Results 
+        </div>
+
               <Card.Text>
+                
                 <strong className={styles.resultCorrect}>Score: {score}</strong>
               </Card.Text>
-              <Card.Text>=
-                <strong className={styles.resultScore}> {totalCorrect}/{totalQuestions}</strong>
+              <Card.Text>
+              
               </Card.Text>
-              {correctAnswers.length > 0 && (
-                <Card.Text>
-                  <strong className={styles.resultCorrect}>Correct Answers:</strong>
-                  {correctAnswers.map((question, index) => (
-                    <p key={index} className={styles.resultAnswer}>
-                      {question.questionText}
-                      <br />
-                      Your Answer: {userAnswers[question.id]}
-                      <br />
-                      Correct Answer: {question.correctAnswer}
-                    </p>
-                  ))}
-                </Card.Text>
-              )}
-              {incorrectAnswers.length > 0 && (
-                <Card.Text>
-                  <strong className={styles.resultIncorrect}>Incorrect Answers:</strong>
-                  {incorrectAnswers.map((question, index) => (
-                    <p key={index} className={styles.resultAnswer}>
-                      {question.questionText}
-                      <br />
-                      Your Answer: {userAnswers[question.id]}
-                      <br />
-                      Correct Answer: {question.correctAnswer}
-                    </p>
-                  ))}
-                </Card.Text>
-              )}
+              <div className={styles.scrollContainer}>
+                {correctAnswers.length > 0 && (
+                  <Card.Text>
+ 
+                    <strong className={styles.resultCorrect}>Correct Answers:</strong>
+                    {correctAnswers.map((question, index) => (
+                      <p key={index} className={styles.resultAnswer}>
+                        {question.questionText}
+                        <br />
+                        Your Answer: {userAnswers[question.id]}
+                        <br />
+                        Correct Answer: {question.correctAnswer}
+                      </p>
+                    ))}
+                  </Card.Text>
+                )}
+                {incorrectAnswers.length > 0 && (
+                  <Card.Text>
+                    <strong className={styles.resultIncorrect}>Incorrect Answers:</strong>
+                    {incorrectAnswers.map((question, index) => (
+                      <p key={index} className={styles.resultAnswer}>
+                        {question.questionText}
+                        <br />
+                        Your Answer: {userAnswers[question.id]}
+                        <br />
+                        Correct Answer: {question.correctAnswer}
+                      </p>
+                    ))}
+                  </Card.Text>
+                )}
+              </div>
             </Card.Body>
           </Card>
+          </div>
+
         </div>
-      );
+        <span className={styles.bottowmContainer2}>
+ 
+ sadsa
+    </span>
+      </div>
+       
+    );
+           
     };     
 
   const formatTime = (timeInSeconds) => {
@@ -171,52 +215,119 @@ const QuestionFetch = () => {
   };
 
   return (
-    <div className={styles.questionContainer} >
+    <div className={styles.lobbyContainer} >
       {!gameStarted && (
-        <Button variant="primary" className={styles.startButton} onClick={startGame}>
+     
+            <div className={styles.container}>
+     
+      <div className={styles.bottomContainer2}>
+      <div className={styles.logo} onClick={() => router.push('/')}>
+        <Image
+          src="/img/muslim-trivia-high-resolution-logo-color-on-transparent-background.png"
+          alt=""
+          width={140}
+          height={60}
+          className={styles.logo}
+        />
+      </div> 
+
+      <Button variant="primary" className={styles.startButton} onClick={startGame}>
           Start Game
         </Button>
+       </div>
+      <div className={styles.pointSystemContainer}>
+        <Image
+          src="/img/6.jpg"
+          alt="Point System"
+          width={600}
+          height={680}
+          className={styles.pointSystemImage}
+        />
+
+        <Image
+          src="/img/7.jpg"
+          alt="Point System"
+          width={600}
+          height={680}
+          className={styles.pointSystemImage}
+        />
+      </div>
+      <span className={styles.bottowmContainer2}>
+ 
+sadsa
+   </span>
+    </div>
       )}
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
       {gameStarted && !gameOver && (
+
         <div>
-          <h2 className={styles.questionTitle} >Question {currentQuestionIndex + 1}</h2>
+           
+           
+            <div className={styles.bottomContainer}>
+                <div className={styles.logo} onClick={() => router.push('/')}>
+        <Image
+          src="/img/muslim-trivia-high-resolution-logo-color-on-transparent-background.png"
+          alt=""
+          width={140}
+          height={60}
+          className={styles.logo}
+        />
+      </div>    
+      <h2 className={styles.questionTitle} >Question {currentQuestionIndex + 1}</h2>
           <ProgressBar now={(currentQuestionIndex / questions.length) * 100} />
-          <div>
-            <span>Time Remaining: {formatTime(timeRemaining)}</span>
+          <div> 
+            <span className={styles.questionTitle}>Time Remaining: {formatTime(timeRemaining)}</span>
           </div>
+    </div>
+    <div className={styles.questionContainer}>
+
+          
           {questions.length > 0 && (
-            <Card className={`${styles.questionCard} mt-3`}>
-              <Card.Body>
-                <Card.Title>{questions[currentQuestionIndex].questionText}</Card.Title>
-                <Form>
-                  {questions[currentQuestionIndex].options.map((option, i) => (
-                    <div key={i} className={`${styles.option} mb-3`}>
-                      <Form.Check
-                        type="radio"
-                        id={`${questions[currentQuestionIndex].id}-${i}`}
-                        name={questions[currentQuestionIndex].id}
-                        value={option}
-                        onChange={() => handleOptionChange(questions[currentQuestionIndex].id, option)}
-                        label={option}
-                      />
-                    </div>
-                  ))}
-                </Form>
-                <Button
-                  variant="primary"
-                  className={styles.checkAnswerButton}
-                  onClick={() => checkAnswerAndNext(questions[currentQuestionIndex])}
-                >
-                  Check Answer & Next
-                </Button>
-              </Card.Body>
-            </Card>
+             <Card className={`${styles.questionCard} mt-3`}>
+             <Card.Body>
+               <Card.Title>{questions[currentQuestionIndex].questionText}</Card.Title>
+               {questions[currentQuestionIndex].options.map((option, i) => (
+                 <Button
+                   variant="outline-primary"
+                   className={`${styles.optionButton} mb-3`}
+                   key={i}
+                   disabled={selectedOption !== null}
+                   onClick={() => {
+                     handleOptionChange(questions[currentQuestionIndex].id, option);
+                     checkAnswerAndNext(questions[currentQuestionIndex]);
+                   }}
+                 >
+                   {option}
+                   {selectedOption && selectedOption.option === option && (
+                     <span className={isCorrect ? styles.correctIcon : styles.incorrectIcon}>
+                       {isCorrect ? '✔' : '✖'}
+                     </span>
+                   )}
+                 </Button>
+               ))}
+             </Card.Body>
+           </Card>
           )}
         </div>
+        </div>
       )}
+          <span className={styles.bottowmContainer2}>
+ 
+ sadsa
+    </span>
       {gameOver && renderResult()}
     </div>
-  );
+   );
 };
 
 export default QuestionFetch;

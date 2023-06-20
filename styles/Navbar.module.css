@@ -1,15 +1,14 @@
 .navBar {
   height: 70px;
   padding: 0 50px;
-  background-color: #ffffff;
+  background-color: #140000;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 999;
+  width: 100vw;
   font-family: 'Montserrat';
-  opacity: 1;
+  position: fixed;
+  z-index: 999; /* Add a higher z-index to ensure it stays on top of other elements */
 }
 
 .dash{
@@ -42,8 +41,9 @@
   font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #000;
+  color: #000000;
   margin-bottom: -4px;
+  
 }
 
 
@@ -57,17 +57,14 @@
 }
 
 
-.navLink {
-  margin-left: 20px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
+ 
 a.navBar {
 display: flex;
 justify-content: space-between;
 align-items: center;
 padding: 20px;
 background-color: #333;
+
 }
 
 
@@ -78,10 +75,9 @@ cursor: pointer;
 transition: color 0.3s;
 }
 
-.navLink,.navLinkLogin {
-color: #4d1903;
+.navLink, .navLinkLogin {
+  color: rgb(224, 207, 202);
 }
-
 .menuIcon {
 display: none;
 color: black;
@@ -144,10 +140,11 @@ padding: 10px;
 }
 
 .logo img {
-  width: 120px;
-  height: 40px;
+  margin-top: 8px;
+  width: 140px;
+  height: 50px;
+  filter: brightness(1.3); /* Increase brightness on hover */
+
 }
 
-.logo:hover img {
-  filter: brightness(1.2); /* Increase brightness on hover */
-}
+ 

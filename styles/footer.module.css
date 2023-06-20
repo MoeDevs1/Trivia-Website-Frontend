@@ -17,18 +17,7 @@
   .description {
     margin-top: 10px;
   }
-  .line {
-
-    position: relative;
-   
-    background-color: #bcbcbc;
-     display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #a4a3a3;
-     margin-left: 0px;
-  
-  }
+ 
   .socials {
     display: flex;
   }
@@ -261,11 +250,11 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    color: #4d1903;
-    width: 100%;
-    height: 50px;
+     width: 100%;
+     color: rgb(224, 207, 202);
 
 bottom: 0
+;  
+background-color: #140000; /* Slightly lighter background */
 
-
-;  }
+ }

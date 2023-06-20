@@ -7,7 +7,7 @@ const Index = () => {
   const router = useRouter();
 
   const handleLoginClick = () => {
-    router.push('/beginner');
+    router.push('/fetchQuestions');
   };
 
   return (
@@ -20,35 +20,35 @@ const Index = () => {
       </div>
 
       <div className={styles.gameModeTitle}>Game Modes</div>
-      <div className={styles.line}></div>
-
-      <div className={styles.gameModeContainer}>
+ 
+      <div className={styles.backgroundContainer}>
     
           <Image
           onClick={handleLoginClick}
-            src="/img/bgn.jpg"
+            src="/img/1.jpg"
             alt="easy"
             width={330}
             height={550}
-            className={styles.skillImagee}
+            className={styles.skillImage}
           />
- 
+
+  
         <Image
-          src="/img/adv.jpg"
+          src="/img/2.jpg"
           alt=""
           width={330}
           height={550}
           className={styles.skillImage}
         />
         <Image
-          src="/img/intr.jpg"
+          src="/img/3.jpg"
           alt="Intermediate"
           width={330}
           height={550}
           className={styles.skillImage}
         />
         <Image
-          src="/img/hrd.jpg"
+          src="/img/4.jpg"
           alt="Expert"
           width={330}
           height={550}

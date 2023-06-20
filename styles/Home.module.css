@@ -1,7 +1,9 @@
 .Container {
-  width: 100vw;
-     
-}
+  display: flex;
+  flex-direction: column;
+  background-color: #383232;
+ 
+ }
 
 
 
@@ -15,96 +17,82 @@
 .bannerContainer {
   display: flex;
   justify-content: center;
-  overflow-x: hidden; /* Disable horizontal scrolling */
-   text-transform: uppercase;
+    text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-left: -100px;
+  }
+
+
+ .videoWrapper {
+  object-fit:fill;
+width: 100vw;
+  height: 34vw;
+      object-fit: cover; /* or use "fill" to stretch the video */
+   background-color: white;
+  
 }
 
 
 
-
+ 
 
  
-.skillImage , .skillImagee{
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-  0 10px 10px rgba(0,0,0,0.22);
-  border: 10px solid #000000;  
-}
-
-
- 
-.gameModeContainer {
+.backgroundContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40vw;
+  height: 90%;
   
   width: 98%;
-  margin: 0px;
-  margin-left: 15px;
-  margin-bottom: 40px;
-}
+   margin-left: 15px;
+   margin-top: 10px;
+   margin-bottom: 30px;
+
+  }
 
 
-.video{
-  background-color: white;
-
-}
+ 
  
 
- .videoWrapper {
-  height:500px;
-   overflow:hidden;
-   width: 100%;
-  object-fit: cover; /* or use "fill" to stretch the video */
-   background-color: white;
+  .skillImage {
+    margin-top: 10px;
+    width: 21.9%;
+    margin-left: 30px;
+    height: 50%;
+  
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    border: 10px solid #000000;
+  
+    /* Hover effect */
+    transition: transform 0.3s ease;
+  }
+  
+  .skillImage:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Cursor effect */
+  .skillImage:hover {
+    cursor: pointer;
+  }
+  
  
-}
-
-
-.skillImage{
-  margin-top: -10px;
-  width: 24.9%;
-  margin-left: 5px;
-
-
-
-}
-
-
-.skillImagee{
-
-  margin-top: -10px;
-  width: 24.9%;
- }
 
 .gameModeTitle {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-size: 20px;
   font-weight: bolder;
-  color: #582f27;
+  color: #ffffff;
   text-transform: uppercase;
   text-align: center;
   padding: 3px;
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
  
 }
 .lineE{
 
-  position: relative;
  
-  background-color: #1d0202;
-   display: block;
-  width: 100%;
-  height: 3px;
-  background-color: #714141;
-   margin-left: 0px;
-   margin-top: -10PX;
 
 }
 
