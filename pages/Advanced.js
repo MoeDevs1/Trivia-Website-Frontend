@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Card, Form, ProgressBar } from 'react-bootstrap';
-import styles from '../styles/Beginner.module.css';
+import styles from '../styles/Advanced.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-const Beginner = () => {
+const QuestionFetch = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
@@ -26,7 +26,7 @@ const Beginner = () => {
           headers: { Authorization: token },
         };
         const response = await axios.get(
-          'http://18.223.98.179:8080/api/v1/auth/user',
+          'http://localhost:8080/api/v1/auth/user',
           config
         );
         const { username, email } = response.data;
@@ -46,7 +46,7 @@ const Beginner = () => {
 
   const fetchQuestions = async (difficulty, numberOfQuestions = 10) => {
     try {
-      const response = await fetch(`http://18.223.98.179:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
+      const response = await fetch(`http://localhost:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
       const data = await response.json();
       setQuestions(data);
     } catch (error) {
@@ -253,7 +253,8 @@ const Beginner = () => {
           className={styles.pointSystemImage}
         />
       </div>
-    
+      <span className={styles.bottowmContainer2}>
+   </span>
     </div>
       )}
      
@@ -329,13 +330,12 @@ const Beginner = () => {
         
       )}
           <span className={styles.bottowmContainer2}>
- BEGINNER
-
-
-     </span>
+ 
+ sadsa
+    </span>
       {gameOver && renderResult()}
     </div>
    );
 };
 
-export default Beginner;
+export default QuestionFetch;

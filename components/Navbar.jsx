@@ -19,7 +19,7 @@ const Navbar = () => {
         const config = {
           headers: { Authorization: token }
         };
-        const response = await axios.get('http://localhost:8080/api/v1/auth/user', config);
+        const response = await axios.get('http://18.223.98.179:8080/api/v1/auth/user', config);
         const { email, username } = response.data;
         setUserEmail(email);
         setUsername(username);

@@ -120,7 +120,7 @@ const Setting = () => {
 
       if (newUsername && changeType === 'username') {
         response = await axios.put(
-          'http://localhost:8080/api/v1/auth/changeUsername',
+          'http://18.223.98.179:8080/api/v1/auth/changeUsername',
           {
             newUserName: newUsername,
           },
@@ -142,7 +142,7 @@ const Setting = () => {
 
       if (newFlag && changeType === 'flag') {
         response = await axios.put(
-          'http://localhost:8080/api/v1/auth/changeFlag',
+          'http://18.223.98.179:8080/api/v1/auth/changeFlag',
           {
             newFlag: newFlag,
           },
@@ -169,7 +169,7 @@ const Setting = () => {
 
       if (newPassword === confirmPassword && newPassword !== '') {
         response = await axios.put(
-          'http://localhost:8080/api/v1/auth/changePassword',
+          'http://18.223.98.179:8080/api/v1/auth/changePassword',
           {
             oldPassword: oldPassword,
             newPassword: newPassword,
@@ -197,7 +197,7 @@ const Setting = () => {
         }
 
         response = await axios.put(
-          'http://localhost:8080/api/v1/auth/changeEmail',
+          'http://18.223.98.179:8080/api/v1/auth/changeEmail',
           {
             oldEmail: oldEmail,
             newEmail: newEmail,
@@ -269,7 +269,7 @@ const Setting = () => {
           headers: { Authorization: token },
         };
         const response = await axios.get(
-          'http://localhost:8080/api/v1/auth/user',
+          'http://18.223.98.179:8080/api/v1/auth/user',
           config
         );
         const { email, username, flag } = response.data;
@@ -364,7 +364,7 @@ const Setting = () => {
             }`}
           >
             <AiFillSound className={styles.Icon} />
-            Audio
+            Audio Coming Soon..
           </button>
         </div>
 

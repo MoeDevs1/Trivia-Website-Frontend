@@ -44,7 +44,7 @@ const countries = [
 
 const registerUser = async (token, router) => {
   // Register the user using the token
-  await axios.post('http://localhost:8080/api/v1/auth/register/google', { token })
+  await axios.post('http://18.223.98.179:8080/api/v1/auth/register/google', { token })
     .then(response => {
       const { data } = response;
       const { token } = data;
@@ -63,7 +63,7 @@ const registerUser = async (token, router) => {
 
 const loginUser = async (token, router) => {
   // Login the user using the token
-  await axios.post('http://localhost:8080/api/v1/auth/login/google', { token })
+  await axios.post('http://18.223.98.179:8080/api/v1/auth/login/google', { token })
     .then(response => {
       const { data } = response;
       const { token } = data;
@@ -216,7 +216,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
 
-      const response = await axios.post('http://localhost:8080/api/v1/auth/authenticate', {
+      const response = await axios.post('http://18.223.98.179:8080/api/v1/auth/authenticate', {
         email: signInEmail,
         password: signInPassword,
       });
@@ -307,7 +307,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
   
-      const response = await axios.post('http://localhost:8080/api/v1/auth/register', {
+      const response = await axios.post('http://18.223.98.179:8080/api/v1/auth/register', {
         userName,
         email,
         password,

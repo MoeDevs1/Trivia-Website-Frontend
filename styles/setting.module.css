@@ -5,20 +5,31 @@
     align-items: center;
     min-height: 100vh;
     margin-top: -20px;
-  
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    background-color: #383232;
+    background-image: linear-gradient(rgba(68, 49, 24, 0.2), rgba(55, 4, 4, 0.2));
   }
   
   .container1 {
   
     height: 500px;
   
-  
+    background-color: white;
+
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     margin-bottom: 120px;
     border-radius: 4px;
     margin-right: 3px;
     margin-top: 100px;
     padding-top: 30px;
+  }
+  .pointSystemImage {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+      0 10px 10px rgba(0, 0, 0, 0.22);
+    border: 10px solid #2e1818;
+    margin-left: 10px;
+    width: 100%; 
+    height: auto;  
   }
   
   

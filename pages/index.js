@@ -7,7 +7,7 @@ const Index = () => {
   const router = useRouter();
 
   const handleLoginClick = () => {
-    router.push('/fetchQuestions');
+    router.push('/Beginner');
   };
 
   return (

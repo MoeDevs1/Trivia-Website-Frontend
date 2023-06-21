@@ -250,7 +250,8 @@ justify-content: space-around;
   padding: 1em;
 }
 
- 
+
+
  
 .resultAnswer strong {
   display: block;
@@ -374,19 +375,37 @@ width: 300px;
     justify-content: center;
     align-items: center;
       
-     margin-top: 3px;
+    height: 0%;
+    margin-top: 3px;
 
   }
   
-  .pointSystemImage {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-      0 10px 10px rgba(0, 0, 0, 0.22);
+  .pointSystemImage  {
+ 
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
     border: 10px solid #2e1818; /* remove this line */
     margin-left: 10px;
-    max-width: 100%;
-  }
-  
+     width: 30%;
  
+  }
+  .pointSystemImage  {
+ 
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+    border: 10px solid #2e1818; /* remove this line */
+    margin-left: 10px;
+     width: 30%;
+ 
+  }
+  .pointSystemContainer  img, .pointSystemContainer  img {
+ 
+ height: 160%;
+ 
+
+
+  
+  }
   
 
 .bottomContainer2 {

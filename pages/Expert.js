@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Card, Form, ProgressBar } from 'react-bootstrap';
-import styles from '../styles/QuestionFetch.module.css';
+import styles from '../styles/Expert.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -12,7 +12,7 @@ const QuestionFetch = () => {
   const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(180); // 3 minutes in seconds
+  const [timeRemaining, setTimeRemaining] = useState(1890); // 3 minutes in seconds
   const router = useRouter();
 
   const [email, setEmail] = useState(null);
@@ -138,16 +138,11 @@ const QuestionFetch = () => {
           height={60}
           className={styles.logo}
         />
-      </div>    <button className={styles.buttonPlay}>Play Again</button>
+      </div>    <button className={styles.buttonPlay}  onClick={startGame} >Play Again</button>
     </div>
            <div className={styles.imageContainer}>
          
-           <div className={styles.scoreContainer}>
-
-<strong className={styles.resultScore}>
-  {totalCorrect}/{totalQuestions}
-</strong>
-</div>
+     
          <div className={styles.resultContainer}>
           <Card className={`${styles.resultCard} mt-3`}>
             <Card.Body>
@@ -200,8 +195,14 @@ const QuestionFetch = () => {
         </div>
         <span className={styles.bottowmContainer2}>
  
- sadsa
-    </span>
+
+        <div className={styles.scoreContainer2}>
+
+<strong className={styles.resultScore}>
+  {totalCorrect}/{totalQuestions}
+</strong>
+
+</div>     </span>
       </div>
        
     );
@@ -253,8 +254,6 @@ const QuestionFetch = () => {
         />
       </div>
       <span className={styles.bottowmContainer2}>
- 
-sadsa
    </span>
     </div>
       )}
@@ -283,43 +282,52 @@ sadsa
           className={styles.logo}
         />
       </div>    
-      <h2 className={styles.questionTitle} >Question {currentQuestionIndex + 1}</h2>
+
+ 
+      <h2 className={styles.questionTitle}>  Question {currentQuestionIndex + 1}</h2>
           <ProgressBar now={(currentQuestionIndex / questions.length) * 100} />
           <div> 
-            <span className={styles.questionTitle}>Time Remaining: {formatTime(timeRemaining)}</span>
-          </div>
+            <span className={styles.questionTitle}> Time Remaining: {formatTime(timeRemaining)}</span>
+     </div>
     </div>
     <div className={styles.questionContainer}>
 
           
           {questions.length > 0 && (
-             <Card className={`${styles.questionCard} mt-3`}>
-             <Card.Body>
-               <Card.Title>{questions[currentQuestionIndex].questionText}</Card.Title>
-               {questions[currentQuestionIndex].options.map((option, i) => (
-                 <Button
-                   variant="outline-primary"
-                   className={`${styles.optionButton} mb-3`}
-                   key={i}
-                   disabled={selectedOption !== null}
-                   onClick={() => {
-                     handleOptionChange(questions[currentQuestionIndex].id, option);
-                     checkAnswerAndNext(questions[currentQuestionIndex]);
-                   }}
-                 >
-                   {option}
-                   {selectedOption && selectedOption.option === option && (
-                     <span className={isCorrect ? styles.correctIcon : styles.incorrectIcon}>
-                       {isCorrect ? '✔' : '✖'}
-                     </span>
-                   )}
-                 </Button>
-               ))}
-             </Card.Body>
-           </Card>
+            <Card className={`${styles.questionCard} mt-3`}>
+            <Card.Body>
+              <div className={styles.questionTextContainer}>
+                <div className={styles.questionText}>{questions[currentQuestionIndex].questionText}</div>
+              </div>
+              {questions[currentQuestionIndex].options.map((option, i) => (
+                <div className={styles.optionsContainer}>
+                  <Button
+                    variant="outline-primary"
+                    className={`${styles.optionButton} mb-3`}
+                    key={i}
+                    disabled={selectedOption !== null}
+                    onClick={() => {
+                      handleOptionChange(questions[currentQuestionIndex].id, option);
+                      checkAnswerAndNext(questions[currentQuestionIndex]);
+                    }}
+                  >
+                    {option}
+                    {selectedOption && selectedOption.option === option && (
+                      <span className={isCorrect ? styles.correctIcon : styles.incorrectIcon}>
+                        {isCorrect ? '✔' : '✖'}
+                      </span>
+                    )}
+                  </Button>
+                </div>
+              ))}
+            </Card.Body>
+          </Card>
+          
+           
           )}
         </div>
         </div>
+        
       )}
           <span className={styles.bottowmContainer2}>
  
