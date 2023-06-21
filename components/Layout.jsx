@@ -5,7 +5,8 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const hideNavbarRoutes = ['/beginner']; // Add the routes where you want to hide the navbar
+  const hideNavbarRoutes = ['/beginner', '/Intermediate' ,'/advanced' ,'/expert']; // Add the routes where you want to hide the navbar
+ 
 
   const shouldShowNavbar = !hideNavbarRoutes.includes(router.pathname);
 

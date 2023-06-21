@@ -75,8 +75,7 @@ const Navbar = () => {
       <ul className={styles.navLinks}>
         <li className={styles.navLink} onClick={() => router.push('/')}>Home</li>
         <li className={styles.navLink} onClick={() => router.push('/leaderboard')}>Leaderboard</li>
-        <li className={styles.navLink} onClick={() => router.push('/contact')}>Contact</li>
-      </ul>
+       </ul>
       <ul className={styles.authLinks}>
   {username ? (
     <li className={styles.navLink} onClick={() => setShowDropdown(!showDropdown)}>
@@ -104,8 +103,7 @@ const Navbar = () => {
         <ul className={styles.mobileMenu}>
           <li className={styles.navLink} onClick={() => router.push('/')}>Home</li>
           <li className={styles.navLink} onClick={() => router.push('/leaderboard')}>Leaderboard</li>
-          <li className={styles.navLink} onClick={() => router.push('/contact')}>Contact</li>
-        </ul>
+         </ul>
       )}
     </nav>
   );

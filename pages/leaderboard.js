@@ -61,7 +61,7 @@ const Leaderboard = () => {
   const flagApiUrl = (countryCode) =>
     `https://flagcdn.com/64x48/${countryCode.toLowerCase()}.png`;
 
-  const leaderboardDataWithCurrentUser = [...leaderboardData, currentUser].filter(Boolean);
+  const leaderboardDataWithCurrentUser = [...leaderboardData].filter(Boolean);
 
   // Sort the leaderboard data based on the score in descending order
   const sortedData = [...leaderboardDataWithCurrentUser].sort((a, b) => b.score - a.score);
@@ -79,13 +79,12 @@ const Leaderboard = () => {
           <h1 className={styles.header}>Leaderboard</h1>
         </div>
         <div className={styles.leaderboard}>
-          {sortedData.map((user, i) => (
+          {sortedData.slice(0, 20).map((user, i) => (
             <div
               key={user.username}
               className={`${styles.user} ${
                 i < 3 ? styles['top' + (i + 1)] : styles['top' + (i + 4)]
-              } ${user.username === currentUser?.username ? styles.currentUser : ''
-                }`}
+              }`}
             >
               <span className={styles.rank}>{i + 1}</span>
               <div className={styles.flagContainer}>
@@ -101,8 +100,24 @@ const Leaderboard = () => {
               <span className={styles.points}>{user.score}</span>
             </div>
           ))}
+          {currentUser && currentUserPosition >= 20 && (
+            <div className={` ${styles.currentUser}`}>
+              <span className={styles.rank}>{adjustedPosition}</span>
+              <div className={styles.flagContainer}>
+                <Image
+                  src={flagApiUrl(currentUser.flag)}
+                  alt=""
+                  width={50}
+                  height={50}
+                  className={styles.flag}
+                />
+              </div>
+              <span className={styles.name}>{currentUser.username}</span>
+              <span className={styles.points}>{currentUser.score}</span>
+            </div>
+          )}
         </div>
-        {currentUser && (
+        {currentUser && currentUserPosition < 20 && (
           <div className={` ${styles.currentUser}`}>
             <span className={styles.rank}>{adjustedPosition}</span>
             <div className={styles.flagContainer}>
@@ -120,7 +135,7 @@ const Leaderboard = () => {
         )}
         {!currentUser && (
           <div className={styles.currentUser}>
-             <div className={styles.flagContainer} />
+            <div className={styles.flagContainer} />
             <span className={styles.namee}>Login to climb the ranks</span>
             <span className={styles.points}>-</span>
           </div>

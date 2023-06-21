@@ -41,12 +41,12 @@ const QuestionFetch = () => {
   }, []);
 
   useEffect(() => {
-    fetchQuestions("BEGINNER");  // Fetch beginner level questions
+    fetchQuestions("EXPERT");  // Fetch beginner level questions
   }, []);
 
   const fetchQuestions = async (difficulty, numberOfQuestions = 10) => {
     try {
-      const response = await fetch(`http://223:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
+      const response = await fetch(`http://localhost:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
       const data = await response.json();
       setQuestions(data);
     } catch (error) {
@@ -132,8 +132,8 @@ const QuestionFetch = () => {
                 <div className={styles.bottomContainer}>
                 <div className={styles.logo} onClick={() => router.push('/')}>
         <Image
-          src="/img/muslim-trivia-high-resolution-logo-color-on-transparent-background.png"
-          alt=""
+              src="/img/muslim-trivia-high-resolution-logo-color-on-transparent-background.png"
+              alt=""
           width={140}
           height={60}
           className={styles.logo}
@@ -223,13 +223,13 @@ const QuestionFetch = () => {
      
       <div className={styles.bottomContainer2}>
       <div className={styles.logo} onClick={() => router.push('/')}>
-        <Image
-          src="/img/muslim-trivia-high-resolution-logo-color-on-transparent-background.png"
-          alt=""
-          width={140}
-          height={60}
-          className={styles.logo}
-        />
+      <Image
+                src="/img/muslim-trivia-high-resolution-logo-color-on-transparent-background.png"
+                alt=""
+                width={140}
+                height={60}
+                className={styles.logo}
+              />
       </div> 
 
       <Button variant="primary" className={styles.startButton} onClick={startGame}>
@@ -331,7 +331,7 @@ const QuestionFetch = () => {
       )}
           <span className={styles.bottowmContainer2}>
  
- sadsa
+ INTERMEDIATE
     </span>
       {gameOver && renderResult()}
     </div>

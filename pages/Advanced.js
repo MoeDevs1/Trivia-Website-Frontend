@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Card, Form, ProgressBar } from 'react-bootstrap';
-import styles from '../styles/Advanced.module.css';
+import styles from '../styles/advanced.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-const QuestionFetch = () => {
+const advanced = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
@@ -41,7 +41,7 @@ const QuestionFetch = () => {
   }, []);
 
   useEffect(() => {
-    fetchQuestions("BEGINNER");  // Fetch beginner level questions
+    fetchQuestions("EXPERT");  // Fetch beginner level questions
   }, []);
 
   const fetchQuestions = async (difficulty, numberOfQuestions = 10) => {
@@ -331,11 +331,10 @@ const QuestionFetch = () => {
       )}
           <span className={styles.bottowmContainer2}>
  
- sadsa
-    </span>
+ADVANCED    </span>
       {gameOver && renderResult()}
     </div>
    );
 };
 
-export default QuestionFetch;
+export default advanced;

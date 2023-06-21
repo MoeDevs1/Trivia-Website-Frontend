@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Card, Form, ProgressBar } from 'react-bootstrap';
-import styles from '../styles/Expert.module.css';
+import styles from '../styles/expert.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -41,7 +41,7 @@ const QuestionFetch = () => {
   }, []);
 
   useEffect(() => {
-    fetchQuestions("BEGINNER");  // Fetch beginner level questions
+    fetchQuestions("EXPERT");  // Fetch beginner level questions
   }, []);
 
   const fetchQuestions = async (difficulty, numberOfQuestions = 10) => {
@@ -331,7 +331,7 @@ const QuestionFetch = () => {
       )}
           <span className={styles.bottowmContainer2}>
  
- sadsa
+ EXPERT
     </span>
       {gameOver && renderResult()}
     </div>

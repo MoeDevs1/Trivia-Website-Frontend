@@ -6,8 +6,17 @@ import { useRouter } from 'next/router';
 const Index = () => {
   const router = useRouter();
 
-  const handleLoginClick = () => {
+  const handleBeginnerClick = () => {
     router.push('/beginner');
+  };
+  const handleExpertClick = () => {
+    router.push('/expert');
+  };
+  const handleIntermediateClick = () => {
+    router.push('/Intermediate');
+  };
+  const handleAdvancedClick = () => {
+    router.push('/advanced');
   };
 
   return (
@@ -20,27 +29,31 @@ const Index = () => {
       </div>
 
       <div className={styles.gameModeTitle}>Game Modes</div>
- 
-      <div className={styles.backgroundContainer}>
-    
-          <Image
-          onClick={handleLoginClick}
-            src="/img/1.jpg"
-            alt="easy"
-            width={330}
-            height={550}
-            className={styles.skillImage}
-          />
 
-  
+      <div className={styles.backgroundContainer}>
+
         <Image
+          onClick={handleBeginnerClick}
+          src="/img/1.jpg"
+          alt="easy"
+          width={330}
+          height={550}
+          className={styles.skillImage}
+        />
+
+
+        <Image
+          onClick={handleIntermediateClick}
+
           src="/img/2.jpg"
           alt=""
           width={330}
           height={550}
           className={styles.skillImage}
-        />
+        /> 
         <Image
+          onClick={handleAdvancedClick}
+
           src="/img/3.jpg"
           alt="Intermediate"
           width={330}
@@ -48,19 +61,20 @@ const Index = () => {
           className={styles.skillImage}
         />
         <Image
+          onClick={handleExpertClick}
+
           src="/img/4.jpg"
           alt="Expert"
           width={330}
           height={550}
           className={styles.skillImage}
         />
-       
-    
-      </div>
-      
 
-    =
-    </div>
+
+      </div>
+
+
+     </div>
   );
 };
 

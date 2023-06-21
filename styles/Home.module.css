@@ -100,36 +100,51 @@ width: 100vw;
 background-color: #140000;
  
 }
-.lineE{
-
- 
-
+.Container {
+  overflow-x: hidden;
 }
+@media only screen and (max-width: 600px) {
 
- 
 
-@media screen and (max-width: 600px) {
-
- 
   .bannerContainer {
-     display: flex;
+    margin-top: 20px;
+    display: flex;
     justify-content: center;
       text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
-  
-  
-   .videoWrapper {
- 
-    object-fit:fill;
-  width: 100vw;
-    height: 200px;
-      background-color: white;
+    .videoWrapper {
+      object-fit:fill;
+    width: 100vw;
+      height: 80vw;
+          object-fit: cover; /* or use "fill" to stretch the video */
+       background-color: white;
+      
+    }
     
+    
+    .Container {
+      overflow-x: hidden;
+    }
+
+
+  .backgroundContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
   }
-  
+
+  .skillImage {
+    flex: 0 0 auto;
+    margin: 10px;
+    width: 50%;
+    height: auto;
+  }
+}
+
+ 
  
   
-
-}
+ 
