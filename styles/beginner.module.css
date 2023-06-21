@@ -383,8 +383,9 @@ width: 300px;
       0 10px 10px rgba(0, 0, 0, 0.22);
     border: 10px solid #2e1818; /* remove this line */
     margin-left: 10px;
-    max-width: 100%;
-  }
+    width: 34.9%;
+    margin-left: 10px;
+    height: 41.4vw;  }
   
  
   
