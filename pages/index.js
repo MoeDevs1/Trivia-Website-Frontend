@@ -54,7 +54,12 @@ const Index = () => {
           height={550}
           className={styles.skillImage}
         />
+       
+    
       </div>
+      
+
+    =
     </div>
   );
 };
