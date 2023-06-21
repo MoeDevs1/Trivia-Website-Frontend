@@ -11,7 +11,6 @@
  height: 100vh; /* This will cover the full height of the viewport */
 }
  
-
 .startButton:hover {
   background-color: #0056b3;
 }
@@ -142,9 +141,11 @@ justify-content: space-around;
 }
  
  .resultScore{
-  color: #F41538;
+  color: #2BACF7;
   font-size: 50px;
  }
+ 
+ 
  
 .scoreContainer {
   position: absolute;
@@ -276,7 +277,7 @@ justify-content: space-around;
 .buttonPlay {
   font-size: 1.5em;
   color: #f9fcfb;
-  background: #F41538; /* Vibrant color for attention */
+  background: #2BACF7; /* Vibrant color for attention */
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
@@ -326,7 +327,7 @@ width: 300px;
   padding: 12px 50px;
   font-size: 16px;
   font-weight: bolder;
-  background-color: #F41538;
+  background-color: #2BACF7;
   color: #f8efef;
   border: none;
   border-radius: 4px;
@@ -337,7 +338,7 @@ width: 300px;
 
 
 .startButton:hover {
-  background-color: #F41538;
+  background-color: #219fe8;
   cursor: pointer;
 }
 
@@ -407,7 +408,7 @@ width: 300px;
   font-weight: bolder;
   justify-content: space-around;
   align-items: center;
-  color: #F41538;
+  color: #2BACF7;
   width: 100%;
   height: 60px;
   background-color: #140000; /* Slightly lighter background */
@@ -448,7 +449,7 @@ width: 300px;
 }
 
 .optionButton:hover {
-  background-color: #F41538;
+  background-color: #4285f4;
   color: #ffffff;
 }
 
