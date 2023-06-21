@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Card, Form, ProgressBar } from 'react-bootstrap';
-import styles from '../styles/Intermediate.module.css';
+import styles from '../styles/intermediate.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
