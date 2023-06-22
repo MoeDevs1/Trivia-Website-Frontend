@@ -17,6 +17,7 @@ const Setting = () => {
   const router = useRouter();
   const [oldEmail, setOldEmail] = useState('');
   const [newEmail, setNewEmail] = useState('');
+  
   const [oldPassword, setOldPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -269,12 +270,11 @@ const Setting = () => {
           headers: { Authorization: token },
         };
         const response = await axios.get(
-          'http://18.223.98.179:8080/api/v1/auth/user',
+          'http://localhost:8080/api/v1/auth/user',
           config
         );
         const { email, username, flag } = response.data;
-        setOldEmail(email);
-        setNewEmail(email);
+ 
         setUserName(username);
         setNewUsername(username);
         setFlag(flag);

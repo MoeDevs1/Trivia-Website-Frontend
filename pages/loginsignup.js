@@ -52,6 +52,9 @@ const registerUser = async (token, router) => {
       // Store the token in sessionStorage
       sessionStorage.setItem("token", token);
 
+      // Storing token in a cookie
+      document.cookie = `token=${token}; path=/;`;      
+
       setSessionExpiration(); // Set the session expiration token after successful registration\
 
       router.push('/'); // Redirect to the home page
@@ -70,6 +73,7 @@ const loginUser = async (token, router) => {
 
       // Store the token in sessionStorage
       sessionStorage.setItem("token", token);
+      document.cookie = `token=${token}; path=/;`;
 
       setSessionExpiration(); // Set the session expiration token after successful login
 
@@ -216,7 +220,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
 
-      const response = await axios.post('http://18.223.98.179:8080/api/v1/auth/authenticate', {
+      const response = await axios.post('http://localhost:8080/api/v1/auth/authenticate', {
         email: signInEmail,
         password: signInPassword,
       });
@@ -224,6 +228,7 @@ const LoginSignup = () => {
       // Handle success
       const { token } = response.data;
       sessionStorage.setItem("token", token);
+      document.cookie = `token=${token}; path=/;`;
 
       setSessionTimeout(); // Set the session expiration
       setIsLoggedIn(true); // Set the login state
@@ -307,7 +312,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
   
-      const response = await axios.post('http://18.223.98.179:8080/api/v1/auth/register', {
+      const response = await axios.post('http://localhost:8080/api/v1/auth/register', {
         userName,
         email,
         password,
@@ -317,7 +322,8 @@ const LoginSignup = () => {
       // Handle success
       const { token } = response.data;
       sessionStorage.setItem("token", token);
-  
+      document.cookie = `token=${token}; path=/;`;
+
       setSessionTimeout(); // Set the session expiration
       setIsLoggedIn(true); // Set the login state
   

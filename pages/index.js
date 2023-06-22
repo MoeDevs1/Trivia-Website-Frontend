@@ -13,7 +13,7 @@ const Index = () => {
     router.push('/expert');
   };
   const handleIntermediateClick = () => {
-    router.push('/Intermediate');
+    router.push('/intermediate');
   };
   const handleAdvancedClick = () => {
     router.push('/advanced');

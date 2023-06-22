@@ -22,7 +22,7 @@ const Leaderboard = () => {
           headers: { Authorization: token },
         };
         const response = await axios.get(
-          'http://18.223.98.179:8080/api/v1/auth/user',
+          'http://localhost:8080/api/v1/auth/user',
           config
         );
         const { score, username, flag } = response.data;
@@ -42,20 +42,15 @@ const Leaderboard = () => {
 
   const fetchLeaderboardData = async () => {
     try {
-      const response = await fetch('http://18.223.98.179:8080/api/v1/auth/topUsers?limit=20');
-      if (!response.ok) {
-        throw new Error('Failed to fetch leaderboard data');
-      }
-      const data = await response.json();
-
-      // Exclude currentUser from the fetched data
-      const filteredData = data.filter((user) => user.username !== currentUser?.username);
-
+      const response = await axios.get('http://localhost:8080/api/v1/auth/topUsers?limit=20');
+      const data = response.data;
+  
+       const filteredData = data.filter((user) => user.username !== currentUser?.username);
+  
       setLeaderboardData(filteredData);
     } catch (error) {
       console.error(error);
-      // Handle error
-    }
+     }
   };
 
   const flagApiUrl = (countryCode) =>
