@@ -365,19 +365,17 @@ width: 300px;
 
   }
   
+    
   .pointSystemImage  {
- 
+  
     box-shadow: 0 14px 28px rgba(0,0,0,0.25),
     0 10px 10px rgba(0, 0, 0, 0.22);
     border: 10px solid #2e1818; /* remove this line */
     margin-left: 10px;
      width: 30%;
-     height: 40vw;
- 
-  }
- 
+     height: 85vh;
   
-
+  }
 .bottomContainer2 {
   display: flex;
   justify-content: space-around;
@@ -455,29 +453,7 @@ width: 300px;
   border-radius: 40px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25),
   0 10px 10px rgba(0,0,0,0.22);}
-  .pointSystemContainer{
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-      
-    height: 0%;
-    margin-top: 3px;
-  
-  }
-  
-  .pointSystemImage  {
-  
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-    0 10px 10px rgba(0, 0, 0, 0.22);
-    border: 10px solid #2e1818; /* remove this line */
-    margin-left: 10px;
-     width: 30%;
-     height: 40vw;
-  
-  }
-  
-   
+ 
   
    
 @media screen and (max-width: 900px) {

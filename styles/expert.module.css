@@ -444,6 +444,7 @@ width: 300px;
   
   }
   
+  
   .pointSystemImage  {
   
     box-shadow: 0 14px 28px rgba(0,0,0,0.25),
@@ -451,7 +452,7 @@ width: 300px;
     border: 10px solid #2e1818; /* remove this line */
     margin-left: 10px;
      width: 30%;
-     height: 40vw;
+     height: 85vh;
   
   }
   @media screen and (max-width: 900px) {

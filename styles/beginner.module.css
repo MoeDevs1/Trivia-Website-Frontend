@@ -466,7 +466,7 @@ width: 300px;
     border: 10px solid #2e1818; /* remove this line */
     margin-left: 10px;
      width: 30%;
-     height: 40vw;
+     height: 85vh;
   
   }
   @media screen and (max-width: 900px) {
