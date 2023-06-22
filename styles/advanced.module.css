@@ -401,7 +401,7 @@ width: 300px;
   background-color: #ffffff;
   border: 2px solid #0d203d;
   border-radius: 8px;
-  color: #4285f4;
+  color: #FF00C5;
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;
@@ -414,10 +414,30 @@ width: 300px;
 }
 
 .optionButton:hover {
-  background-color: #4285f4;
+  background-color: #FF00C5;
   color: #ffffff;
 }
+.pointSystemContainer{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    
+  height: 0%;
+  margin-top: 3px;
 
+}
+
+.pointSystemImage  {
+
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+  0 10px 10px rgba(0, 0, 0, 0.22);
+  border: 10px solid #2e1818; /* remove this line */
+  margin-left: 10px;
+   width: 30%;
+   height: 40vw;
+
+}
 .questionCard {
   display: flex;
   justify-content: center;
@@ -524,24 +544,4 @@ width: 300px;
   
   
   }
-  .pointSystemContainer{
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-      
-    height: 0%;
-    margin-top: 3px;
-  
-  }
-  
-  .pointSystemImage  {
-  
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-    0 10px 10px rgba(0, 0, 0, 0.22);
-    border: 10px solid #2e1818; /* remove this line */
-    margin-left: 10px;
-     width: 30%;
-     height: 40vw;
-  
-  }
+ 

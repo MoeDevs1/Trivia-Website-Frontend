@@ -17,7 +17,10 @@ const advanced = () => {
 
   const [email, setEmail] = useState(null);
   const [username, setUser] = useState(null);
+  
 
+
+  
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -44,7 +47,7 @@ const advanced = () => {
     fetchQuestions("EXPERT");  // Fetch beginner level questions
   }, []);
 
-  const fetchQuestions = async (difficulty, numberOfQuestions = 10) => {
+  const fetchQuestions = async (difficulty, numberOfQuestions =7) => {
     try {
       const response = await fetch(`http://localhost:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
       const data = await response.json();
@@ -89,19 +92,23 @@ const advanced = () => {
 
   const endGame = async () => {
     setGameOver(true);
-
-    // Check if it's the last question (number 10)
-    if (currentQuestionIndex + 1 === 10) {
+  
+    if (currentQuestionIndex + 1 ===7) {
       try {
         const token = `Bearer ${sessionStorage.getItem('token')}`;
         const config = {
           headers: { Authorization: token },
         };
-
+  
+        const correctAnswers = questions.filter(
+          question => userAnswers[question.id] === question.correctAnswer
+        );
+        const totalCorrect = correctAnswers.length;
+  
         const requestData = {
-          score,
+          score: totalCorrect * 3, // Use the total number of correct answers as the score
         };
-
+  
         await axios.post(
           `http://localhost:8080/api/v1/auth/leaderboard/${username}`,
           requestData,
@@ -112,6 +119,7 @@ const advanced = () => {
       }
     }
   };
+  ;
 
 
      const [selectedOption, setSelectedOption] = useState(null);
@@ -125,7 +133,7 @@ const advanced = () => {
       question => userAnswers[question.id] !== question.correctAnswer
     );
     const totalCorrect = correctAnswers.length;
-    const totalQuestions = 10;
+    const totalQuestions = 7;
   
     return (
       <div className={styles.Container}>
@@ -152,7 +160,7 @@ const advanced = () => {
 
               <Card.Text>
                 
-                <strong className={styles.resultCorrect}>Score: {score}</strong>
+                <strong className={styles.resultCorrect}>Score: {totalCorrect * 3}</strong>
               </Card.Text>
               <Card.Text>
               
@@ -237,8 +245,8 @@ const advanced = () => {
         </Button>
        </div>
       <div className={styles.pointSystemContainer}>
-        <Image
-          src="/img/6.jpg"
+      <Image
+          src="/img/pointer.jpg"
           alt="Point System"
           width={600}
           height={680}
@@ -246,7 +254,7 @@ const advanced = () => {
         />
 
         <Image
-          src="/img/7.jpg"
+          src="/img/instruct.jpg"
           alt="Point System"
           width={600}
           height={680}

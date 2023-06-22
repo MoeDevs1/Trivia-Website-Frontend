@@ -358,14 +358,7 @@ const Setting = () => {
         </div>
 
         <div className={styles.buttonWrapper}>
-          <button
-            className={`${styles.button1} ${
-              activeButton === 'Banking Info' ? styles.active : ''
-            }`}
-          >
-            <AiFillSound className={styles.Icon} />
-            Audio Coming Soon..
-          </button>
+         
         </div>
 
         <div className={styles.moreContent}></div>

@@ -30,7 +30,7 @@ const Leaderboard = () => {
         setUserName(username);
         setPoints(score);
         setFlag(flag);
-        setCurrentUser(response.data); // Set the current user
+        setCurrentUser(response.data); 
         console.log(response.data);
       } catch (error) {
         console.error(error);
@@ -40,13 +40,45 @@ const Leaderboard = () => {
     fetchUserData();
   }, []);
 
+
+
+
+
+  const [currentUserScore, setCurrentUserScore] = useState(null);
+
+  useEffect(() => {
+    const fetchCurrentUserScore = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/v1/auth/leaderboard/score/${userName}`
+        );
+        setCurrentUserScore(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    if (userName) {
+      fetchCurrentUserScore();
+    }
+  }, [userName]);
+
+
+
+
+
+
+
   const fetchLeaderboardData = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v1/auth/topUsers?limit=20');
-      const data = response.data;
-  
+      const response = await fetch('http://18.223.98.179:8080/api/v1/auth/topUsers?limit=20');
+      if (!response.ok) {
+        throw new Error('Failed to fetch leaderboard data');
+      }
+      const data = await response.json();
+
        const filteredData = data.filter((user) => user.username !== currentUser?.username);
-  
+
       setLeaderboardData(filteredData);
     } catch (error) {
       console.error(error);
@@ -125,7 +157,7 @@ const Leaderboard = () => {
               />
             </div>
             <span className={styles.name}>{currentUser.username}</span>
-            <span className={styles.points}>{currentUser.score}</span>
+            <span className={styles.points}>{currentUserScore}</span>  
           </div>
         )}
         {!currentUser && (

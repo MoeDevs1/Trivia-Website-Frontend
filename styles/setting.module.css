@@ -920,7 +920,9 @@
       padding-left: 10px;
       padding-right: 10px;
     }
-  
+  .logo{
+    display: none;
+  }
   
   
   .inputOldFieldEmail::placeholder {
@@ -1128,6 +1130,7 @@
       padding-left: 10px;
       padding-right: 10px;
     }
+
 
 
     .logo{

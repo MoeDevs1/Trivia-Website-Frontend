@@ -11,6 +11,7 @@ import { MdEmail } from "react-icons/md";
 import { AiFillLock } from "react-icons/ai";
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import Select from 'react-select';
+import { AES, enc } from 'crypto-js';
 
 
 const setSessionExpiration = () => {
@@ -63,6 +64,10 @@ const registerUser = async (token, router) => {
       console.error(error);
     });
 };
+
+
+
+
 
 const loginUser = async (token, router) => {
   // Login the user using the token

@@ -26,284 +26,320 @@ const QuestionPost = () => {
                                   
                                     
             {
-                questionText: "What ayat is this: مَنْ عَمِلَ صَالِحًا فَلِنَفْسِهِ ۖ وَمَنْ أَسَاءَ فَعَلَيْهَا ۗ",
-                correctAnswer: "Chapter 41, Verse 46",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 18, Verse 30", "Chapter 41, Verse 46", "Chapter 2, Verse 286", "Chapter 9, Verse 129"],
+                questionText: "Who is the founder of Islam?",
+                correctAnswer: "Prophet Muhammad (pbuh)",
+                difficultyLevel: "BEGINNER",
+                options: ["Prophet Moses (pbuh)", "Prophet Jesus (pbuh)", "Prophet Abraham (pbuh)", "Prophet Muhammad (pbuh)"]
+                },
+                {
+                questionText: "What is the holy book of Islam?",
+                correctAnswer: "Quran",
+                difficultyLevel: "BEGINNER",
+                options: ["Bible", "Torah", "Quran", "Bhagavad Gita"]
+                },
+                {
+                questionText: "How many pillars are there in Islam?",
+                correctAnswer: "5",
+                difficultyLevel: "BEGINNER",
+                options: ["3", "4", "5", "6"]
+                },
+                {
+                questionText: "Which city is known as the birthplace of Islam?",
+                correctAnswer: "Makkah",
+                difficultyLevel: "BEGINNER",
+                options: ["Madinah", "Makkah", "Baghdad", "Cairo"]
+                },
+                {
+                questionText: "What is the Islamic term for 'charity'?",
+                correctAnswer: "Zakat",
+                difficultyLevel: "BEGINNER",
+                options: ["Hajj", "Zakat", "Salah", "Sawm"]
+                },
+                {
+                questionText: "What is the term for 'God' in Arabic?",
+                correctAnswer: "Allah",
+                difficultyLevel: "BEGINNER",
+                options: ["Rabbi", "Allah", "Deus", "Dios"]
+                },
+                {
+                questionText: "Which month is Ramadan in the Islamic calendar?",
+                correctAnswer: "9th month",
+                difficultyLevel: "BEGINNER",
+                options: ["1st month", "5th month", "9th month", "12th month"]
+                },
+                {
+                questionText: "Who was the first woman in Islam?",
+                correctAnswer: "Khadija (pbuh)",
+                difficultyLevel: "BEGINNER",
+                options: ["Aisha (pbuh)", "Fatimah (pbuh)", "Maryam (pbuh)", "Khadija (pbuh)"]
+                },
+                {
+                questionText: "What is the largest sect in Islam?",
+                correctAnswer: "Sunni",
+                difficultyLevel: "BEGINNER",
+                options: ["Shia", "Sunni", "Ahmadiyya", "Sufi"]
+                },
+                {
+                questionText: "Which prayer is performed just after sunset in Islam?",
+                correctAnswer: "Maghrib",
+                difficultyLevel: "BEGINNER",
+                options: ["Fajr", "Dhuhr", "Asr", "Maghrib"]
+                },
+                {
+                questionText: "What is the Islamic declaration of faith called?",
+                correctAnswer: "Shahada",
+                difficultyLevel: "BEGINNER",
+                options: ["Shahada", "Salah", "Zakat", "Hajj"]
+                },
+                {
+                questionText: "Who was the angel who revealed the messages from Allah to Prophet Muhammad (pbuh)?",
+                correctAnswer: "Angel Gabriel (Jibril)",
+                difficultyLevel: "BEGINNER",
+                options: ["Angel Michael (Mikail)", "Angel Gabriel (Jibril)", "Angel Israfil", "Angel Azrael (Izrail)"]
+                },
+                {
+                questionText: "What does 'Islam' mean in Arabic?",
+                correctAnswer: "Submission (to the will of God)",
+                difficultyLevel: "BEGINNER",
+                options: ["Love", "Peace", "Submission (to the will of God)", "Knowledge"]
+                },
+                {
+                questionText: "What is the term for the pilgrimage to Makkah that every Muslim is required to make at least once in their lifetime, if they are able?",
+                correctAnswer: "Hajj",
+                difficultyLevel: "BEGINNER",
+                options: ["Zakat", "Salah", "Hajj", "Sawm"]
+                },
+                {
+                questionText: "What is the Islamic term for fasting, particularly during the month of Ramadan?",
+                correctAnswer: "Sawm",
+                difficultyLevel: "BEGINNER",
+                options: ["Zakat", "Salah", "Hajj", "Sawm"]
+                },
+                {
+                questionText: "What is the longest chapter of the Quran called?",
+                correctAnswer: "Al-Baqarah",
+                difficultyLevel: "BEGINNER",
+                options: ["Al-Fatiha", "Al-Baqarah", "Ali 'Imran", "An-Nisa"]
+                },
+                {
+                questionText: "What is the Islamic term for a 'saying or action of Prophet Muhammad (pbuh)'?",
+                correctAnswer: "Hadith",
+                difficultyLevel: "BEGINNER",
+                options: ["Sharia", "Fatwa", "Hadith", "Tafsir"]
+                },
+                {
+                questionText: "Which city do Muslims face during prayer?",
+                correctAnswer: "Makkah",
+                difficultyLevel: "BEGINNER",
+                options: ["Madinah", "Makkah", "Jerusalem", "Istanbul"]
+                },
+                {
+                questionText: "Which Prophet (pbuh) built the Kaaba according to Islamic tradition?",
+                correctAnswer: "Prophet Abraham (Ibrahim pbuh)",
+                difficultyLevel: "BEGINNER",
+                options: ["Prophet Noah (Nuh pbuh)", "Prophet Moses (Musa pbuh)", "Prophet Jesus (Isa pbuh)", "Prophet Abraham (Ibrahim pbuh)"]
+                },
+                {
+                questionText: "Who is the last prophet in Islam?",
+                correctAnswer: "Prophet Muhammad (pbuh)",
+                difficultyLevel: "BEGINNER",
+                options: ["Prophet Jesus (pbuh)", "Prophet Moses (pbuh)", "Prophet Abraham (pbuh)", "Prophet Muhammad (pbuh)"]
+                },
+                {
+                questionText: "What is the language of the Quran?",
+                correctAnswer: "Arabic",
+                difficultyLevel: "BEGINNER",
+                options: ["Hebrew", "Latin", "English", "Arabic"]
+                },
+                {
+                questionText: "What is the Islamic dietary law called?",
+                correctAnswer: "Halal",
+                difficultyLevel: "BEGINNER",
+                options: ["Kosher", "Vegan", "Halal", "Organic"]
                 },
                 
-                {
-                questionText: "What ayat is this: الَّذِينَ آمَنُوا وَتَطْمَئِنُّ قُلُوبُهُمْ بِذِكْرِ اللَّهِ",
-                correctAnswer: "Chapter 13, Verse 28",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 13, Verse 28", "Chapter 5, Verse 6", "Chapter 22, Verse 46", "Chapter 3, Verse 173"],
-                },
+                
+                
                 
                 {
-                questionText: "What ayat is this: قُلِ اللَّهُمَّ فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ",
-                correctAnswer: "Chapter 39, Verse 46",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 39, Verse 46", "Chapter 12, Verse 64", "Chapter 6, Verse 101", "Chapter 30, Verse 40"],
+                questionText: "What is the name of the cube-shaped building in Makkah that Muslims circle during Hajj?",
+                correctAnswer: "Kaaba",
+                difficultyLevel: "BEGINNER",
+                options: ["Masjid al-Haram", "Kaaba", "Masjid al-Nabawi", "Al-Aqsa Mosque"]
                 },
                 
-                {
-                questionText: "What ayat is this: لَيْسَ الْبِرَّ أَنْ تُوَلُّوا وُجُوهَكُمْ قِبَلَ الْمَشْرِقِ وَالْمَغْرِبِ",
-                correctAnswer: "Chapter 2, Verse 177",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 89, Verse 27", "Chapter 2, Verse 177", "Chapter 49, Verse 13", "Chapter 7, Verse 56"],
+                
+                
+                
+                ,{
+                questionText: "What is the name of the Muslim call to prayer?",
+                correctAnswer: "Adhan",
+                difficultyLevel: "BEGINNER",
+                options: ["Dua", "Salat", "Adhan", "Iqama"]
                 },
                 
-                {
-                questionText: "What ayat is this: يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَقُولُوا رَاعِنَا وَقُولُوا انظُرْنَا",
-                correctAnswer: "Chapter 2, Verse 104",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 9, Verse 23", "Chapter 33, Verse 35", "Chapter 2, Verse 104", "Chapter 3, Verse 18"],
-                },
                 
                 {
-                questionText: "What ayat is this: إِنَّ اللَّهَ يَأْمُرُ بِالْعَدْلِ وَالْإِحْسَانِ",
-                correctAnswer: "Chapter 16, Verse 90",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 16, Verse 90", "Chapter 57, Verse 25", "Chapter 70, Verse 40", "Chapter 4, Verse 135"],
+                questionText: "What is the celebration at the end of Ramadan called?",
+                correctAnswer: "Eid al-Fitr",
+                difficultyLevel: "BEGINNER",
+                options: ["Eid al-Adha", "Eid al-Fitr", "Laylat al-Qadr", "Mawlid al-Nabi"]
+                },
+                {
+                questionText: "What is the name of the first chapter of the Quran?",
+                correctAnswer: "Al-Fatiha",
+                difficultyLevel: "BEGINNER",
+                options: ["Al-Fatiha", "Al-Baqarah", "Ali 'Imran", "An-Nisa"]
+                },
+                {
+                questionText: "What is the title given to those who have memorized the Quran?",
+                correctAnswer: "Hafiz",
+                difficultyLevel: "BEGINNER",
+                options: ["Hafiz", "Sheikh", "Imam", "Muezzin"]
+                },
+                {
+                questionText: "What do Muslims do during the month of Ramadan?",
+                correctAnswer: "Fast from dawn to sunset",
+                difficultyLevel: "BEGINNER",
+                options: ["Give up meat", "Fast from dawn to sunset", "Pray all night", "Go on pilgrimage"]
+                },
+                {
+                questionText: "What is the second source of Islamic law after the Quran?",
+                correctAnswer: "Hadith",
+                difficultyLevel: "BEGINNER",
+                options: ["Tafsir", "Fiqh", "Ijma", "Hadith"]
                 },
                 
-                {
-                questionText: "What ayat is this: فَبِمَا رَحْمَةٍ مِّنَ اللَّهِ لِنتَ لَهُمْ",
-                correctAnswer: "Chapter 3, Verse 159",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 3, Verse 159", "Chapter 6, Verse 54", "Chapter 12, Verse 53", "Chapter 20, Verse 130"],
-                },
                 
                 {
-                questionText: "What ayat is this: وَلَوْ شَاءَ اللَّهُ لَجَعَلَكُمْ أُمَّةً وَاحِدَةً",
-                correctAnswer: "Chapter 16, Verse 93",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 16, Verse 93", "Chapter 22, Verse 77", "Chapter 42, Verse 8", "Chapter 9, Verse 128"],
+                questionText: "Which of the following is NOT one of the Five Pillars of Islam?",
+                correctAnswer: "Jihad",
+                difficultyLevel: "BEGINNER",
+                options: ["Shahada", "Salah", "Zakat", "Jihad"]
+                },
+                {
+                questionText: "What is the name of the prayer that Muslims perform five times a day?",
+                correctAnswer: "Salah",
+                difficultyLevel: "BEGINNER",
+                options: ["Dua", "Tahajjud", "Taraweeh", "Salah"]
+                },
+                {
+                questionText: "What is the term for a chapter of the Quran?",
+                correctAnswer: "Surah",
+                difficultyLevel: "BEGINNER",
+                options: ["Ayah", "Juz", "Hizb", "Surah"]
+                },
+                {
+                questionText: "What is the term for a verse of the Quran?",
+                correctAnswer: "Ayah",
+                difficultyLevel: "BEGINNER",
+                options: ["Surah", "Juz", "Hizb", "Ayah"]
+                },
+                {
+                questionText: "What is the first prayer of the day in Islam?",
+                correctAnswer: "Fajr",
+                difficultyLevel: "BEGINNER",
+                options: ["Isha", "Maghrib", "Fajr", "Asr"]
                 },
                 
-                {
-                questionText: "What ayat is this: فَاصْفَحِ الصَّفْحَ الْجَمِيلَ",
-                correctAnswer: "Chapter 15, Verse 85",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 30, Verse 21", "Chapter 15, Verse 85", "Chapter 59, Verse 10", "Chapter 7, Verse 199"],
-                },
                 
                 {
-                questionText: "What ayat is this: وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهِ عِلْمٌ",
-                correctAnswer: "Chapter 17, Verse 36",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 4, Verse 32", "Chapter 17, Verse 36", "Chapter 23, Verse 100", "Chapter 6, Verse 141"],
+                questionText: "What is the ritual purification before prayer called?",
+                correctAnswer: "Wudhu",
+                difficultyLevel: "BEGINNER",
+                options: ["Ghusl", "Tayammum", "Istinja", "Wudhu"]
+                },
+                {
+                questionText: "What is the full body ritual purification called?",
+                correctAnswer: "Ghusl",
+                difficultyLevel: "BEGINNER",
+                options: ["Wudhu", "Ghusl", "Tayammum", "Istinja"]
+                },
+                {
+                questionText: "How many Rak'ahs (units) are there in the Fajr prayer?",
+                correctAnswer: "2",
+                difficultyLevel: "BEGINNER",
+                options: ["2", "3", "4", "5"]
+                },
+                {
+                questionText: "How many Rak'ahs (units) are there in the Maghrib prayer?",
+                correctAnswer: "3",
+                difficultyLevel: "BEGINNER",
+                options: ["2", "3", "4", "5"]
+                },
+                {
+                questionText: "How many Rak'ahs (units) are there in the isha prayer?",
+                correctAnswer: "4",
+                difficultyLevel: "BEGINNER",
+                options: ["2", "3", "4", "5"]
+                },
+                {
+                questionText: "How many Rak'ahs (units) are there in the Asr prayer?",
+                correctAnswer: "4",
+                difficultyLevel: "BEGINNER",
+                options: ["2", "3", "4", "5"]
                 },
                 
-                {
-                questionText: "What ayat is this: وَاصْبِرْ عَلَىٰ مَا أَصَابَكَ",
-                correctAnswer: "Chapter 31, Verse 17",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 31, Verse 17", "Chapter 2, Verse 45", "Chapter 12, Verse 90", "Chapter 16, Verse 127"],
-                },
                 
                 {
-                questionText: "What ayat is this: اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ",
-                correctAnswer: "Chapter 24, Verse 35",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 24, Verse 35", "Chapter 39, Verse 22", "Chapter 56, Verse 75", "Chapter 11, Verse 61"],
+                questionText: "What is the pre-dawn meal eaten before the fast starts during Ramadan called?",
+                correctAnswer: "Suhoor",
+                difficultyLevel: "BEGINNER",
+                options: ["Iftar", "Suhoor", "Sadaqah", "Zakat"]
                 },
                 
-                {
-                questionText: "What ayat is this: وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ",
-                correctAnswer: "Chapter 17, Verse 23",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 2, Verse 255", "Chapter 17, Verse 23", "Chapter 5, Verse 76", "Chapter 9, Verse 31"],
-                },
+                
+                
                 
                 {
-                questionText: "What ayat is this: وَأَلْقَىٰ فِي الْأَرْضِ رَوَاسِيَ",
-                correctAnswer: "Chapter 13, Verse 3",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 13, Verse 3", "Chapter 22, Verse 65", "Chapter 10, Verse 24", "Chapter 34, Verse 46"],
+                questionText: "When is the Fajr prayer performed in Islam?",
+                correctAnswer: "At dawn, before sunrise",
+                difficultyLevel: "BEGINNER",
+                options: ["At dawn, before sunrise", "Immediately after sunset", "In the late afternoon", "In the midday"]
                 },
+                {
+                questionText: "When is the Dhuhr prayer performed in Islam?",
+                correctAnswer: "After the sun has reached its zenith",
+                difficultyLevel: "BEGINNER",
+                options: ["Before sunrise", "After the sun has reached its zenith", "After sunset", "Late night"]
+                },
+                {
+                questionText: "When is the Asr prayer performed in Islam?",
+                correctAnswer: "In the afternoon",
+                difficultyLevel: "BEGINNER",
+                options: ["Before sunrise", "At noon", "In the afternoon", "Late night"]
+                },
+                {
+                questionText: "When is the Isha prayer performed in Islam?",
+                correctAnswer: "At nightfall",
+                difficultyLevel: "BEGINNER",
+                options: ["Before sunrise", "At noon", "After sunset", "At nightfall"]
+                }
+                
+                
+                
+                ,{
+                questionText: "What is the term for the special congregational prayer performed by Muslims during the month of Ramadan?",
+                correctAnswer: "Taraweeh",
+                difficultyLevel: "BEGINNER",
+                options: ["Isha", "Fajr", "Taraweeh", "Jumu'ah"]
+                }
+                ,
                 
                 {
-                questionText: "What ayat is this: يُحِبُّهُمْ وَيُحِبُّونَهُ",
-                correctAnswer: "Chapter 5, Verse 54",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 5, Verse 54", "Chapter 9, Verse 71", "Chapter 18, Verse 28", "Chapter 48, Verse 29"],
+                questionText: "Which Surah (chapter) of the Quran is recited in every unit of the Muslim prayer?",
+                correctAnswer: "Al-Fatiha",
+                difficultyLevel: "BEGINNER",
+                options: ["Al-Baqarah", "Al-Ikhlas", "Al-Fatiha", "Al-Kawthar"]
+                },
+                {
+                questionText: "What is the term for an Islamic house of worship?",
+                correctAnswer: "Masjid",
+                difficultyLevel: "BEGINNER",
+                options: ["Madrassah", "Zawiya", "Khanqah", "Masjid"]
                 },
                 
-                {
-                questionText: "What ayat is this: وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ",
-                correctAnswer: "Chapter 17, Verse 23",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 2, Verse 255", "Chapter 17, Verse 23", "Chapter 5, Verse 76", "Chapter 9, Verse 31"],
-                },
                 
-                {
-                questionText: "What ayat is this: وَأَلْقَىٰ فِي الْأَرْضِ رَوَاسِيَ",
-                correctAnswer: "Chapter 13, Verse 3",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 13, Verse 3", "Chapter 22, Verse 65", "Chapter 10, Verse 24", "Chapter 34, Verse 46"],
-                },
-                
-                {
-                questionText: "What ayat is this: يُحِبُّهُمْ وَيُحِبُّونَهُ",
-                correctAnswer: "Chapter 5, Verse 54",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 5, Verse 54", "Chapter 9, Verse 71", "Chapter 18, Verse 28", "Chapter 48, Verse 29"],
-                },
-                
-                {
-                questionText: "What ayat is this: إِنَّا كَفَيْنَاكَ الْمُسْتَهْزِئِينَ",
-                correctAnswer: "Chapter 15, Verse 95",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 15, Verse 95", "Chapter 11, Verse 47", "Chapter 36, Verse 76", "Chapter 51, Verse 54"],
-                },
-                
-                {
-                questionText: "What ayat is this: إِنَّ الْإِنسَانَ خُلِقَ هَلُوعًا",
-                correctAnswer: "Chapter 70, Verse 19",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 3, Verse 185", "Chapter 70, Verse 19", "Chapter 24, Verse 35", "Chapter 39, Verse 42"],
-                },
-                
-                {
-                questionText: "What ayat is this: وَالشَّمْسُ وَالْقَمَرُ وَالنُّجُومُ وَالْجِبَالُ",
-                correctAnswer: "Chapter 91, Verse 1",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 91, Verse 1", "Chapter 2, Verse 29", "Chapter 6, Verse 99", "Chapter 18, Verse 109"],
-                },
-                
-                {
-                questionText: "What ayat is this: وَلِلَّهِ يَسْجُدُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ",
-                correctAnswer: "Chapter 22, Verse 18",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 22, Verse 18", "Chapter 41, Verse 37", "Chapter 53, Verse 62", "Chapter 13, Verse 15"],
-                },
-                
-                {
-                questionText: "What ayat is this: إِنَّ الْحَمْدَ لِلَّهِ رَبِّ الْعَالَمِينَ",
-                correctAnswer: "Chapter 1, Verse 2",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 1, Verse 2", "Chapter 6, Verse 102", "Chapter 39, Verse 29", "Chapter 57, Verse 1"],
-                },
-                
-                {
-                questionText: "What ayat is this: اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ",
-                correctAnswer: "Chapter 2, Verse 255",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 2, Verse 255", "Chapter 3, Verse 173", "Chapter 5, Verse 76", "Chapter 9, Verse 31"],
-                },
-                
-                {
-                questionText: "What ayat is this: يَا أَيُّهَا النَّاسُ اعْبُدُوا رَبَّكُمُ",
-                correctAnswer: "Chapter 2, Verse 21",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 2, Verse 21", "Chapter 3, Verse 64", "Chapter 7, Verse 56", "Chapter 9, Verse 129"],
-                },
-                
-                {
-                questionText: "What ayat is this: لَيْسَ الْبِرَّ أَنْ تُوَلُّوا وُجُوهَكُمْ قِبَلَ الْمَشْرِقِ وَالْمَغْرِبِ",
-                correctAnswer: "Chapter 2, Verse 177",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 89, Verse 27", "Chapter 2, Verse 177", "Chapter 49, Verse 13", "Chapter 7, Verse 56"],
-                },
-                
-                {
-                questionText: "What ayat is this: فَإِنَّ مَعَ الْعُسْرِ يُسْرًا",
-                correctAnswer: "Chapter 94, Verse 5",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 94, Verse 5", "Chapter 20, Verse 131", "Chapter 9, Verse 129", "Chapter 23, Verse 118"],
-                },
-                
-                {
-                questionText: "What ayat is this: فَإِنَّ اللَّهَ يَأْمُرُ بِالْعَدْلِ وَالْإِحْسَانِ",
-                correctAnswer: "Chapter 16, Verse 90",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 16, Verse 90", "Chapter 57, Verse 25", "Chapter 70, Verse 40", "Chapter 4, Verse 135"],
-                },
-                
-                {
-                questionText: "What ayat is this: وَاللَّهُ بِمَا تَعْمَلُونَ خَبِيرٌ",
-                correctAnswer: "Chapter 3, Verse 98",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 3, Verse 98", "Chapter 12, Verse 76", "Chapter 19, Verse 65", "Chapter 24, Verse 35"],
-                },
-                
-                {
-                questionText: "What ayat is this: فَإِنَّكَ بِأَعْيُنِنَا",
-                correctAnswer: "Chapter 52, Verse 48",
-                difficultyLevel: "EXPERT",
-                options: ["Chapter 52, Verse 48", "Chapter 7, Verse 128", "Chapter 13, Verse 2", "Chapter 41, Verse 53"],
-                },
-
-                {
-                    questionText: "Which Islamic scholar is known for his extensive commentary on the Quran called 'Tafsir al-Qurtubi'?",
-                    correctAnswer: "Imam Al-Qurtubi",
-                    difficultyLevel: "EXPERT",
-                    options: ["Imam Al-Ghazali", "Imam Al-Qurtubi", "Imam Ibn Taymiyyah", "Imam Ibn Kathir"],
-                    },
-                    
-                    {
-                    questionText: "Which famous Islamic philosopher is known for his work 'The Incoherence of the Philosophers'?",
-                    correctAnswer: "Imam Al-Ghazali",
-                    difficultyLevel: "EXPERT",
-                    options: ["Ibn Sina (Avicenna)", "Imam Al-Ghazali", "Al-Farabi", "Ibn Rushd (Averroes)"],
-                    },
-                    
-                    {
-                    questionText: "In Islamic history, the 'Battle of Yarmouk' was fought between the Muslim forces and which empire?",
-                    correctAnswer: "Byzantine Empire",
-                    difficultyLevel: "EXPERT",
-                    options: ["Sasanian Empire", "Byzantine Empire", "Umayyad Empire", "Abbasid Empire"],
-                    },
-                    
-                    {
-                    questionText: "Which Islamic scholar is known for his compilation of hadith collection called 'Sahih Muslim'?",
-                    correctAnswer: "Imam Muslim ibn al-Hajjaj",
-                    difficultyLevel: "EXPERT",
-                    options: ["Imam Abu Hanifa", "Imam Malik", "Imam Muslim ibn al-Hajjaj", "Imam Ahmad ibn Hanbal"],
-                    },
-                    
-                    {
-                    questionText: "Which Muslim mathematician is famous for his work on algebra and introduced the concept of algorithms?",
-                    correctAnswer: "Al-Khwarizmi",
-                    difficultyLevel: "EXPERT",
-                    options: ["Al-Farabi", "Ibn al-Haytham", "Al-Khwarizmi", "Nasir al-Din al-Tusi"],
-                    },
-
-                    {
-                        questionText: "Which Islamic scholar is known for his work 'Ihya Ulum al-Din' (The Revival of the Religious Sciences)?",
-                        correctAnswer: "Imam Al-Ghazali",
-                        difficultyLevel: "EXPERT",
-                        options: ["Imam Malik", "Imam Al-Ghazali", "Imam Ibn Hanbal", "Imam Ibn Hazm"],
-                        },
-
-                        {
-                            questionText: "Which Islamic dynasty ruled the Indian subcontinent from the 16th to the 19th century?",
-                            correctAnswer: "Mughal Empire",
-                            difficultyLevel: "EXPERT",
-                            options: ["Safavid Empire", "Mughal Empire", "Ottoman Empire", "Gupta Empire"],
-                            },
-
-                            {
-                                questionText: "Who was the first female judge appointed by the Prophet Muhammad (PBUH) in Islamic history?",
-                                correctAnswer: "Umm Waraqah",
-                                difficultyLevel: "EXPERT",
-                                options: ["Aisha bint Abu Bakr", "Fatimah bint Muhammad", "Umm Waraqah", "Hafsah bint Umar"],
-                                },
-
-                                {
-                                    questionText: "Who was the first Muslim woman to lead the Friday congregational prayers?",
-                                    correctAnswer: "Rabia al-Adawiyya",
-                                    difficultyLevel: "EXPERT",
-                                    options: ["Aisha bint Abu Bakr", "Fatimah bint Muhammad", "Rabia al-Adawiyya", "Khadijah bint Khuwaylid"],
-                                    },
-                                    
-                                    {
-                                    questionText: "Which Islamic scholar is known for his comprehensive work on Islamic legal methodology called 'Al-Mabsut'?",
-                                    correctAnswer: "Imam Sarakhsi",
-                                    difficultyLevel: "EXPERT",
-                                    options: ["Imam Abu Hanifa", "Imam Shafi'i", "Imam Malik", "Imam Sarakhsi"],
-                                    },
 
                   
         ];

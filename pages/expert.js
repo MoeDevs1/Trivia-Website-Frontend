@@ -12,7 +12,7 @@ const QuestionFetch = () => {
   const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(1890); // 3 minutes in seconds
+  const [timeRemaining, setTimeRemaining] = useState(420); // 3 minutes in seconds
   const router = useRouter();
 
   const [email, setEmail] = useState(null);
@@ -44,7 +44,7 @@ const QuestionFetch = () => {
     fetchQuestions("EXPERT");  // Fetch beginner level questions
   }, []);
 
-  const fetchQuestions = async (difficulty, numberOfQuestions = 10) => {
+  const fetchQuestions = async (difficulty, numberOfQuestions =7) => {
     try {
       const response = await fetch(`http://localhost:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
       const data = await response.json();
@@ -89,19 +89,23 @@ const QuestionFetch = () => {
 
   const endGame = async () => {
     setGameOver(true);
-
-    // Check if it's the last question (number 10)
-    if (currentQuestionIndex + 1 === 10) {
+  
+    if (currentQuestionIndex + 1 === 7) {
       try {
         const token = `Bearer ${sessionStorage.getItem('token')}`;
         const config = {
           headers: { Authorization: token },
         };
-
+  
+        const correctAnswers = questions.filter(
+          question => userAnswers[question.id] === question.correctAnswer
+        );
+        const totalCorrect = correctAnswers.length;
+  
         const requestData = {
-          score,
+          score: totalCorrect * 4, // Use the total number of correct answers as the score
         };
-
+  
         await axios.post(
           `http://localhost:8080/api/v1/auth/leaderboard/${username}`,
           requestData,
@@ -112,7 +116,7 @@ const QuestionFetch = () => {
       }
     }
   };
-
+  ;
 
      const [selectedOption, setSelectedOption] = useState(null);
     const [isCorrect, setIsCorrect] = useState(null);
@@ -125,7 +129,7 @@ const QuestionFetch = () => {
       question => userAnswers[question.id] !== question.correctAnswer
     );
     const totalCorrect = correctAnswers.length;
-    const totalQuestions = 10;
+    const totalQuestions = 7;
   
     return (
       <div className={styles.Container}>
@@ -152,7 +156,7 @@ const QuestionFetch = () => {
 
               <Card.Text>
                 
-                <strong className={styles.resultCorrect}>Score: {score}</strong>
+                <strong className={styles.resultCorrect}>Score: {totalCorrect * 4}</strong>
               </Card.Text>
               <Card.Text>
               

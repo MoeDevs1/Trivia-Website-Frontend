@@ -34,7 +34,7 @@ const Index = () => {
 
         <Image
           onClick={handleBeginnerClick}
-          src="/img/1.jpg"
+          src="/img/beginner9.jpg"
           alt="easy"
           width={330}
           height={550}
@@ -45,7 +45,7 @@ const Index = () => {
         <Image
           onClick={handleIntermediateClick}
 
-          src="/img/2.jpg"
+          src="/img/intermediate9.jpg"
           alt=""
           width={330}
           height={550}
@@ -54,8 +54,8 @@ const Index = () => {
         <Image
           onClick={handleAdvancedClick}
 
-          src="/img/3.jpg"
-          alt="Intermediate"
+          src="/img/advanced9.jpg"
+          alt="advanced"
           width={330}
           height={550}
           className={styles.skillImage}
@@ -63,7 +63,7 @@ const Index = () => {
         <Image
           onClick={handleExpertClick}
 
-          src="/img/4.jpg"
+          src="/img/hardest9.jpg"
           alt="Expert"
           width={330}
           height={550}
