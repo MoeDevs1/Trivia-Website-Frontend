@@ -22,7 +22,7 @@ const Leaderboard = () => {
           headers: { Authorization: token },
         };
         const response = await axios.get(
-          'http://localhost:8080/api/v1/auth/user',
+          'http://18.223.98.179:8080/api/v1/auth/user',
           config
         );
         const { score, username, flag } = response.data;
@@ -50,7 +50,7 @@ const Leaderboard = () => {
     const fetchCurrentUserScore = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/auth/leaderboard/score/${userName}`
+          `http://18.223.98.179:8080/api/v1/auth/leaderboard/score/${userName}`
         );
         setCurrentUserScore(response.data);
       } catch (error) {

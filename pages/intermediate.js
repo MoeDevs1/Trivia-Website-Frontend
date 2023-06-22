@@ -46,7 +46,7 @@ const QuestionFetch = () => {
 
   const fetchQuestions = async (difficulty, numberOfQuestions = 12) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
+      const response = await fetch(`http://18.223.98.179:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
       const data = await response.json();
       setQuestions(data);
     } catch (error) {
@@ -106,7 +106,7 @@ const QuestionFetch = () => {
         };
   
         await axios.post(
-          `http://localhost:8080/api/v1/auth/leaderboard/${username}`,
+          `http://18.223.98.179:8080/api/v1/auth/leaderboard/${username}`,
           requestData,
           config
         );
