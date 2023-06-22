@@ -27,20 +27,20 @@ const Navbar = () => {
         console.error(error);
       }
     };
-
+  
     fetchUserData();
-
+  
     // Setting a listener to sessionStorage
     const storageListener = () => {
       fetchUserData();
     };
-
+  
     window.addEventListener('storage', storageListener);
-
+  
     // Make sure to remove the listener when the component is unmounted
     return () => window.removeEventListener('storage', storageListener);
-  }, []);
-
+  });
+  
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);

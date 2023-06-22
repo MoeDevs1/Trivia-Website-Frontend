@@ -45,7 +45,7 @@ const countries = [
 
 const registerUser = async (token, router) => {
   // Register the user using the token
-  await axios.post('http://18.223.98.179:8080/api/v1/auth/register/google', { token })
+  await axios.post('http://localhost:8080/api/v1/auth/register/google', { token })
     .then(response => {
       const { data } = response;
       const { token } = data;
@@ -71,7 +71,7 @@ const registerUser = async (token, router) => {
 
 const loginUser = async (token, router) => {
   // Login the user using the token
-  await axios.post('http://18.223.98.179:8080/api/v1/auth/login/google', { token })
+  await axios.post('http://localhost:8080/api/v1/auth/login/google', { token })
     .then(response => {
       const { data } = response;
       const { token } = data;
@@ -110,10 +110,13 @@ const GoogleSignupPage = () => {
     // Register the user using the tokenId
     await registerUser(tokenId, router); // Pass the router as an argument
   }
-
+  const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+ 
   return (
+
+    
     <div>
-      <GoogleOAuthProvider clientId="955085585863-ot8g3rsrvc09ekpiifs07roalvaq5p5j.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId={googleClientId}>
         <GoogleLogin
           text="continue_with"
           onSuccess={onGoogleSuccess}
@@ -142,10 +145,11 @@ const GoogleLoginPage = () => {
     // Login the user using the tokenId
     await loginUser(tokenId, router); // Pass the router as an argument
   }
+  const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
   return (
     <div>
-      <GoogleOAuthProvider clientId="955085585863-ot8g3rsrvc09ekpiifs07roalvaq5p5j.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId={googleClientId}>
         <GoogleLogin
           text="sign_in"
           onSuccess={onGoogleSuccess}
