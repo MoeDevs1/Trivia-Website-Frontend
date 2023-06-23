@@ -29,7 +29,7 @@ const advanced = () => {
           headers: { Authorization: token },
         };
         const response = await axios.get(
-          'http://18.223.98.179:8080/api/v1/auth/user',
+          'https://18.223.98.179:8080/api/v1/auth/user',
           config
         );
         const { username, email } = response.data;
@@ -49,7 +49,7 @@ const advanced = () => {
 
   const fetchQuestions = async (difficulty, numberOfQuestions =7) => {
     try {
-      const response = await fetch(`http://18.223.98.179:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
+      const response = await fetch(`https://18.223.98.179:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
       const data = await response.json();
       setQuestions(data);
     } catch (error) {
@@ -110,7 +110,7 @@ const advanced = () => {
         };
   
         await axios.post(
-          `http://18.223.98.179:8080/api/v1/auth/leaderboard/${username}`,
+          `https://18.223.98.179:8080/api/v1/auth/leaderboard/${username}`,
           requestData,
           config
         );
