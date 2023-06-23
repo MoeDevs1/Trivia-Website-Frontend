@@ -42,7 +42,7 @@ const Leaderboard = () => {
 
   const fetchLeaderboardData = async () => {
     try {
-      const response = await fetch('http://3.21.44.31:8443/api/v1/auth/topUsers?limit=20');
+      const response = await fetch('https://trivia-2026648991.us-east-2.elb.amazonaws.com/api/v1/auth/topUsers?limit=20');
       if (!response.ok) {
         throw new Error('Failed to fetch leaderboard data');
       }
