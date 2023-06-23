@@ -42,7 +42,7 @@ const Leaderboard = () => {
 
   const fetchLeaderboardData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/v1/auth/topUsers?limit=20');
+      const response = await fetch('https://3.17.156.147:8080/api/v1/auth/topUsers?limit=20');
       if (!response.ok) {
         throw new Error('Failed to fetch leaderboard data');
       }

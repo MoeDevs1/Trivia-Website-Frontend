@@ -26,7 +26,7 @@ const QuestionFetch = () => {
           headers: { Authorization: token },
         };
         const response = await axios.get(
-          'https://223:8080/api/v1/auth/user',
+          'https://3.17.156.147:8080/api/v1/auth/user',
           config
         );
         const { username, email } = response.data;
@@ -46,7 +46,7 @@ const QuestionFetch = () => {
 
   const fetchQuestions = async (difficulty, numberOfQuestions = 12) => {
     try {
-      const response = await fetch(`https://18.223.98.179:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
+      const response = await fetch(`https://3.17.156.147:8080/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
       const data = await response.json();
       setQuestions(data);
     } catch (error) {
@@ -106,7 +106,7 @@ const QuestionFetch = () => {
         };
   
         await axios.post(
-          `https://18.223.98.179:8080/api/v1/auth/leaderboard/${username}`,
+          `https://3.17.156.147:8080/api/v1/auth/leaderboard/${username}`,
           requestData,
           config
         );

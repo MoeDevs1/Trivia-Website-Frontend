@@ -228,7 +228,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
 
-      const response = await axios.post('http://localhost:8080/api/v1/auth/authenticate', {
+      const response = await axios.post('https://3.17.156.147:8080/api/v1/auth/authenticate', {
         email: signInEmail,
         password: signInPassword,
       });
