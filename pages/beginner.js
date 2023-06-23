@@ -46,7 +46,7 @@ const Beginner = () => {
 
   const fetchQuestions = async (difficulty, numberOfQuestions = 10) => {
     try {
-      const response = await fetch(`https://3.21.44.31:8443/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`); 
+      const response = await fetch(`http://3.21.44.31:8443/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`); 
       const data = await response.json();
       setQuestions(data);
     } catch (error) {

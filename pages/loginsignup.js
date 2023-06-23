@@ -228,7 +228,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
 
-      const response = await axios.post('https://3.21.44.31:8443/api/v1/auth/authenticate', {
+      const response = await axios.post('http://3.21.44.31:8443/api/v1/auth/authenticate', {
         email: signInEmail,
         password: signInPassword,
       });
@@ -320,7 +320,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
   
-      const response = await axios.post('https://3.21.44.31:8443/api/v1/auth/register', {
+      const response = await axios.post('http://3.21.44.31:8443/api/v1/auth/register', {
         userName,
         email,
         password,
