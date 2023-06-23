@@ -228,7 +228,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
 
-      const response = await axios.post('https://18.223.98.179:8080/api/v1/auth/authenticate', {
+      const response = await axios.post('http://localhost:8080/api/v1/auth/authenticate', {
         email: signInEmail,
         password: signInPassword,
       });
@@ -320,7 +320,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
   
-      const response = await axios.post('https://18.223.98.179:8080/api/v1/auth/register', {
+      const response = await axios.post('http://18.223.98.179:8080/api/v1/auth/register', {
         userName,
         email,
         password,

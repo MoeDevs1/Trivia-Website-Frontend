@@ -22,7 +22,7 @@ const Leaderboard = () => {
           headers: { Authorization: token },
         };
         const response = await axios.get(
-          'https://18.223.98.179:8080/api/v1/auth/user',
+          'http://3.17.156.147:8080/api/v1/auth/user',
           config
         );
         const { score, username, flag } = response.data;
@@ -42,7 +42,7 @@ const Leaderboard = () => {
 
   const fetchLeaderboardData = async () => {
     try {
-      const response = await fetch('https://18.223.98.179:8080/api/v1/auth/topUsers?limit=20');
+      const response = await fetch('http://localhost:8080/api/v1/auth/topUsers?limit=20');
       if (!response.ok) {
         throw new Error('Failed to fetch leaderboard data');
       }
