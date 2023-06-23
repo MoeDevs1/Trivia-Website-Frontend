@@ -6,7 +6,7 @@ const QuestionPost = () => {
 
     const updateQuestion = async (id, updatedQuestionData) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/v1/auth/${id}`, {
+            const response = await fetch(`http://3.17.156.147:8080/api/v1/auth/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
