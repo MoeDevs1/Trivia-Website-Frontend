@@ -22,7 +22,7 @@ const Leaderboard = () => {
           headers: { Authorization: token },
         };
         const response = await axios.get(
-          'http://3.17.156.147:8080/api/v1/auth/user',
+          'https://muslimtrivia.com/api/v1/auth/user',
           config
         );
         const { score, username, flag } = response.data;
@@ -42,7 +42,7 @@ const Leaderboard = () => {
 
   const fetchLeaderboardData = async () => {
     try {
-      const response = await fetch('https://trivia-2026648991.us-east-2.elb.amazonaws.com/api/v1/auth/topUsers?limit=20');
+      const response = await fetch('https://muslimtrivia.com/api/v1/auth/topUsers?limit=20');
       if (!response.ok) {
         throw new Error('Failed to fetch leaderboard data');
       }

@@ -349,7 +349,7 @@ const QuestionPost = () => {
 
         for (let questionData of questions) {
             try {
-                const response = await fetch('http://localhost:8080/api/v1/auth', {
+                const response = await fetch('https://muslimtrivia.com/api/v1/auth', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

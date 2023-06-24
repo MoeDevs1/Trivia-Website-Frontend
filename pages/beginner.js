@@ -26,7 +26,7 @@ const Beginner = () => {
           headers: { Authorization: token },
         };
         const response = await axios.get(
-          'https://localhost:8080/api/v1/auth/user',
+          'https://muslimtrivia.com/api/v1/auth/user',
           config
         );
         const { username, email } = response.data;
@@ -46,7 +46,7 @@ const Beginner = () => {
 
   const fetchQuestions = async (difficulty, numberOfQuestions = 10) => {
     try {
-      const response = await fetch(`http://trivia-2026648991.us-east-2.elb.amazonaws.com/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`); 
+      const response = await fetch(`https://muslimtrivia.com/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`); 
       const data = await response.json();
       setQuestions(data);
     } catch (error) {
@@ -107,7 +107,7 @@ const Beginner = () => {
         };
   
         await axios.post(
-          `https://localhost:8080/api/v1/auth/leaderboard/${username}`,
+          `https://muslimtrivia.com/api/v1/auth/leaderboard/${username}`,
           requestData,
           config
         );
