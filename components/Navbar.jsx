@@ -19,7 +19,7 @@ const Navbar = () => {
         const config = {
           headers: { Authorization: token }
         };
-        const response = await axios.get('http://3.17.156.147:8080/api/v1/auth/user', config);
+        const response = await axios.get('https://muslimtrivia.com/api/v1/auth/user', config);
         const { email, username } = response.data;
         setUserEmail(email);
         setUsername(username);
@@ -59,54 +59,57 @@ const Navbar = () => {
     setUserEmail(null);
     window.location.reload(); // Refresh the page
   };
+// ... same as before ...
 
-  return (
-    <nav className={styles.navBar}>
-      <div className={styles.logo} onClick={() => router.push('/')}>
-        <Image
-          src="/img/muslim-trivia-high-resolution-logo-color-on-transparent-background.png"
-          alt=""
-          width={140}
-          height={60}
-          className={styles.logo}
-        />
-      </div>
+return (
+  <nav className={styles.navBar}>
+    <div className={styles.logo} onClick={() => router.push('/')}>
+      <Image
+        src="/img/muslim-trivia-high-resolution-logo-color-on-transparent-background.png"
+        alt=""
+        width={140}
+        height={60}
+        className={styles.logo}
+      />
+    </div>
 
-      <ul className={styles.navLinks}>
+    <ul className={styles.navLinks}>
+      <li className={styles.navLink} onClick={() => router.push('/')}>Home</li>
+      <li className={styles.navLink} onClick={() => router.push('/leaderboard')}>Leaderboard</li>
+    </ul>
+
+    <ul className={`${styles.authLinks} ${styles.desktopWelcomeUser}`}>
+      {username ? (
+        <li className={styles.navLink} onClick={() => setShowDropdown(!showDropdown)}>
+          Welcome, {username}
+          {showDropdown && (
+            <ul className={styles.dropdownMenu}>
+              <li onClick={handleLogout}>Logout</li>
+              <li onClick={handleSetting}>Setting</li>
+            </ul>
+          )}
+        </li>
+      ) : (
+        <li className={styles.navLink} onClick={handleLoginClick}>
+          Login
+        </li>
+      )}
+    </ul>
+    
+    <div className={styles.menuIconContainer}>
+      <FaBars className={styles.mensuIcon} onClick={toggleMenu} />
+     </div>
+
+    {showMenu && (
+      <ul className={`${styles.mobileMenu} ${styles.mobileWelcomeUser}`}>
+        <li>Welcome, {username}</li>
         <li className={styles.navLink} onClick={() => router.push('/')}>Home</li>
         <li className={styles.navLink} onClick={() => router.push('/leaderboard')}>Leaderboard</li>
-       </ul>
-      <ul className={styles.authLinks}>
-  {username ? (
-    <li className={styles.navLink} onClick={() => setShowDropdown(!showDropdown)}>
-      {username}
-      <FaCaretDown className={`${styles.dropDown} ${styles.dropdownPosition}`} />
-      {showDropdown && (
-        <ul className={styles.dropdownMenu}>
-          <li onClick={handleLogout}>Logout</li>
-          <li onClick={handleSetting}>Setting</li>
-        </ul>
-      )}
-    </li>
-  ) : (
-    <li className={styles.navLink} onClick={handleLoginClick}>
-      Login <FaCaretDown className={`${styles.dropDown} ${styles.dropdownPosition}`} />
-    </li>
-  )}
-</ul>
-
-
-
-      <FaBars className={styles.menuIcon} onClick={toggleMenu} />
-
-      {showMenu && (
-        <ul className={styles.mobileMenu}>
-          <li className={styles.navLink} onClick={() => router.push('/')}>Home</li>
-          <li className={styles.navLink} onClick={() => router.push('/leaderboard')}>Leaderboard</li>
-         </ul>
-      )}
-    </nav>
-  );
+        <li onClick={handleLogout}>Logout</li>
+      </ul>
+    )}
+  </nav>
+);
 };
 
 export default Navbar;

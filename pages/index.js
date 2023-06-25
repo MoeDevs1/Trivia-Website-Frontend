@@ -22,7 +22,7 @@ const Index = () => {
   return (
     <div className={styles.Container}>
       <div className={styles.bannerContainer}>
-        <video autoPlay muted className={styles.videoWrapper}>
+        <video autoPlay muted playsInline className={styles.videoWrapper}>
           <source src="/vid/FINL.mp4" type="video/mp4" className={styles.videoWrapper} />
           Your browser does not support the video tag.
         </video>

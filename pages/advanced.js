@@ -44,7 +44,7 @@ const advanced = () => {
   }, []);
 
   useEffect(() => {
-    fetchQuestions("EXPERT");  // Fetch beginner level questions
+    fetchQuestions("ADVANCED");  // Fetch beginner level questions
   }, []);
 
   const fetchQuestions = async (difficulty, numberOfQuestions =7) => {
@@ -62,18 +62,29 @@ const advanced = () => {
   };
 
   const startGame = () => {
+    // Reset game state
+    setQuestions([]);
+    setCurrentQuestionIndex(0);
+    setUserAnswers({});
+    setScore(0);
+    setGameOver(false);
+    setTimeRemaining(420); // 3 minutes in seconds
+    
+    fetchQuestions("EXPERT"); // Fetch new questions
+  
     setGameStarted(true);
     const timer = setInterval(() => {
       setTimeRemaining(prev => prev - 1);
     }, 1000); // Decrease time remaining by 1 second
-
+  
     setTimeout(() => {
       endGame();
       clearInterval(timer);
     }, 180000); // 3 minutes timer
-
+  
     return () => clearInterval(timer);
   };
+  
 
   const checkAnswerAndNext = (question) => {
     const selectedAnswer = userAnswers[question.id];

@@ -57,20 +57,36 @@ const QuestionFetch = () => {
   const handleOptionChange = (questionId, option) => {
     setUserAnswers(prev => ({ ...prev, [questionId]: option }));
   };
-
   const startGame = () => {
+    // Reset game state
+    setQuestions([]);
+    setCurrentQuestionIndex(0);
+    setUserAnswers({});
+    setScore(0);
+    setGameOver(false);
+    setTimeRemaining(420); // 3 minutes in seconds
+    
+    fetchQuestions("EXPERT"); // Fetch new questions
+  
     setGameStarted(true);
     const timer = setInterval(() => {
       setTimeRemaining(prev => prev - 1);
     }, 1000); // Decrease time remaining by 1 second
-
+  
     setTimeout(() => {
       endGame();
       clearInterval(timer);
     }, 180000); // 3 minutes timer
-
+  
     return () => clearInterval(timer);
   };
+  
+
+
+
+
+
+  
 
   const checkAnswerAndNext = (question) => {
     const selectedAnswer = userAnswers[question.id];
@@ -241,8 +257,8 @@ const QuestionFetch = () => {
         </Button>
        </div>
       <div className={styles.pointSystemContainer}>
-        <Image
-          src="/img/6.jpg"
+      <Image
+          src="/img/pointer.jpg"
           alt="Point System"
           width={600}
           height={680}
@@ -250,7 +266,7 @@ const QuestionFetch = () => {
         />
 
         <Image
-          src="/img/7.jpg"
+          src="/img/instruct.jpg"
           alt="Point System"
           width={600}
           height={680}

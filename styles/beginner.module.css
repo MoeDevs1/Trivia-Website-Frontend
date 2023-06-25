@@ -327,7 +327,7 @@ width: 300px;
 .lobbyContainer {
   display: flex;
   flex-direction: column;
-  background-color: #383232; /* Light grey background */
+  background-color: #1e1212; /* Light grey background */
    min-height: 100vh;
   
 }
@@ -352,7 +352,7 @@ width: 300px;
 
 
 .startButton:hover {
-  background-color: #219fe8;
+  background-color: #F7AD2B;
   cursor: pointer;
 }
 
@@ -395,7 +395,7 @@ width: 300px;
 
 
  .questionText{
-  color: #052a48;
+  color: #F7AD2B;
   font-weight: bold;
   font-size: 22px;
   margin-bottom: 60px;

@@ -313,7 +313,7 @@ width: 300px;
 .lobbyContainer {
   display: flex;
   flex-direction: column;
-  background-color: #383232; /* Light grey background */
+  background-color: #1e1212; /* Light grey background */
    min-height: 100vh;
   
 }
