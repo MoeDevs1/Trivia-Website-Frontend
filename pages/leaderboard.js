@@ -12,33 +12,51 @@ const Leaderboard = () => {
 
   useEffect(() => {
     fetchLeaderboardData();
-  }, []);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const token = `Bearer ${sessionStorage.getItem('token')}`;
-        const config = {
-          headers: { Authorization: token },
-        };
-        const response = await axios.get(
-          'https://muslimtrivia.com/api/v1/auth/user',
-          config
-        );
-        const { score, username, flag } = response.data;
-
-        setUserName(username);
-        setPoints(score);
-        setFlag(flag);
-        setCurrentUser(response.data); // Set the current user
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchUserData();
   }, []);
+
+  const fetchUserData = async () => {
+    try {
+      const token = `Bearer ${sessionStorage.getItem('token')}`;
+      const config = {
+        headers: { Authorization: token },
+      };
+      const response = await axios.get(
+        'https://muslimtrivia.com/api/v1/auth/user',
+        config
+      );
+      const { username, flag } = response.data;
+
+      setUserName(username);
+      setFlag(flag);
+      setCurrentUser(response.data); // Set the current user
+      console.log(response.data);
+
+      fetchUserScore(username); // Fetch the user's score after we have the username
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchUserScore = async (username) => {
+    try {
+      const token = `Bearer ${sessionStorage.getItem('token')}`;
+      const config = {
+        headers: { Authorization: token },
+      };
+      const response = await axios.get(
+        `https://muslimtrivia.com/api/v1/auth/current/score/${username}`,
+        config
+      );
+      const score = response.data;
+      setPoints(score);
+      console.log('Score:', score);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   const fetchLeaderboardData = async () => {
     try {
@@ -113,7 +131,7 @@ const Leaderboard = () => {
                 />
               </div>
               <span className={styles.name}>{currentUser.username}</span>
-              <span className={styles.points}>{currentUser.score}</span>
+              <span className={styles.points}>{score}</span>
             </div>
           )}
         </div>
@@ -130,7 +148,7 @@ const Leaderboard = () => {
               />
             </div>
             <span className={styles.name}>{currentUser.username}</span>
-            <span className={styles.points}>{currentUser.score}</span>
+            <span className={styles.points}>{score}</span>
           </div>
         )}
         {!currentUser && (
