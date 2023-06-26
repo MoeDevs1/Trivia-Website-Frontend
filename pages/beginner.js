@@ -67,7 +67,7 @@ const Beginner = () => {
     setGameOver(false);
     setTimeRemaining(180); // 3 minutes in seconds
     
-    fetchQuestions("EXPERT"); // Fetch new questions
+    fetchQuestions("BEGINNER"); // Fetch new questions
   
     setGameStarted(true);
     const timer = setInterval(() => {

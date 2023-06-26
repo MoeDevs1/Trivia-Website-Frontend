@@ -70,7 +70,7 @@ const advanced = () => {
     setGameOver(false);
     setTimeRemaining(420); // 3 minutes in seconds
     
-    fetchQuestions("EXPERT"); // Fetch new questions
+    fetchQuestions("ADVANCED"); // Fetch new questions
   
     setGameStarted(true);
     const timer = setInterval(() => {
