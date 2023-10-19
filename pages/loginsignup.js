@@ -320,12 +320,13 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
   
-      const response = await axios.post('18.220.111.53:8081/api/v1/auth/register', {
+      const response = await axios.post('http://18.220.111.53:8081/api/v1/auth/register', {
         userName,
         email,
         password,
-        flag: selectedFlag.value// Pass the selected flag value to the flag field in the request payload
+        flag: selectedFlag.value
       });
+      
   
       // Handle success
       const { token } = response.data;
