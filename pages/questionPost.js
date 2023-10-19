@@ -57,6 +57,7 @@ const QuestionPost = () => {
                 difficultyLevel: "INTERMEDIATE",
                 options: ["Ummah", "Jama'ah", "Firqah", "Madhhab"]
             },
+           
             {
                 questionText: "Who was the prophet in Islam who was given the Ten Commandments by God?",
                 correctAnswer: "Musa (pbuh)",

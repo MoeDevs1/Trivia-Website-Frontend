@@ -12,7 +12,7 @@ const Beginner = () => {
   const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(180); // 3 minutes in seconds
+  const [timeRemaining, setTimeRemaining] = useState(180); // 3 minutes in secondss
   const router = useRouter();
 
   const [email, setEmail] = useState(null);
