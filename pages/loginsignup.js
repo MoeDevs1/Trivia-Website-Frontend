@@ -320,7 +320,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
   
-      const response = await axios.post('http://18.220.111.53:8081/api/v1/auth/register', {
+      const response = await axios.post('https://18.220.111.53:8081/api/v1/auth/register', {
         userName,
         email,
         password,
