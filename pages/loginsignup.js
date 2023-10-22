@@ -228,7 +228,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
 
-      const response = await axios.post('https://muslimtrivia.com/api/v1/auth/authenticate', {
+      const response = await axios.post('https://54.86.135.3:443/api/v1/auth/authenticate', {
         email: signInEmail,
         password: signInPassword,
       });
@@ -320,7 +320,7 @@ const LoginSignup = () => {
     try {
       setIsLoading(true); // Show loading effect
   
-      const response = await axios.post('https://muslimtrivia.com/api/v1/auth/register', {
+      const response = await axios.post('https://54.86.135.3:443/api/v1/auth/register', {
         userName,
         email,
         password,
