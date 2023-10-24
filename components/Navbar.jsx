@@ -19,7 +19,7 @@ const Navbar = () => {
         const config = {
           headers: { Authorization: token }
         };
-        const response = await axios.get('https://54.86.135.3:443/api/v1/auth/user', config);
+        const response = await axios.get('https://muslimtrivia.com/api/v1/auth/user', config);
         const { email, username } = response.data;
         setUserEmail(email);
         setUsername(username);

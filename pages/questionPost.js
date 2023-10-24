@@ -24,116 +24,279 @@ const QuestionPost = () => {
         const questions = [
 
 
-
-
-            { questionText: "What is the name of the Islamic month in which Muslims fast six days after Ramadan?", correctAnswer: "Shawwal", difficultyLevel: "INTERMEDIATE", options: ["Rajab", "Shawwal", "Dhu al-Hijjah", "Safar"] },
-            { questionText: "What is the name of the Islamic month in which the Night of Power (Laylat al-Qadr) is believed to occur?", correctAnswer: "Ramadan", difficultyLevel: "INTERMEDIATE", options: ["Shawwal", "Muharram", "Ramadan", "Rabi' al-Awwal"] },
-            { questionText: "What is the name of the night when the first verses of the Quran were revealed?", correctAnswer: "Laylat al-Qadr", difficultyLevel: "INTERMEDIATE", options: ["Laylat al-Miraj", "Laylat al-Baraat", "Laylat al-Qadr", "Laylat al-Isra"] },
-            { questionText: "Who was the first woman in Islam?", correctAnswer: "Khadija (pbuh)", difficultyLevel: "INTERMEDIATE", options: ["Aisha (pbuh)", "Fatimah (pbuh)", "Maryam (pbuh)", "Khadija (pbuh)"] },
-            { questionText: "What is the name of the black stone embedded in the Kaaba?", correctAnswer: "Hajar al-Aswad", difficultyLevel: "INTERMEDIATE", options: ["Hajar al-Aswad", "Rukn al-Yamani", "Maqam Ibrahim", "Mizab al-Rahmah"] },
-            { questionText: "What is the name of the well associated with the story of Prophet Ismael (pbuh) in Islamic tradition?", correctAnswer: "Zamzam", difficultyLevel: "INTERMEDIATE", options: ["Abraham's Well", "Moses' Well", "Zamzam", "Miriam's Well"] },
-            { questionText: "What is the Islamic New Year called?", correctAnswer: "Hijri New Year", difficultyLevel: "INTERMEDIATE", options: ["Hijri New Year", "Islamic New Year", "Muslim New Year", "Arabic New Year"] },
-            { questionText: "Who was the first caliph of Islam after the death of Prophet Muhammad (pbuh)?", correctAnswer: "Abu Bakr", difficultyLevel: "INTERMEDIATE", options: ["Umar", "Uthman", "Ali", "Abu Bakr"] },
-            { questionText: "What is the term for the journey of Prophet Muhammad (pbuh) from Makkah to Jerusalem and then to heaven?", correctAnswer: "Isra and Mi'raj", difficultyLevel: "INTERMEDIATE", options: ["Hijra", "Isra and Mi'raj", "Laylat al-Qadr", "Laylat al-Baraat"] },
-            { questionText: "What is the day of sacrifice during Hajj called?", correctAnswer: "Eid al-Adha", difficultyLevel: "INTERMEDIATE", options: ["Eid al-Fitr", "Eid al-Adha", "Ashura", "Mawlid"] },
-            { questionText: "What is the highest level of paradise in Islamic belief?", correctAnswer: "Firdaws", difficultyLevel: "INTERMEDIATE", options: ["Jannah", "Firdaws", "Barzakh", "Nar"] },
-            { questionText: "What is the term for an Islamic scholar?", correctAnswer: "Ulama", difficultyLevel: "INTERMEDIATE", options: ["Hafiz", "Muezzin", "Ulama", "Murabit"] },
-            { questionText: "Who is the angel of death in Islamic belief?", correctAnswer: "Angel Azrael (Izra'il)", difficultyLevel: "INTERMEDIATE", options: ["Angel Michael (Mikail)", "Angel Gabriel (Jibril)", "Angel Israfil", "Angel Azrael (Izra'il)"] },
-            { questionText: "In which city was Prophet Muhammad (pbuh) born?", correctAnswer: "Makkah", difficultyLevel: "INTERMEDIATE", options: ["Madinah", "Makkah", "Ta'if", "Yathrib"] },
-            { questionText: "What is the belief in the oneness of God in Islam?", correctAnswer: "Tawhid", difficultyLevel: "INTERMEDIATE", options: ["Shirk", "Kufr", "Tawhid", "Iman"] },
-            { questionText: "Which wife of the Prophet Muhammad (pbuh) is known as 'Mother of the Believers'?", correctAnswer: "Khadijah", difficultyLevel: "INTERMEDIATE", options: ["Aisha", "Khadijah", "Hafsa", "Zainab"] },
-            { questionText: "Who was the Prophet Muhammad's (pbuh) father?", correctAnswer: "Abdullah", difficultyLevel: "INTERMEDIATE", options: ["Abu Talib", "Abdullah", "Abu Lahab", "Hamza"] },
-            { questionText: "Who was the Prophet Muhammad's (pbuh) first wife?", correctAnswer: "Khadijah", difficultyLevel: "INTERMEDIATE", options: ["Aisha", "Khadijah", "Hafsa", "Zainab"] },
-
-{
-                questionText: "What is the name of the Prophet Muhammad's (pbuh) night journey from Mecca to Jerusalem?",
-                correctAnswer: "Isra",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Miraj", "Hijra", "Isra", "Hegira"]
-            },
             {
-                questionText: "What is the name of the Muslim community?",
-                correctAnswer: "Ummah",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Ummah", "Jama'ah", "Firqah", "Madhhab"]
-            },
-           
-            {
-                questionText: "Who was the prophet in Islam who was given the Ten Commandments by God?",
-                correctAnswer: "Musa (pbuh)",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Ibrahim (pbuh)", "Musa (pbuh)", "Isa (pbuh)", "Adam (pbuh)"]
-            },
-
-
-            {
-                questionText: "Who was the longest-serving caliph in Islamic history?",
-                correctAnswer: "Uthman Ibn Affan",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Umar Ibn Al-Khattab", "Ali Ibn Abi Talib", "Abu Bakr", "Uthman Ibn Affan"]
-            },
-            {
-                questionText: "What is the practice of Muslims reciting the Quran in Arabic called?",
-                correctAnswer: "Tilawah",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Adhan", "Tilawah", "Tafsir", "Tahajjud"]
-            },
-            {
-                questionText: "Which angel will blow the trumpet to signal the Day of Judgment in Islamic belief?",
-                correctAnswer: "Angel Israfil",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Angel Michael (Mikail)", "Angel Gabriel (Jibril)", "Angel Israfil", "Angel Azrael (Izra'il)"]
-            },
-
-
-            {
-                questionText: "Which Prophet built the Kaaba according to Islamic tradition?",
-                correctAnswer: "Ibrahim (pbuh)",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Adam (pbuh)", "Nuh (pbuh)", "Musa (pbuh)", "Ibrahim (pbuh)"]
-            },
-
-
-            {
-                questionText: "Who was the uncle of Prophet Muhammad (pbuh) who was known for his courage and strength?",
+                questionText: "What is the concept of predestination or divine decree in Islam?",
+                correctAnswer: "Qadar",
+                difficultyLevel: "ADVANCED",
+                options: ["Halal", "Shirk", "Qadar", "Kufr"],
+                },
+                
+                
+                {
+                questionText: "What is the term for the act of striving or struggling in the way of Allah?",
+                correctAnswer: "Jihad",
+                difficultyLevel: "ADVANCED",
+                options: ["Hijra", "Shahada", "Haram", "Jihad"],
+                },
+                
+                
+                {
+                questionText: "Who was the prominent Muslim philosopher, theologian, and physician from the Islamic Golden Age, known for his work 'The Book of Healing'?",
+                correctAnswer: "Ibn Sina (Avicenna)",
+                difficultyLevel: "ADVANCED",
+                options: ["Ibn Rushd (Averroes)", "Ibn Sina (Avicenna)", "Al-Farabi", "Al-Ghazali"],
+                },
+                
+                
+                {
+                questionText: "What is the name of the Islamic month in which fasting is prohibited?",
+                correctAnswer: "Dhu al-Hijjah",
+                difficultyLevel: "ADVANCED",
+                options: ["Rajab", "Shawwal", "Dhu al-Hijjah", "Safar"],
+                },
+                
+                
+                {
+                questionText: "Who was the renowned Muslim scholar and philosopher known for his works 'The Incoherence of the Philosophers' and 'The Revival of Religious Sciences'?",
+                correctAnswer: "Al-Ghazali",
+                difficultyLevel: "ADVANCED",
+                options: ["Ibn Sina (Avicenna)", "Al-Farabi", "Al-Ghazali", "Ibn Rushd (Averroes)"],
+                },
+                
+                
+                {
+                questionText: "Who was the Muslim polymath known for his contributions to various fields, including astronomy, mathematics, and optics?",
+                correctAnswer: "Ibn al-Haytham",
+                difficultyLevel: "ADVANCED",
+                options: ["Al-Farabi", "Ibn al-Haytham", "Ibn Sina (Avicenna)", "Al-Kindi"],
+                },
+                
+                
+                {
+                questionText: "What is the name of the Islamic month that marks the beginning of the Islamic calendar?",
+                correctAnswer: "Muharram",
+                difficultyLevel: "ADVANCED",
+                options: ["Rabi' al-Awwal", "Shaban", "Muharram", "Rajab"],
+                },
+                
+                
+                {
+                questionText: "Who was the Muslim philosopher and theologian known for his works 'The Incoherence of the Incoherence' and 'The Decisive Treatise'?",
+                correctAnswer: "Ibn Rushd (Averroes)",
+                difficultyLevel: "ADVANCED",
+                options: ["Al-Ghazali", "Ibn Rushd (Averroes)", "Al-Farabi", "Ibn Sina (Avicenna)"],
+                },
+                
+                
+                {
+                questionText: "What is the name of the Islamic month in which the Battle of Badr took place?",
+                correctAnswer: "Ramadan",
+                difficultyLevel: "ADVANCED",
+                options: ["Muharram", "Safar", "Ramadan", "Shawwal"],
+                },
+                
+                
+                {
+                questionText: "What is the Islamic concept of loyalty and allegiance to the Muslim community known as?",
+                correctAnswer: "Wilayah",
+                difficultyLevel: "ADVANCED",
+                options: ["Iman", "Ihsan", "Wilayah", "Taqwa"],
+                },
+                {
+                questionText: "Who was the Muslim military and political leader known as 'Lion of God' and fought alongside Prophet Muhammad (pbuh) in many battles?",
+                correctAnswer: "Ali ibn Abi Talib",
+                difficultyLevel: "ADVANCED",
+                options: ["Umar ibn al-Khattab", "Uthman ibn Affan", "Abu Bakr as-Siddiq", "Ali ibn Abi Talib"],
+                },
+                {
+                questionText: "What is the term for the Islamic practice of self-purification through spiritual and physical cleansing?",
+                correctAnswer: "Tazkiyah",
+                difficultyLevel: "ADVANCED",
+                options: ["Taharah", "Ibadah", "Tazkiyah", "Muraqaba"],
+                },
+                {
+                questionText: "Who was the prominent female companion of Prophet Muhammad (pbuh) known for her bravery and participation in battles?",
+                correctAnswer: "Umm Salamah",
+                difficultyLevel: "ADVANCED",
+                options: ["Aisha bint Abu Bakr", "Fatimah bint Muhammad", "Khadijah bint Khuwaylid", "Umm Salamah"],
+                },
+                
+                
+                {
+                questionText: "What is the Islamic term for the practice of seeking knowledge from qualified scholars?",
+                correctAnswer: "Talab al-ʿIlm",
+                difficultyLevel: "ADVANCED",
+                options: ["Tafsir", "Fiqh", "Talab al-ʿIlm", "Ijtihad"],
+                },
+                
+                
+                {
+                questionText: "What is the term for the Islamic practice of showing respect and honor to parents?",
+                correctAnswer: "Birr al-Walidayn",
+                difficultyLevel: "ADVANCED",
+                options: ["Akhlaq", "Birr al-Walidayn", "Dhikr", "Ihsan"],
+                },
+                
+                
+                {
+                questionText: "What is the name of the tribe that Prophet Muhammad (pbuh) belonged to?",
+                correctAnswer: "Quraysh",
+                difficultyLevel: "ADVANCED",
+                options: ["Banu Hashim", "Ansar", "Muhajirun", "Quraysh"],
+                },
+                
+                
+                {
+                questionText: "Which city did Prophet Muhammad (pbuh) migrate to, escaping persecution in Makkah?",
+                correctAnswer: "Madinah",
+                difficultyLevel: "ADVANCED",
+                options: ["Ta'if", "Jerusalem", "Madinah", "Tabuk"],
+                },
+                
+                
+                {
+                questionText: "What is the term for the farewell pilgrimage of Prophet Muhammad (pbuh) in the year of his death?",
+                correctAnswer: "Hajjat al-Wida",
+                difficultyLevel: "ADVANCED",
+                options: ["Umrah al-Tamattu", "Hajjat al-Wida", "Hajj al-Ifrad", "Hajj al-Qiran"],
+                },
+                {
+                questionText: "Who was the first person to accept Islam after Prophet Muhammad (pbuh) received the revelation?",
+                correctAnswer: "Khadijah bint Khuwaylid",
+                difficultyLevel: "ADVANCED",
+                options: ["Abu Bakr", "Ali ibn Abi Talib", "Uthman ibn Affan", "Khadijah bint Khuwaylid"],
+                },
+                {
+                questionText: "What is the name of the cave where Prophet Muhammad (pbuh) received the first revelation from Allah?",
+                correctAnswer: "Hira",
+                difficultyLevel: "ADVANCED",
+                options: ["Thawr", "Hira", "Uhud", "Jabal al-Nour"],
+                },
+                {
+                questionText: "Who is the uncle of Prophet Muhammad (pbuh) who initially provided protection and support to him?",
+                correctAnswer: "Abu Talib",
+                difficultyLevel: "ADVANCED",
+                options: ["Umar ibn al-Khattab", "Uthman ibn Affan", "Abu Bakr as-Siddiq", "Abu Talib"],
+                },
+                {
+                questionText: "What is the name of the battle in which the Muslims were outnumbered and achieved a decisive victory?",
+                correctAnswer: "Battle of Badr",
+                difficultyLevel: "ADVANCED",
+                options: ["Battle of Uhud", "Battle of Badr", "Battle of Khandaq", "Battle of Hunayn"],
+                },
+                {
+                questionText: "What is the term for the migration of Prophet Muhammad (pbuh) from Makkah to Madinah?",
+                correctAnswer: "Hijrah",
+                difficultyLevel: "ADVANCED",
+                options: ["Istighfar", "Hijrah", "Tawakkul", "Iqra"],
+                },
+                {
+                questionText: "Who was the first person to accept Islam from the Ansar (residents of Madinah)?",
+                correctAnswer: "Sa'd ibn Mu'adh",
+                difficultyLevel: "ADVANCED",
+                options: ["Abdullah ibn Ubayy", "Sa'd ibn Mu'adh", "Abdullah ibn Salam", "Abu Ayyub al-Ansari"],
+                },
+                {
+                questionText: "What is the term for the sealed letter that Prophet Muhammad (pbuh) sent to various rulers inviting them to Islam?",
+                correctAnswer: "Sahifa",
+                difficultyLevel: "ADVANCED",
+                options: ["Fath", "Hadith", "Sahifa", "Sira"],
+                },
+                {
+                questionText: "What is the name of the treaty signed between Prophet Muhammad (pbuh) and the Quraysh tribe, marking a truce and allowing the Muslims to enter Makkah?",
+                correctAnswer: "Treaty of Hudaybiyyah",
+                difficultyLevel: "ADVANCED",
+                options: ["Treaty of Hudaibiya", "Treaty of Versailles", "Treaty of Bani Qaynuqa", "Treaty of Ta'if"],
+                },
+                {
+                questionText: "Who was the Ethiopian Christian king who accepted the letter of Prophet Muhammad (pbuh) and granted protection to the Muslims?",
+                correctAnswer: "Negus",
+                difficultyLevel: "ADVANCED",
+                options: ["Pharaoh", "Sultan", "Caliph", "Negus"],
+                },
+                {
+                questionText: "What is the term for the practice of emulating the actions and sayings of Prophet Muhammad (pbuh)?",
+                correctAnswer: "Sunnah",
+                difficultyLevel: "ADVANCED",
+                options: ["Shahada", "Salat", "Sunnah", "Sadaqah"],
+                },
+                {
+                questionText: "Who was the companion of Prophet Muhammad (pbuh) known for his beautiful recitation of the Quran?",
+                correctAnswer: "Abdullah ibn Masud",
+                difficultyLevel: "ADVANCED",
+                options: ["Abu Bakr", "Umar ibn al-Khattab", "Uthman ibn Affan", "Abdullah ibn Masud"],
+                },
+                {
+                questionText: "What is the name of the well-known battle that took place after the death of Prophet Muhammad (pbuh) to establish the caliphate?",
+                correctAnswer: "Battle of Jamal",
+                difficultyLevel: "ADVANCED",
+                options: ["Battle of Badr", "Battle of Uhud", "Battle of Jamal", "Battle of Siffin"],
+                }
+                
+                
+                ,
+                {
+                questionText: "What is the term for the practice of seeking blessings or intercession through the relics or belongings of Prophet Muhammad (pbuh)?",
+                correctAnswer: "Tabarruk",
+                difficultyLevel: "ADVANCED",
+                options: ["Taqwa", "Tahajjud", "Tabarruk", "Tawakkul"],
+                },
+                {
+                questionText: "Who was the freed slave and companion of Prophet Muhammad (pbuh) known for his generosity and loyalty?",
+                correctAnswer: "Bilal ibn Rabah",
+                difficultyLevel: "ADVANCED",
+                options: ["Suhayb ar-Rumi", "Bilal ibn Rabah", "Zaid ibn Harithah", "Salman al-Farisi"],
+                },
+                {
+                questionText: "What is the term for the migration of Prophet Muhammad (pbuh) from Madinah back to Makkah?",
+                correctAnswer: "Fath",
+                difficultyLevel: "ADVANCED",
+                options: ["Hijrah", "Tawaf", "Fath", "Haram"],
+                },
+                {
+                questionText: "Who was the companion of Prophet Muhammad (pbuh) known for his bravery and fighting skills?",
                 correctAnswer: "Hamza ibn Abdul-Muttalib",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Abu Talib", "Abdullah", "Abu Lahab", "Hamza ibn Abdul-Muttalib"]
-            },
-
-
-            {
-                questionText: "What is the name of the second caliph of Islam?",
-                correctAnswer: "Umar ibn al-Khattab",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Abu Bakr", "Umar ibn al-Khattab", "Uthman ibn Affan", "Ali ibn Abi Talib"]
-            }, {
-                questionText: "What is the Islamic practice of temporary marriage called?",
-                correctAnswer: "Nikah Mut'ah",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Nikah", "Nikah Misyar", "Nikah Mut'ah", "Nikah Halala"]
-            },
-
-
-            {
-                questionText: "Which day in Islamic belief is known as the 'Day of Judgment' and represents the day of judgment?",
-                correctAnswer: "Yawm al-Qiyamah",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Yawm al-Jum'ah", "Yawm al-Adha", "Yawm al-Fitr", "Yawm al-Qiyamah"]
-            },
-
-
-            {
-                questionText: "What is the major sect of Islam that follows the Rashidun Caliphs after Prophet Muhammad (pbuh)?",
-                correctAnswer: "Sunni",
-                difficultyLevel: "INTERMEDIATE",
-                options: ["Sunni", "Shia", "Sufi", "Ahmadiyya"]
-            }
-
-
-
-
-
+                difficultyLevel: "ADVANCED",
+                options: ["Abu Bakr", "Umar ibn al-Khattab", "Uthman ibn Affan", "Hamza ibn Abdul-Muttalib"],
+                },
+                {
+                questionText: "What is the term for the speech or sermon delivered by Prophet Muhammad (pbuh) during the Friday congregational prayer?",
+                correctAnswer: "Khutbah",
+                difficultyLevel: "ADVANCED",
+                options: ["Adhan", "Tafsir", "Salat", "Khutbah"],
+                },
+                {
+                questionText: "Who was the companion of Prophet Muhammad (pbuh) known for his beautiful calligraphy and preservation of the Quran?",
+                correctAnswer: "Zaid ibn Thabit",
+                difficultyLevel: "ADVANCED",
+                options: ["Ali ibn Abi Talib", "Umar ibn al-Khattab", "Zaid ibn Thabit", "Abdullah ibn Masud"],
+                },
+                {
+                questionText: "What is the name of the battle in which Prophet Muhammad (pbuh) and the Muslims conquered Makkah?",
+                correctAnswer: "Conquest of Makkah",
+                difficultyLevel: "ADVANCED",
+                options: ["Battle of Khaybar", "Battle of Hunayn", "Conquest of Makkah", "Battle of Tabuk"],
+                },
+                {
+                questionText: "Who was the companion of Prophet Muhammad (pbuh) known for his expertise in the interpretation of dreams?",
+                correctAnswer: "Ibn Sirin",
+                difficultyLevel: "ADVANCED",
+                options: ["Umar ibn al-Khattab", "Ali ibn Abi Talib", "Ibn Sirin", "Abdullah ibn Abbas"],
+                },
+                {
+                questionText: "What is the term for the night journey of Prophet Muhammad (pbuh) from Makkah to Jerusalem and then to the heavens?",
+                correctAnswer: "Isra and Mi'raj",
+                difficultyLevel: "ADVANCED",
+                options: ["Hijrah", "Isra and Mi'raj", "Laylat al-Qadr", "Laylat al-Baraat"],
+                },
+                {
+                questionText: "Who was the companion of Prophet Muhammad (pbuh) known for his eloquence and recitation of the Quran?",
+                correctAnswer: "Abdullah ibn Abbas",
+                difficultyLevel: "ADVANCED",
+                options: ["Umar ibn al-Khattab", "Ali ibn Abi Talib", "Abdullah ibn Abbas", "Abu Bakr"],
+                }
+                
+                
 
 
         ];
