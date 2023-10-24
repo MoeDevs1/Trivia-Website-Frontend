@@ -14,7 +14,8 @@ const Layout = ({ children }) => {
     <>
  
 
-      {shouldShowNavbar && <Navbar />}
+      
+ {shouldShowNavbar && <Navbar />}
       {children}
       {shouldShowNavbar && <Footer />}
     </>
