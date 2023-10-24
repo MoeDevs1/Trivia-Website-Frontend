@@ -49,7 +49,7 @@ const advanced = () => {
 
   const fetchQuestions = async (difficulty, numberOfQuestions =7) => {
     try {
-      const response = await fetch(`https://muslimtrivia.com/api/v1/auth/authenticate/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`);
+      const response = await fetch(`https://muslimtrivia.com/api/v1/auth/questions/${difficulty}/${numberOfQuestions}`); 
       const data = await response.json();
       setQuestions(data);
     } catch (error) {
